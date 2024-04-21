@@ -1,0 +1,1 @@
+print("7amoksha is alive")
