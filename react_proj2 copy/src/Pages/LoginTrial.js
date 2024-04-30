@@ -34,14 +34,14 @@ function LoginTrial() {
   
   return (
     
-    <div className="container p-3 my-5">
+    <div className="container p-3 my-3">
       <div className="row">
         <div className="col-4 col-md-6">
-          <div className="mb-4">
-            <input type="text" className="form-control form-control-lg" id="Username" placeholder="Username" value={username} onChange={handleUsernameChange} />
+          <div className="mb-3">
+            <input type="text" className="form-control form-control-sm" id="Username" placeholder="Username" value={username} onChange={handleUsernameChange} />
           </div>
-          <div className="mb-4">
-            <input type="password" className="form-control form-control-lg" id="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+          <div className="mb-3">
+            <input type="password" className="form-control form-control-sm" id="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
           </div>
           <div className="d-flex justify-content-between mx-4 mb-4">
             <div className="form-check">
