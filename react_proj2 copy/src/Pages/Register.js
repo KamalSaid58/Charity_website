@@ -11,7 +11,8 @@ function Register() {
           <div className="mb-3">
             <button
               type="button"
-              className="btn btn-lg btn-primary d-block w-100"
+              className="btn btn-lg mb-4 text-white w-100" 
+              style={{background:"#9F8C76"}}
               onClick={()=>navigate("/RegisterDonor")}
             >
               Register Donor
@@ -20,7 +21,8 @@ function Register() {
           <div className="mb-3">
             <button
               type="button"
-              className="btn btn-lg btn-primary d-block w-100"
+              className="btn btn-lg mb-4 text-white w-100" 
+              style={{background:"#9F8C76"}}
               onClick={()=>navigate("/RegisterOrgan")}
             >
               Register Organization

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+
 function LoginTrial() {
     const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -14,16 +15,16 @@ function LoginTrial() {
     setPassword(event.target.value);
   };
 
-  function onClick(username,password){
-    if(password!="123"){
+  function check(username,password){
+    if(password!=="123"){
         alert("Incorrect password.Try again");
     }else
     {
-        if(username=="Admin"){
+        if(username==="Admin"){
             navigate("/Admin");
-        }else if(username=="Donor"){
+        }else if(username==="Donor"){
             navigate("/Donor");
-        }else if(username=="Organ")
+        }else if(username==="Organ")
             navigate("/Organ");
         else{
             navigate("/");
@@ -51,7 +52,7 @@ function LoginTrial() {
             </div>
             <a href="!#">Forgot password?</a>
           </div>
-          <button type="button" className="btn btn-lg btn-primary mb-4" onClick={()=>onClick(username,password)}>Log in</button>
+          <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>check(username,password)}>Log in</button>
           <div className="divider d-flex align-items-center my-4">
           </div>
         </div>

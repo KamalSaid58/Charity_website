@@ -37,6 +37,8 @@ function App() {
 
               <Route path="/Donor" element={<Donor />} />
 
+              <Route path="/Organ" element={<Organ />} />
+
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
 
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />

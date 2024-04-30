@@ -36,7 +36,7 @@ function RegisterDonor() {
           <div className="mb-4">
             <input type="Governate" className="form-control form-control-lg" id="password" placeholder="Governate" />
           </div>
-          <button type="button" className="btn btn-lg btn-primary mb-4" onClick={()=>navigate("/LoginTrial")}>Register</button>
+          <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>navigate("/LoginTrial")}>Register</button>
           <div className="divider d-flex align-items-center my-4">
           </div>
         </div>
