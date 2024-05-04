@@ -54,8 +54,9 @@ function LoginTrial() {
             </div>
             <a href="#" onClick={handleForgetPassword}>Forgot password?</a>
           </div>
-          <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>check(username,password)}>Log in</button>
           <div className="divider d-flex align-items-center my-4">
+            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76", marginRight: '10px'}} onClick={()=>navigate("/")}>Back</button>
+            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>check(username,password)}>Log in</button>
           </div>
         </div>
       </div>

@@ -28,6 +28,16 @@ function Register() {
               Register Organization
             </button>
           </div>
+          <div className="mb-3">
+            <button
+              type="button"
+              className="btn btn-lg mb-4 text-white w-100" 
+              style={{background:"#9F8C76"}}
+              onClick={()=>navigate("/")}
+            >
+              Back
+            </button>
+          </div>
         </div>
       </div>
     </div>

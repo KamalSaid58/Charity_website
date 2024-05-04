@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { useNavigate } from "react-router-dom";
-import {Form,Select,Upload} from "antd";
+import {Form,Select} from "antd";
 import UploadFile from "../Components/UploadFile"
 import "../Styles/RegisterDonor.css"
 
@@ -93,8 +93,9 @@ function RegisterDonor() {
 
           
 
-          <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>checkNavigateTo()}>Register</button>
           <div className="divider d-flex align-items-center my-4">
+            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76", marginRight: '10px'}} onClick={()=>navigate("/Register")}>Back</button>
+            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>checkNavigateTo()}>Register</button>
           </div>
         </div>
       </div>

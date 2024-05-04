@@ -42,8 +42,14 @@ function ChangePassword(){
                         <input type="Password" className="form-control form-control-sm" id="Pass1" placeholder="Confirm password" value={password2} onChange={handlePassword2Change}/>
                     </div>
 
+                    <div className="divider d-flex align-items-center my-4">
+                    <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76", marginRight: '10px'}} onClick={()=>navigate("/Admin")}>Back</button>
                     <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>navigateTo(password1,password2)}>Confirm</button>
-                    <div className="divider d-flex align-items-center my-4"></div>
+
+
+
+
+                    </div>
                 </div>   
             </div> 
         </div>  
