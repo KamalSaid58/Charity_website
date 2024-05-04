@@ -1,0 +1,10 @@
+.upload-link {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .upload-link:hover {
+    text-decoration: underline;
+  }

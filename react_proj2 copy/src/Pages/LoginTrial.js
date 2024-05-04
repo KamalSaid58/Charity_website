@@ -14,6 +14,9 @@ function LoginTrial() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+  const handleForgetPassword = (event) => {
+    alert("The password for all accounts is 123")
+  };
 
   function check(username,password){
     if(password!=="123"){
@@ -25,7 +28,7 @@ function LoginTrial() {
         case "Teacher":navigate("/Teacher");break;
         case "Doctor":navigate("/Doctor");break;
         case "Admin":navigate("/Admin");break;
-        case "Organ":navigate("/Organ");break;
+        case "Organization":navigate("/Organ");break;
         default:navigate("/");break;
       }
     }
@@ -49,7 +52,7 @@ function LoginTrial() {
                 Remember me
               </label>
             </div>
-            <a href="!#">Forgot password?</a>
+            <a href="#" onClick={handleForgetPassword}>Forgot password?</a>
           </div>
           <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>check(username,password)}>Log in</button>
           <div className="divider d-flex align-items-center my-4">

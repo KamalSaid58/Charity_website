@@ -18,6 +18,7 @@ import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
 
 
+
 function App() {
   let items = ["Kamal", "Said", "Kamal"];
   //Passing parameters to components
@@ -59,6 +60,7 @@ function App() {
               <Route path="/OrganList" element={<OrganList />} />
 
               <Route path="/DonorList" element={<DonorList />} />
+
 
             </Routes>
           </div>
