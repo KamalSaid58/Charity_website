@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import NavigationBar from './Components/NavigationBar';
@@ -16,31 +15,6 @@ import SchoolSupp from './Pages/SchoolSupp';
 import StartPage from './Components/StartPage';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs'; // Make sure to import StartPage
-=======
-import { Routes, Route } from "react-router-dom";
-import Main from "./Pages/Main";
-import Register from "./Pages/Register";
-import { useNavigate } from "react-router-dom";
-import SideNavBar from "./Components/SideNavBar";
-import NavigationBar from "./Components/NavigationBar";
-import "./App.css";
-import LoginTrial from "./Pages/LoginTrial";
-import Admin from "./Pages/Admin";
-import Donor from "./Pages/Donor";
-import Organ from "./Pages/Organ";
-import RegisterDonor from "./Pages/RegisterDonor";
-import RegisterOrgan from "./Pages/RegisterOrgan";
-import ChangePassword from "./Pages/ChangePassword";
-import Doctor from "./Pages/Doctor";
-import Teacher from "./Pages/Teacher";
-import OrganList from "./Pages/OrganList";
-import DonorList from "./Pages/DonorList";
-
-
-function App() {
-  let items = ["Kamal", "Said", "Kamal"];
-  //Passing parameters to components
->>>>>>> fc905a1f7ae2c98555e117682f0c9fab995dd2b2
 
 function App() {
   const navigate = useNavigate();
@@ -63,30 +37,12 @@ function App() {
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Donor" element={<Donor />} />
               <Route path="/Organ" element={<Organ />} />
-<<<<<<< HEAD
-=======
-
-              <Route path="/Doctor" element={<Doctor />} />
-
-              <Route path="/Teacher" element={<Teacher />} />
-
->>>>>>> fc905a1f7ae2c98555e117682f0c9fab995dd2b2
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />
-<<<<<<< HEAD
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
               <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
-=======
-
-              <Route path="/ChangePassword" element={<ChangePassword />} />
-
-              <Route path="/OrganList" element={<OrganList />} />
-
-              <Route path="/DonorList" element={<DonorList />} />
-
->>>>>>> fc905a1f7ae2c98555e117682f0c9fab995dd2b2
             </Routes>
           </div>
         </div>

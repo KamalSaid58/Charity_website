@@ -31,18 +31,6 @@ function LoginTrial() {
           break;
         default:
           navigate('/');
-  function check(username,password){
-    if(password!=="123"){
-        alert("Incorrect password.Try again");
-    }else
-    {
-      switch(username){
-        case "Donor":navigate("/Donor");break;
-        case "Teacher":navigate("/Teacher");break;
-        case "Doctor":navigate("/Doctor");break;
-        case "Admin":navigate("/Admin");break;
-        case "Organ":navigate("/Organ");break;
-        default:navigate("/");break;
       }
     }
   };
@@ -93,6 +81,5 @@ function LoginTrial() {
     </div>
   );
 }
-    
+
 export default LoginTrial;
-    }
