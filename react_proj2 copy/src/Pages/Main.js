@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom"; // For navigation
-
+import StartPage from '../Components/StartPage';
 
 const mockProducts = [
   // Replace with actual product data
@@ -18,7 +18,15 @@ const mockOrders = [
 ];
 
 function Main() {
+<<<<<<< HEAD
+  return (
+    <div>
+      <StartPage /> {/* Render the StartPage component */}
+    </div>
+  );
+=======
   return (<>Omar</>);
+>>>>>>> fc905a1f7ae2c98555e117682f0c9fab995dd2b2
     // Write code describing ur website
 };
 
