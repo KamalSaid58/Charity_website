@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function LoginTrial() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,15 +20,14 @@ function LoginTrial() {
         alert("Incorrect password.Try again");
     }else
     {
-        if(username==="Admin"){
-            navigate("/Admin");
-        }else if(username==="Donor"){
-            navigate("/Donor");
-        }else if(username==="Organ")
-            navigate("/Organ");
-        else{
-            navigate("/");
-        }
+      switch(username){
+        case "Donor":navigate("/Donor");break;
+        case "Teacher":navigate("/Teacher");break;
+        case "Doctor":navigate("/Doctor");break;
+        case "Admin":navigate("/Admin");break;
+        case "Organ":navigate("/Organ");break;
+        default:navigate("/");break;
+      }
     }
   }
   

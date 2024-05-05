@@ -11,6 +11,13 @@ import Donor from "./Pages/Donor";
 import Organ from "./Pages/Organ";
 import RegisterDonor from "./Pages/RegisterDonor";
 import RegisterOrgan from "./Pages/RegisterOrgan";
+import ChangePassword from "./Pages/ChangePassword";
+import Doctor from "./Pages/Doctor";
+import Teacher from "./Pages/Teacher";
+import OrganList from "./Pages/OrganList";
+import DonorList from "./Pages/DonorList";
+
+
 function App() {
   let items = ["Kamal", "Said", "Kamal"];
   //Passing parameters to components
@@ -39,11 +46,20 @@ function App() {
 
               <Route path="/Organ" element={<Organ />} />
 
+              <Route path="/Doctor" element={<Doctor />} />
+
+              <Route path="/Teacher" element={<Teacher />} />
+
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
 
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />
 
-              {/* <Route path="/Organ" element={<Organ />} /> */}
+              <Route path="/ChangePassword" element={<ChangePassword />} />
+
+              <Route path="/OrganList" element={<OrganList />} />
+
+              <Route path="/DonorList" element={<DonorList />} />
+
             </Routes>
           </div>
         </div>
