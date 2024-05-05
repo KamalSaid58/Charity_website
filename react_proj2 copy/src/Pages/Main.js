@@ -18,11 +18,15 @@ const mockOrders = [
 ];
 
 function Main() {
+<<<<<<< HEAD
   return (
     <div>
       <StartPage /> {/* Render the StartPage component */}
     </div>
   );
+=======
+  return (<>Omar</>);
+>>>>>>> fc905a1f7ae2c98555e117682f0c9fab995dd2b2
     // Write code describing ur website
 };
 
