@@ -1,0 +1,54 @@
+.toolbar-wrapper {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    padding: 0px 24px;
+    color: #fff;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    transform: translateX(-50%);
+  }
+  
+  .toolbar-wrapper .anticon {
+    padding: 12px;
+    cursor: pointer;
+  }
+  
+  .toolbar-wrapper .anticon[disabled] {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+  
+  .toolbar-wrapper .anticon:hover {
+    opacity: 0.3;
+  }
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .image-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    align-items: left;
+    margin-right: 1000px; /* Adjust spacing between text and image */
+    flex-direction: row-reverse; /* Reverse the order of elements */
+  }
+  
+  .hospital-name {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: 10px; /* Adjust spacing between text and image */
+  }
+  
+  
+  
+  
+  

@@ -50,7 +50,7 @@ function LoginTrial() {
                 Remember me
               </label>
             </div>
-            <a href="!#">Forgot password?</a>
+            <a href="#">Forgot password?</a>
           </div>
           <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>check(username,password)}>Log in</button>
           <div className="divider d-flex align-items-center my-4">

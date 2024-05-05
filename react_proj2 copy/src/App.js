@@ -11,6 +11,10 @@ import Donor from "./Pages/Donor";
 import Organ from "./Pages/Organ";
 import RegisterDonor from "./Pages/RegisterDonor";
 import RegisterOrgan from "./Pages/RegisterOrgan";
+import ListofBloodDonation from "./Pages/ListofBloodDonation";
+import Nasayeem from "./Pages/Nasayeem"
+import Cleopatra from "./Pages/Cleopatra"
+import ElGawy from "./Pages/ElGawy"
 function App() {
   let items = ["Kamal", "Said", "Kamal"];
   //Passing parameters to components
@@ -39,10 +43,16 @@ function App() {
 
               <Route path="/Organ" element={<Organ />} />
 
+              <Route path="/ListofBloodDonation" element={<ListofBloodDonation/>}/>
+             
+
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
 
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />
-
+              
+              <Route path="/Nasayeem" element={<Nasayeem />} />
+              <Route path="/Cleopatra" element={<Cleopatra />} />
+              <Route path="/ElGawy" element={<ElGawy />} />
               {/* <Route path="/Organ" element={<Organ />} /> */}
             </Routes>
           </div>
