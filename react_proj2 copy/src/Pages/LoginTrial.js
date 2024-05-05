@@ -6,6 +6,7 @@ function LoginTrial() {
     const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
