@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
-import { Button, Space, Table, Modal } from 'antd';
+import { Button, Space, Table, Modal,message } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { useNavigate } from "react-router-dom";
-import { CompassOutlined } from '@ant-design/icons';
-import { Divider, Image } from 'antd';
- 
+
+
 
 const ListofBloodDonation = () => {
   const [searchText, setSearchText] = useState('');
+  const [messageApi, contextHolder] = message.useMessage();
   const [searchedColumn, setSearchedColumn] = useState('');
   const [showTable, setShowTable] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -24,6 +24,10 @@ const ListofBloodDonation = () => {
   const searchInput = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+  
+  const info = (record) => {
+    messageApi.info('You have chosen '+record.school);
+  };
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -174,63 +178,63 @@ const ListofBloodDonation = () => {
   const dataSource = [
     {
       key: '1',
-      person:"Kareem",
-      bloodtype: 'A positive',
-      hospital: 'Nasayeem',
+      numberofstudents:"30",
+      subject: 'Math',
+      school: 'Masrya',
       area: 'Fifth settlment',
-      governorate: 'Minister of health',
-      address:"90 street" ,      
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.627608615749!2d31.431965576291237!3d30.01884747493663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d9511c47395%3A0x291a34366112c220!2z2YXYs9iq2LTZgdmJINmG2LPYp9im2YU!5e0!3m2!1sen!2seg!4v1714941342861!5m2!1sen!2seg" ,
+      governorate: 'Minister of Education',
+      address:"90 street" ,     
+      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d221158.1049348152!2d31.155591425000008!3d29.991055999999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d360e7b79f9%3A0xe2334863278572c1!2sEgyptian%20Language%20School!5e0!3m2!1sen!2seg!4v1715000890317!5m2!1sen!2seg",
 
     },
     {
-      key: '2',
-      person:"Kazeem",
-      bloodtype: 'AB positive',
-      hospital: 'Cleopatra',
-      area: 'Nasr city',
-      governorate: 'Governer',
-      address:"Abaas elaad" , 
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.038905897004!2d31.327240976293556!3d30.093072074899197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458158a930edb85%3A0x642c923f11f70af4!2zQ2xlb3BhdHJhIEhvc3BpdGFsINmF2LPYqti02YHZiSDZg9mE2YrZiNio2KfYqtix2KcgLSBDbGVvcGF0cmEgSG9zcGl0YWxzIEdyb3Vw!5e0!3m2!1sen!2seg!4v1714943200985!5m2!1sen!2seg"  
+        key: '2',
+        numberofstudents:"22",
+        subject: 'Physics',
+        school: 'Nefertari',
+        area: 'AlObour',
+        governorate: 'Governer',
+        address:"Ismalia Desert Rd" ,     
+        src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5802.170093329363!2d31.441129290176615!3d30.151673933162055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145810a60524a231%3A0xe8d7ffe3daf3f959!2sNefertari%20International%20Schools!5e0!3m2!1sen!2seg!4v1715000703317!5m2!1sen!2seg", 
+     },
+    {
+        key: '3',
+        numberofstudents:"25",
+        subject: 'Chemistery',
+        school: 'Capital',
+        area: 'Fifth settlment',
+        governorate: 'Governer',
+        address:"Al Narges 5" , 
+        src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9772.298596890776!2d31.460797059798786!3d30.007314977134545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14582327af038d4d%3A0xb33a5f53ed30d038!2sCapital%20International%20Schools!5e0!3m2!1sen!2seg!4v1715001508311!5m2!1sen!2seg",
     },
     {
-      key: '3',
-      person:"Abdelrahman",
-      bloodtype: 'O negative',
-      hospital: 'Nasayeem',
-      area: 'Fifth settlment',
-      governorate: 'Minister of health',
-      address:"90 street" ,  
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.627608615749!2d31.431965576291237!3d30.01884747493663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d9511c47395%3A0x291a34366112c220!2z2YXYs9iq2LTZgdmJINmG2LPYp9im2YU!5e0!3m2!1sen!2seg!4v1714941342861!5m2!1sen!2seg" ,
-    },
-    {
-      key: '4',
-      person:"Ziad",
-      bloodtype: 'A negative',
-      hospital: 'Elgawy',
-      area: 'Fifth settlment',
-      governorate: 'Minister of health',
-      address:"90 street" ,
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.67389984829!2d31.43156967629111!3d30.01751867493716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd75153e123%3A0xd6d98616e2c385f7!2sAir%20Force%20Specialized%20Hospital!5e0!3m2!1sen!2seg!4v1714943268574!5m2!1sen!2seg"   
+        key: '4',
+        numberofstudents:"20",
+        subject: 'Arabic',
+        school: 'Hayah',
+        area: 'Fifth settlment',
+        governorate: 'Minister of Education',
+        address:"Al Narges 5" ,
+        src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185874.05383801082!2d31.24298221672665!3d30.042798054314293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d2487edeb01%3A0x6fb528e8409e4606!2sHayah%20International%20Academy!5e0!3m2!1sen!2seg!4v1715001670007!5m2!1sen!2seg", 
     },
   ];
 
   const columns = [
     {
-      title: 'Key',
-      dataIndex: 'key',
-      key: 'key',
+        title: 'Key',
+        dataIndex: 'key',
+        key: 'key',
+      },
+    {
+      title: 'School',
+      dataIndex: 'school',
+      key: 'school',
     },
     {
-      title: 'Bloodtype',
-      dataIndex: 'bloodtype',
-      key: 'bloodtype',
-    },
-    {
-      title: 'Hospital',
-      dataIndex: 'hospital',
-      key: 'hospital',
-      ...getColumnSearchProps('hospital'),
+      title: 'Subject',
+      dataIndex: 'subject',
+      key: 'subject',
+      ...getColumnSearchProps('subject'),
      // sorter: (a, b) => a.age - b.age,
       //sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
     },
@@ -259,21 +263,26 @@ const ListofBloodDonation = () => {
       ),
     },
     {
-      title: 'Location',
-      key: 'Loc',
-      render: (text, record) => (
-        
-        <CompassOutlined 
-    style={{ fontSize: '40px', cursor: 'pointer' }} 
-    onClick={()=>handleIconAction(record)} 
-  />
-      ),
-    },
+        title: 'Choose',
+        key: 'Choose',
+        render: (text, record) => (
+            <>
+      {contextHolder}
+      <Button type="primary" 
+      className="btn btn-lg mb-6 text-white w-20 d-flex justify-content-center align-items-center" 
+      style={{ background: "#9F8C76" }}
+      onClick={()=>info(record)}>
+        Choose
+      </Button>
+    </>
+        ),
+      },
+   
   ];
 
   return (
     <div className="container">
-      <h2>Blood Donation Requests</h2>
+      <h2>Teaching Posts</h2>
       <Space style={{ marginBottom: 16 }}>
       </Space>
       <Table columns={columns} dataSource={dataSource} onChange={handleChange} />
@@ -297,12 +306,16 @@ const ListofBloodDonation = () => {
       >
         {selectedRecord && (
           <div>
-            <p>Name: {selectedRecord.person}</p>
-            <p>BloodType: {selectedRecord.bloodtype}</p>
-            <p>Hospital Name: {selectedRecord.hospital}</p>
+            <p>School Name: {selectedRecord.school}</p>
+            <p>Subject: {selectedRecord.subject}</p>
+            <p>Number of Students: {selectedRecord.numberofstudents}</p>
             <p>Area: {selectedRecord.area}</p>
-            <p>Hospital Address: {selectedRecord.address}</p>
-            <p>Hospital Governorate: {selectedRecord.governorate}</p>
+            <p>School Address: {selectedRecord.address}</p>
+            <p>School Governorate: {selectedRecord.governorate}</p>
+            <Button type="link" onClick={() => setIsModalOpen(true)} style={{
+                position:'absolute',
+                left:'8px'
+            }}>Location</Button>
           </div>
           
         )}

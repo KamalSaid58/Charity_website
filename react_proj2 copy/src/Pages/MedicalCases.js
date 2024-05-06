@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
-import { Button, Space, Table, Modal } from 'antd';
+import { Button, Space, Table, Modal,message } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { useNavigate } from "react-router-dom";
-import { CompassOutlined } from '@ant-design/icons';
-import { Divider, Image } from 'antd';
- 
 
-const ListofBloodDonation = () => {
+
+
+const MedicalCases = () => {
   const [searchText, setSearchText] = useState('');
+  const [messageApi, contextHolder] = message.useMessage();
   const [searchedColumn, setSearchedColumn] = useState('');
   const [showTable, setShowTable] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -24,6 +24,10 @@ const ListofBloodDonation = () => {
   const searchInput = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+  
+  const info = (record) => {
+    messageApi.info('You have chosen '+record.medicalspec+" in "+record.organizationname);
+  };
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -174,63 +178,79 @@ const ListofBloodDonation = () => {
   const dataSource = [
     {
       key: '1',
-      person:"Kareem",
-      bloodtype: 'A positive',
-      hospital: 'Nasayeem',
-      area: 'Fifth settlment',
-      governorate: 'Minister of health',
-      address:"90 street" ,      
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.627608615749!2d31.431965576291237!3d30.01884747493663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d9511c47395%3A0x291a34366112c220!2z2YXYs9iq2LTZgdmJINmG2LPYp9im2YU!5e0!3m2!1sen!2seg!4v1714941342861!5m2!1sen!2seg" ,
-
+      medicalspec:"Neurosurgical",
+      organizationname: '57357',
+      area: 'Al Sayeda Zeinab',
+      governorate: 'Minister of Health',  
+      patientname: 'Kareem',
+      age:'20',
+      gender:'Male',
+      weight:'80',
+      address:'Sekat Hadid Al Mahger, Zeinhom' , 
+      casedesc:'Brain Tumor 2nd degree',
+      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11960.011323232875!2d31.227785871599313!3d30.02228469475244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458474801f2136f%3A0x5b7e6b7cbf39dd15!2sChildren%E2%80%99s%20Cancer%20Hospital%20Egypt%2057357!5e0!3m2!1sen!2seg!4v1715005224120!5m2!1sen!2seg",
     },
     {
-      key: '2',
-      person:"Kazeem",
-      bloodtype: 'AB positive',
-      hospital: 'Cleopatra',
-      area: 'Nasr city',
-      governorate: 'Governer',
-      address:"Abaas elaad" , 
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.038905897004!2d31.327240976293556!3d30.093072074899197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458158a930edb85%3A0x642c923f11f70af4!2zQ2xlb3BhdHJhIEhvc3BpdGFsINmF2LPYqti02YHZiSDZg9mE2YrZiNio2KfYqtix2KcgLSBDbGVvcGF0cmEgSG9zcGl0YWxzIEdyb3Vw!5e0!3m2!1sen!2seg!4v1714943200985!5m2!1sen!2seg"  
+        key: '2',
+        medicalspec:'Cardiology',
+        organizationname: 'Nasayeem',
+        area: 'Fifth Settlement',
+        governorate: 'Minister of Health',  
+        patientname: 'Abdelrahman',
+        age:'40',
+        gender:'Male',
+        weight:'77',
+        address:'90 Street' , 
+        casedesc:'Coronary heart disease',
+        src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.6276077426023!2d31.4345405!3d30.0188475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d9511c47395%3A0x291a34366112c220!2z2YXYs9iq2LTZgdmJINmG2LPYp9im2YU!5e0!3m2!1sen!2seg!4v1715005477310!5m2!1sen!2seg",
     },
     {
-      key: '3',
-      person:"Abdelrahman",
-      bloodtype: 'O negative',
-      hospital: 'Nasayeem',
-      area: 'Fifth settlment',
-      governorate: 'Minister of health',
-      address:"90 street" ,  
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.627608615749!2d31.431965576291237!3d30.01884747493663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d9511c47395%3A0x291a34366112c220!2z2YXYs9iq2LTZgdmJINmG2LPYp9im2YU!5e0!3m2!1sen!2seg!4v1714941342861!5m2!1sen!2seg" ,
-    },
+        key: '3',
+        medicalspec:'Emergency medicine',
+        organizationname: 'ElGawy',
+        area: 'Fifth Settlement',
+        governorate: 'Governer',  
+        patientname: 'Salma',
+        age:'34',
+        gender:'Female',
+        weight:'58',
+        address:'90 Street' , 
+        casedesc:'Broken arm',
+        src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.67389984829!2d31.43156967629111!3d30.01751867493716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd75153e123%3A0xd6d98616e2c385f7!2sAir%20Force%20Specialized%20Hospital!5e0!3m2!1sen!2seg!4v1715005672810!5m2!1sen!2seg",
+     },
     {
-      key: '4',
-      person:"Ziad",
-      bloodtype: 'A negative',
-      hospital: 'Elgawy',
-      area: 'Fifth settlment',
-      governorate: 'Minister of health',
-      address:"90 street" ,
-      src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.67389984829!2d31.43156967629111!3d30.01751867493716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd75153e123%3A0xd6d98616e2c385f7!2sAir%20Force%20Specialized%20Hospital!5e0!3m2!1sen!2seg!4v1714943268574!5m2!1sen!2seg"   
+        key: '4',
+        medicalspec:'Surgery',
+        organizationname: 'ElGawy',
+        area: 'Fifth Settlement',
+        governorate: 'Governer',  
+        patientname: 'Mostafa',
+        age:'45',
+        gender:'Male',
+        weight:'70',
+        address:'90 Street' , 
+        casedesc:'Kidney transplant',
+        src:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.67389984829!2d31.43156967629111!3d30.01751867493716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd75153e123%3A0xd6d98616e2c385f7!2sAir%20Force%20Specialized%20Hospital!5e0!3m2!1sen!2seg!4v1715005672810!5m2!1sen!2seg",
     },
   ];
 
   const columns = [
     {
-      title: 'Key',
-      dataIndex: 'key',
-      key: 'key',
+        title: 'Key',
+        dataIndex: 'key',
+        key: 'key',
+      },
+    {
+      title: 'Medical Speciality',
+      dataIndex: 'medicalspec',
+      key: 'medicalspec',
+      ...getColumnSearchProps('medicalspec'),
     },
     {
-      title: 'Bloodtype',
-      dataIndex: 'bloodtype',
-      key: 'bloodtype',
-    },
-    {
-      title: 'Hospital',
-      dataIndex: 'hospital',
-      key: 'hospital',
-      ...getColumnSearchProps('hospital'),
+      title: 'Organization Name',
+      dataIndex: 'organizationname',
+      key: 'organizationname',
+      ...getColumnSearchProps('organizationname'),
      // sorter: (a, b) => a.age - b.age,
       //sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
     },
@@ -259,21 +279,26 @@ const ListofBloodDonation = () => {
       ),
     },
     {
-      title: 'Location',
-      key: 'Loc',
-      render: (text, record) => (
-        
-        <CompassOutlined 
-    style={{ fontSize: '40px', cursor: 'pointer' }} 
-    onClick={()=>handleIconAction(record)} 
-  />
-      ),
-    },
+        title: 'Choose',
+        key: 'Choose',
+        render: (text, record) => (
+            <>
+      {contextHolder}
+      <Button type="primary" 
+      className="btn btn-lg mb-6 text-white w-20 d-flex justify-content-center align-items-center" 
+      style={{ background: "#9F8C76" }}
+      onClick={()=>info(record)}>
+        Choose
+      </Button>
+    </>
+        ),
+      },
+   
   ];
 
   return (
     <div className="container">
-      <h2>Blood Donation Requests</h2>
+      <h2>Medical Cases</h2>
       <Space style={{ marginBottom: 16 }}>
       </Space>
       <Table columns={columns} dataSource={dataSource} onChange={handleChange} />
@@ -297,12 +322,20 @@ const ListofBloodDonation = () => {
       >
         {selectedRecord && (
           <div>
-            <p>Name: {selectedRecord.person}</p>
-            <p>BloodType: {selectedRecord.bloodtype}</p>
-            <p>Hospital Name: {selectedRecord.hospital}</p>
+            <p>Patient Name: {selectedRecord.patientname}</p>
+            <p>Age: {selectedRecord.age}</p>
+            <p>Gender: {selectedRecord.gender}</p>
+            <p>Weight: {selectedRecord.weight}</p>
+            <p>Address: {selectedRecord.address}</p>
+            <p>Case Description: {selectedRecord.casedesc}</p>
+            <p>Specialty Needed: {selectedRecord.medicalspec}</p>
+            <p>Organization Name: {selectedRecord.organizationname}</p>
             <p>Area: {selectedRecord.area}</p>
-            <p>Hospital Address: {selectedRecord.address}</p>
-            <p>Hospital Governorate: {selectedRecord.governorate}</p>
+            <p>Governorate: {selectedRecord.governorate}</p>
+            <Button type="link" onClick={() => setIsModalOpen(true)} style={{
+                position:'absolute',
+                left:'8px'
+            }}>Location</Button>
           </div>
           
         )}
@@ -337,4 +370,4 @@ const ListofBloodDonation = () => {
   );
 };
 
-export default ListofBloodDonation;
+export default MedicalCases;

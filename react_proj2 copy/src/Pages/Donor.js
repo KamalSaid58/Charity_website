@@ -9,15 +9,39 @@ function Donor(){
 const navigate = useNavigate();
 const ViewBloodButton = () => {
     return(
+      <div>
     <button
     type="button"
     className="btn btn-lg mb-4 text-white w-1"
-    style={{background:"#9F8C76"}}
+    style={{background:"#9F8C76",marginRight:"10px",marginLeft:"10px"}}
     onClick={()=>navigate("/ListofBloodDonation")}
   >
     View Blood Donations
-  </button>);
+  </button>
+  <button
+  type="button"
+  className="btn btn-lg mb-4 text-white w-1"
+  
+  style={{background:"#9F8C76",marginRight:"10px",marginLeft:"10px"}}
+  onClick={()=>navigate("/TeachingPosts")}
+>
+View Teaching Posts
+</button>
+<button
+  type="button"
+  className="btn btn-lg mb-4 text-white w-1"
+  
+  style={{background:"#9F8C76",marginRight:"10px",marginLeft:"10px"}}
+  onClick={()=>navigate("/MedicalCases")}
+>
+View Medical Cases
+</button>
+
+</div>
+  );
+  
   };
+  
     return <ViewBloodButton/>;
 }
 
