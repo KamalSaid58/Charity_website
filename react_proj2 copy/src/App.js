@@ -15,7 +15,7 @@ import SchoolSupp from './Pages/SchoolSupp';
 import StartPage from './Components/StartPage';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs'; // Make sure to import StartPage
-import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin";
+import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin.js";
 
 function App() {
   const navigate = useNavigate();
