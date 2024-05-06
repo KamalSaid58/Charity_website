@@ -2,20 +2,17 @@ import React from 'react';
 import { Calendar, theme } from 'antd';
 import { TimePicker } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
 import { Button, Dropdown, message, Space, Tooltip } from 'antd';
 
-const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+const handleButtonClick = (e) => {
     message.info('Click on left button.');
     console.log('click left button', e);
   };
-  
-  const handleMenuClick: MenuProps['onClick'] = (e) => {
+  const handleMenuClick = (e) => {
     message.info('Click on menu item.');
     console.log('click', e);
   };
-  
-  const items: MenuProps['items'] = [
+  const items = [
     {
       label: 'Truck',
       key: '1',
