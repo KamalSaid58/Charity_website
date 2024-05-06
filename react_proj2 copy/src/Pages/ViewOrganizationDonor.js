@@ -44,7 +44,7 @@ const data = [
   {
     key: 3,
     name: 'Fein Aboya',
-    type: 'Orphanage',
+    type: 'Orphanage',  
     governorate: 'Cairo',
     area: 'Maadi',
     description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
@@ -59,19 +59,26 @@ const data = [
   },
 ];
 
+const filterArea = [...new Set(data.map(item => item.area))];
+const filterGov = [...new Set(data.map(item => item.governorate))];
+const filterType = [...new Set(data.map(item => item.type))];
+
 const ViewOrganizationDonor = () => {
+  
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();
+    confirm();  
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
-  const handleReset = (clearFilters) => {
-    clearFilters();
+  const clearFilters = () => {
+    setFilteredInfo({});
     setSearchText('');
   };
+
+  // search
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
       <div
@@ -103,28 +110,7 @@ const ViewOrganizationDonor = () => {
           >
             Search
           </Button>
-          <Button
-            onClick={() => clearFilters && handleReset(clearFilters)}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Reset
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
-              setSearchText(selectedKeys[0]);
-              setSearchedColumn(dataIndex);
-            }}
-          >
-            Filter
-          </Button>
+
           <Button
             type="link"
             size="small"
@@ -166,6 +152,14 @@ const ViewOrganizationDonor = () => {
         text
       ),
   });
+  // filter
+  const [filteredInfo, setFilteredInfo] = useState({});
+  const handleChange = (pagination, filters, sorter) => {
+    console.log('Various parameters', pagination, filters, sorter);
+    setFilteredInfo(filters);
+  };
+
+
   const columns = [
     {
       title: 'Name',
@@ -179,22 +173,68 @@ const ViewOrganizationDonor = () => {
       dataIndex: 'type',
       key: 'type',
       width: '20%',
-      ...getColumnSearchProps('type'),
+      filters: filterType.map(option => ({
+        text: option,
+        value: option,
+      })),
+      filteredValue: filteredInfo.type || null,
+      onFilter: (value, record) => record.type.includes(value),
+      ellipsis: true,
     },
     {
       title: 'Governorate',
       dataIndex: 'governorate',
       key: 'governorate',
-      ...getColumnSearchProps('governorate'),
-      sorter: (a, b) => a.address.length - b.address.length,
-      sortDirections: ['descend', 'ascend'],
+      filters: filterGov.map(option => ({
+        text: option,
+        value: option,
+      })),
+      filteredValue: filteredInfo.governorate || null,
+      onFilter: (value, record) => record.governorate.includes(value),
+      ellipsis: true,
     },
     {
       title: 'Area',
       dataIndex: 'area',
-      key: 'area'
+      key: 'area',
+      filters: filterArea.map(option => ({
+        text: option,
+        value: option,
+      })),
+      filteredValue: filteredInfo.area || null,
+      onFilter: (value, record) => record.area.includes(value),
+      ellipsis: true,
     }
+
   ];
-  return <Table columns={columns} dataSource={data} />;
+
+//   return <Table
+//   columns={columns}
+//   expandable={{
+//     expandedRowRender: (record) => (
+//       <p
+//         style={{
+//           margin: 0,
+//         }}
+//       >
+//         {record.description}
+//       </p>
+//     ),
+//     rowExpandable: (record) => record.name !== 'Not Expandable',
+//   }}
+//   dataSource={data} onChange={handleChange}
+// />;
+return (
+  <>
+    <Space
+      style={{
+        marginBottom: 16,
+      }}
+    >
+      <Button onClick={clearFilters}>Clear All Filters</Button>
+    </Space>
+    <Table columns={columns} dataSource={data} onChange={handleChange} />
+  </>
+);
 };
 export default ViewOrganizationDonor;
