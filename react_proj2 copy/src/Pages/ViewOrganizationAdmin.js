@@ -77,9 +77,7 @@ const ViewOrganizationAdmin = () => {
     setFilteredInfo({});
     setSearchText('');
   };
-  const handleReset = (clearFilters) => {
-    setSearchText('');
-  };
+
 
   // search
   const getColumnSearchProps = (dataIndex) => ({
