@@ -16,7 +16,7 @@ import Doctor from "./Pages/Doctor";
 import Teacher from "./Pages/Teacher";
 import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
-import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor"
+import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js"
 import ViewPendingDonations from "./Pages/ViewPendingDonations";
 
 function App() {

@@ -77,6 +77,9 @@ const ViewOrganizationDonor = () => {
     setFilteredInfo({});
     setSearchText('');
   };
+  const handleReset = (clearFilters) => {
+    setSearchText('');
+  };
 
   // search
   const getColumnSearchProps = (dataIndex) => ({
@@ -110,7 +113,7 @@ const ViewOrganizationDonor = () => {
           >
             Search
           </Button>
-
+          
           <Button
             type="link"
             size="small"
@@ -166,6 +169,8 @@ const ViewOrganizationDonor = () => {
       dataIndex: 'name',
       key: 'name',
       width: '30%',
+      // filteredValue is needed only if there are other columns with filters
+      filteredValue:filteredInfo.name || null,
       ...getColumnSearchProps('name'),
     },
     {
@@ -208,22 +213,6 @@ const ViewOrganizationDonor = () => {
 
   ];
 
-//   return <Table
-//   columns={columns}
-//   expandable={{
-//     expandedRowRender: (record) => (
-//       <p
-//         style={{
-//           margin: 0,
-//         }}
-//       >
-//         {record.description}
-//       </p>
-//     ),
-//     rowExpandable: (record) => record.name !== 'Not Expandable',
-//   }}
-//   dataSource={data} onChange={handleChange}
-// />;
 return (
   <>
     <Space
@@ -233,7 +222,22 @@ return (
     >
       <Button onClick={clearFilters}>Clear All Filters</Button>
     </Space>
-    <Table columns={columns} dataSource={data} onChange={handleChange} />
+    <Table
+  columns={columns}
+  expandable={{
+    expandedRowRender: (record) => (
+      <p
+        style={{
+          margin: 0,
+        }}
+      >
+        {record.description}
+      </p>
+    ),
+    rowExpandable: (record) => record.name !== 'Not Expandable',
+  }}
+  dataSource={data} onChange={handleChange}
+/>;
   </>
 );
 };
