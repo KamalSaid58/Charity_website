@@ -15,6 +15,7 @@ import SchoolSupp from './Pages/SchoolSupp';
 import StartPage from './Components/StartPage';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs'; // Make sure to import StartPage
+import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin";
 
 function App() {
   const navigate = useNavigate();
@@ -43,6 +44,8 @@ function App() {
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
               <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
+              <Route path="/ViewOrganizationAdmin" element={<ViewOrganizationAdmin />} /> {/* Include the StartPage route */}
+              
             </Routes>
           </div>
         </div>
