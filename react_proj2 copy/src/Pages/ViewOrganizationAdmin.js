@@ -59,6 +59,15 @@ const data = [
   },
 ];
 
+const handleDeletionClick = (record) =>
+  {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].key === record.key) {
+        data.splice(i, 1);
+        break; // Exit loop since we found and removed the item
+      }
+  }
+}
 const filterArea = [...new Set(data.map(item => item.area))];
 const filterGov = [...new Set(data.map(item => item.governorate))];
 const filterType = [...new Set(data.map(item => item.type))];
@@ -207,7 +216,16 @@ const ViewOrganizationAdmin = () => {
       filteredValue: filteredInfo.area || null,
       onFilter: (value, record) => record.area.includes(value),
       ellipsis: true,
-    }
+    },
+    {
+      title: '',
+      key: 'delete',
+      render: (text, record) => (
+        <Button type="primary" onClick={() => handleDeletionClick(record)}>
+          Delete
+        </Button>
+      ),
+    },
 
   ];
 
