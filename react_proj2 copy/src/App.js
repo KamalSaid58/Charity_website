@@ -15,7 +15,7 @@ import SchoolSupp from './Pages/SchoolSupp';
 import StartPage from './Components/StartPage';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs'; // Make sure to import StartPage
-
+import UpdateDeliveryTime from './Pages/UpdateDeliveryTime'
 function App() {
   const navigate = useNavigate();
   return (
@@ -42,6 +42,7 @@ function App() {
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
+              <Route path="/UpdateDeliveryTime" element={<UpdateDeliveryTime />} />
               <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
             </Routes>
           </div>
