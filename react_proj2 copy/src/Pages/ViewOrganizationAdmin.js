@@ -24,56 +24,65 @@ const columns = [
     key: 'area',
   },
 ];
-const data = [
-  {
-    key: 1,
-    name: 'Kolo 5eer',
-    type: 'Charity',
-    governorate: 'Cairo',
-    area: 'Maadi',
-    description: 'Address: x \n Place: y \n Location: z \n Pin: k',
-  },
-  {
-    key: 2,
-    name: 'Feeha 5eer',
-    type: 'Charity',
-    governorate: 'Cairo',
-    area: 'Tagamo3',
-    description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-  },
-  {
-    key: 3,
-    name: 'Fein Aboya',
-    type: 'Orphanage',  
-    governorate: 'Cairo',
-    area: 'Maadi',
-    description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-  },
-  {
-    key: 4,
-    name: 'A7san 5eer',
-    type: 'Charity',
-    governorate: 'Bani Suef',
-    area: 'Kobry',
-    description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-  },
-];
 
-const handleDeletionClick = (record) =>
-  {
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].key === record.key) {
-        data.splice(i, 1);
-        break; // Exit loop since we found and removed the item
-      }
-  }
-}
-const filterArea = [...new Set(data.map(item => item.area))];
-const filterGov = [...new Set(data.map(item => item.governorate))];
-const filterType = [...new Set(data.map(item => item.type))];
+
 
 const ViewOrganizationAdmin = () => {
+
+  const [data, setData] = useState([
+    {
+      key: 1,
+      name: 'Kolo 5eer',
+      type: 'Charity',
+      governorate: 'Cairo',
+      area: 'Maadi',
+      description: 'Address: x \n Place: y \n Location: z \n Pin: k',
+    },
+    {
+      key: 2,
+      name: 'Feeha 5eer',
+      type: 'Charity',
+      governorate: 'Cairo',
+      area: 'Tagamo3',
+      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    },
+    {
+      key: 3,
+      name: 'Fein Aboya',
+      type: 'Orphanage',  
+      governorate: 'Cairo',
+      area: 'Maadi',
+      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    },
+    {
+      key: 4,
+      name: 'A7san 5eer',
+      type: 'Charity',
+      governorate: 'Bani Suef',
+      area: 'Kobry',
+      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    },
+  ]);
+
+  const handleDeletionClick = (record) =>
+    {
+      const newData = [...data];
+      
+      for (let i = 0; i < newData.length; i++) {
+        if (newData[i].key === record.key) {
+          newData.splice(i, 1);
+          break; // Exit loop since we found and removed the item
+        }
+    }
+    setData(newData);
+  }
+  const filterArea = [...new Set(data.map(item => item.area))];
+  const filterGov = [...new Set(data.map(item => item.governorate))];
+  const filterType = [...new Set(data.map(item => item.type))];
   
+
+
+
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
