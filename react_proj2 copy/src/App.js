@@ -18,6 +18,7 @@ import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
 import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js"
 import ViewPendingDonations from "./Pages/ViewPendingDonations";
+import ViewDeliveryDetails from "./Pages/ViewDeliveryDetails";
 
 function App() {
   let items = ["Kamal", "Said", "Kamal"];
@@ -63,7 +64,8 @@ function App() {
 
               <Route path="/ViewOrganizationDonor" element={<ViewOrganizationDonor />} />
 
-
+              <Route path="/ViewDeliveryDetails" element={<ViewDeliveryDetails />} />
+              
               <Route path="/ViewPendingDonations" element={<ViewPendingDonations />} />
 
             </Routes>
