@@ -10,13 +10,14 @@ import Admin from "./Pages/Admin";
 import Donor from "./Pages/Donor";
 import Organ from "./Pages/Organ";
 import RegisterDonor from "./Pages/RegisterDonor";
-import RegisterOrgan from "./Pages/RegisterOrgan";
+import RegisterOrgan from "./Pages/RegisterOrgan";  
 import ChangePassword from "./Pages/ChangePassword";
 import Doctor from "./Pages/Doctor";
 import Teacher from "./Pages/Teacher";
 import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
-
+import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor"
+import ViewPendingDonations from "./Pages/ViewPendingDonations";
 
 function App() {
   let items = ["Kamal", "Said", "Kamal"];
@@ -59,6 +60,11 @@ function App() {
               <Route path="/OrganList" element={<OrganList />} />
 
               <Route path="/DonorList" element={<DonorList />} />
+
+              <Route path="/ViewOrganizationDonor" element={<ViewOrganizationDonor />} />
+
+
+              <Route path="/ViewPendingDonations" element={<ViewPendingDonations />} />
 
             </Routes>
           </div>
