@@ -24,8 +24,6 @@ function Main() {
       <StartPage /> {/* Render the StartPage component */}
     </div>
   );
-
-  // Write code describing ur website
 }
 
 export default Main;

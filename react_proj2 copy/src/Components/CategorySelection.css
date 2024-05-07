@@ -1,0 +1,41 @@
+/* CategorySelection.css */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the buttons horizontally */
+}
+
+.category-button-container {
+  position: relative;
+  margin: 10px; /* Adjust margin for spacing */
+  width: calc(33.33% - 20px); /* Set width for each button container (33.33% for 3 buttons per line) */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+}
+
+.category-button {
+  /* Your existing button styles */
+  background-size: cover; /* Adjust background image size */
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Arrange button content vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  width: 100%; /* Make the button fill the container */
+  height: 150px; /* Set the height of the button */
+  font-size: 1.5em; /* Increase font size */
+  padding: 10px; /* Add padding to the button */
+  background-color: #007bff; /* Blue background color */
+  border-radius: 8px; /* Add border radius for rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  transition: all 0.3s ease; /* Add transition for smooth hover effect */
+  color: white; /* Set text color to white */
+}
+
+.category-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-3px); /* Move button slightly up on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Increase shadow size on hover */
+}

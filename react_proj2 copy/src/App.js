@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Main from "./Pages/Main";
 import Register from "./Pages/Register";
 import "./App.css";
@@ -14,6 +15,24 @@ import DonorList from "./Pages/DonorList";
 import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js";
 import ViewPendingDonations from "./Pages/ViewPendingDonations";
 import ViewDeliveryDetails from "./Pages/ViewDeliveryDetails";
+=======
+import React from 'react';
+import { Routes, Route } from 'react-router-dom'; // Removed useNavigate
+import ViewReqDon from './Pages/ViewReqDon';
+import ViewListOfClothReq from './Pages/ViewListOfClothReq';
+import LoginTrial from './Pages/LoginTrial';
+import Register from './Pages/Register';
+import Admin from './Pages/Admin';
+import Donor from './Pages/Donor';
+import Organ from './Pages/Organ';
+import RegisterDonor from './Pages/RegisterDonor';
+import RegisterOrgan from './Pages/RegisterOrgan';
+import SchoolSupp from './Pages/SchoolSupp';
+import StartPage from './Components/StartPage';
+import Options from './Components/Options';
+import AboutUs from './Components/AboutUs';
+import ContactUs from './Components/ContactUs'; // Make sure to import StartPage
+>>>>>>> 46e44e0a40ee114b0ed1f30019cc4c701fefc68f
 
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -28,16 +47,14 @@ import Options from "./Components/Options";
 import AboutUs from "./Components/AboutUs"; // Make sure to import StartPage
 import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 function App() {
-  const navigate = useNavigate();
   return (
     <div className="App">
+<<<<<<< HEAD
       <NavigationBar text="HAMADAAA"></NavigationBar>
+=======
+>>>>>>> 46e44e0a40ee114b0ed1f30019cc4c701fefc68f
       <div className="container-fluid">
         <div className="row flex-nowrap">
-          <div className="d-flex flex-column align-items-center align-items-sm-start p-0 text-white min-vh-100 w-auto">
-            <SideNavBar />
-          </div>
-
           <div className="col py-3">
             <Routes>
               <Route path="/ViewReqDon" element={<ViewReqDon />} />
@@ -59,12 +76,17 @@ function App() {
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
+<<<<<<< HEAD
               <Route
                 path="/UpdateDeliveryTime"
                 element={<UpdateDeliveryTime />}
               />
               <Route path="/" element={<StartPage />} />{" "}
               {/* Include the StartPage route */}
+=======
+              <Route path="/ContactUs" element={<ContactUs />} />
+              <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
+>>>>>>> 46e44e0a40ee114b0ed1f30019cc4c701fefc68f
             </Routes>
           </div>
         </div>

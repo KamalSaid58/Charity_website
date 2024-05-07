@@ -4,6 +4,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { useNavigate } from "react-router-dom";
 
+
 const ViewListOfClothReq = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
