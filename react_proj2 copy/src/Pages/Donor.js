@@ -1,32 +1,49 @@
+// Donor.js
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Donor(){
+function Donor() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    return (
-        
-        <>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="card shadow p-3 mb-3 bg-white rounded">
-                    <div class="card-body">
-                        <h5>DonorDashboard</h5>
-                        <div class="card-body col-sm-6">
-                            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76", marginRight: '10px'}} onClick={()=>navigate("/LoginTrial")}>Back</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>    
-        
-        
-        
-        
-        
-        
-        
-        
-        </>);
+  const handleViewRequestedItemsClick = () => {
+    navigate("/ViewReqDon");
+  };
+
+  const handleViewListOfClothReq = () => {
+    navigate("/ViewListOfClothReq");
+  };
+  const handleViewSchoolSupp = () => {
+    navigate("/SchoolSupp");
+  };
+
+  return (
+    <div>
+      <button
+        type="button"
+        className="btn btn-lg mb-4 text-white w-1"
+        style={{ background: "#9F8C76" }}
+        onClick={handleViewRequestedItemsClick}
+      >
+        View Requested Donation Items
+      </button>
+      <button
+        type="button"
+        className="btn btn-lg mb-4 text-white w-1"
+        style={{ background: "#9F8C76", marginLeft: "10px" }} // Add margin-left for spacing
+        onClick={handleViewListOfClothReq}
+      >
+        View ListOf Cloth Req
+      </button>
+      <button
+        type="button"
+        className="btn btn-lg mb-4 text-white w-1"
+        style={{ background: "#9F8C76", marginLeft: "10px" }} // Add margin-left for spacing
+        onClick={handleViewSchoolSupp}
+      >
+        View School Supp
+      </button>
+    </div>
+  );
 }
 
 export default Donor;
