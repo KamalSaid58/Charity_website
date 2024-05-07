@@ -49,6 +49,10 @@ function App() {
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Donor" element={<Donor />} />
               <Route path="/Organ" element={<Organ />} />
+
+              <Route path="/ListofBloodDonation" element={<ListofBloodDonation/>}/>
+             
+
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />
               <Route path="/ChangePassword" element={<ChangePassword />} />
@@ -72,6 +76,13 @@ function App() {
                 path="/ListOfMedicalSupplies"
                 element={<ListOfMedicalSupplies />}
               />
+              
+              
+              <Route path="/TeachingPosts" element={<TeachingPosts />} />
+              <Route path="/MedicalCases" element={<MedicalCases />} />
+              
+
+              
               {/* <Route path="/Organ" element={<Organ />} /> */}
             </Routes>
           </div>
