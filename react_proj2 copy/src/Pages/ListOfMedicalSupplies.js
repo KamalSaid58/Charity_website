@@ -309,7 +309,7 @@ const ListOfMedicalSupplies = () => {
             <p>Supplies: {selectedRecord.Supplies}</p>
             <p>Type: {selectedRecord.Type}</p>
             <p>Use: {selectedRecord.Use}</p>
-            <p>Quantity: {donationQuantities[selectedRecord.key]}</p>
+            <p>Quantity: {selectedRecord.quantity}</p>
             {showPicture && <img src={selectedRecord.Picture} alt={selectedRecord.Category} style={{ width: 200 }} />}
           </div>
         )}

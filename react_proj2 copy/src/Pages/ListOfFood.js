@@ -23,30 +23,35 @@ const ListOfFood = () => {
         Items: 'Fruits',
         Name: 'Orange',
         quantity: '5',
+        unit:'KG'
       },
       {
         key: '2',
         Items: 'Vegtebales',
         Name: 'Carrot',
-        quantity: '3 ',
+        quantity: '3',
+        unit:'KG'
       },
       {
         key: '3',
         Items: 'Canned Foods',
         Name: 'Beans',
         quantity: 8,
+        unit:''
       },
       {
         key: '4',
         Items: 'Fresh Meals',
         Name: 'Salad',
         quantity: 10,
+        unit:''
       },
       {
         key: '5',
         Items: 'Baked Goods',
         Name: 'Bread',
         quantity: 10,
+        unit:''
       },
   
   ];
@@ -289,7 +294,7 @@ const ListOfFood = () => {
           <div>
             <p>Items: {selectedRecord.Items}</p>
             <p>Name: {selectedRecord.Name}</p>
-            <p>Quantity: {donationQuantities[selectedRecord.key]}</p>
+            <p>Quantity: {selectedRecord.quantity + " "+ selectedRecord.unit}</p>
           </div>
         )}
       </Modal>
