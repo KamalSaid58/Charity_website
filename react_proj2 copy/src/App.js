@@ -16,6 +16,9 @@ import Doctor from "./Pages/Doctor";
 import Teacher from "./Pages/Teacher";
 import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
+import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js";
+import ViewPendingDonations from "./Pages/ViewPendingDonations";
+import ViewDeliveryDetails from "./Pages/ViewDeliveryDetails";
 
 function App() {
   const navigate = useNavigate();
@@ -56,6 +59,18 @@ function App() {
                 element={<ViewOrganizationAdmin />}
               />{" "}
               {/* Include the StartPage route */}
+              <Route
+                path="/ViewOrganizationDonor"
+                element={<ViewOrganizationDonor />}
+              />
+              <Route
+                path="/ViewDeliveryDetails"
+                element={<ViewDeliveryDetails />}
+              />
+              <Route
+                path="/ViewPendingDonations"
+                element={<ViewPendingDonations />}
+              />
             </Routes>
           </div>
         </div>
