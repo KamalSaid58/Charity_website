@@ -35,6 +35,10 @@ function LoginTrial() {
     }
   };
 
+  const handleBack = () => {
+    navigate('/Options'); // Redirect to the home page ("/")
+  };
+
   return (
     <div className="login-container">
       <div className="login-content">
@@ -65,7 +69,7 @@ function LoginTrial() {
             Remember me
           </label>
         </div>
-        <div className="text-center"> {/* Added Bootstrap class text-center */}
+        <div className="text-center">
           <button
             type="button"
             className="btn btn-lg btn-primary"
@@ -76,6 +80,20 @@ function LoginTrial() {
         </div>
         <div className="forgot-password">
           <a href="#">Forgot password?</a>
+        </div>
+        <div className="text-center mt-3"> {/* Added Bootstrap class text-center and mt-3 for margin top */}
+        <button
+  type="button"
+  className="btn btn-sm btn-secondary"
+  onClick={handleBack}
+  style={{ backgroundColor: '#007bff', color: '#fff' }}
+>
+  Back
+</button>
+
+
+
+
         </div>
       </div>
     </div>

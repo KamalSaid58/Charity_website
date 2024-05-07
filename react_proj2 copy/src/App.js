@@ -1,7 +1,5 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import NavigationBar from './Components/NavigationBar';
-import SideNavBar from './Components/SideNavBar';
+import { Routes, Route } from 'react-router-dom'; // Removed useNavigate
 import ViewReqDon from './Pages/ViewReqDon';
 import ViewListOfClothReq from './Pages/ViewListOfClothReq';
 import LoginTrial from './Pages/LoginTrial';
@@ -14,19 +12,14 @@ import RegisterOrgan from './Pages/RegisterOrgan';
 import SchoolSupp from './Pages/SchoolSupp';
 import StartPage from './Components/StartPage';
 import Options from './Components/Options';
-import AboutUs from './Components/AboutUs'; // Make sure to import StartPage
+import AboutUs from './Components/AboutUs';
+import ContactUs from './Components/ContactUs'; // Make sure to import StartPage
 
 function App() {
-  const navigate = useNavigate();
   return (
     <div className="App">
-      <NavigationBar />
       <div className="container-fluid">
         <div className="row flex-nowrap">
-          <div className="d-flex flex-column align-items-center align-items-sm-start p-0 text-white min-vh-100 w-auto">
-            <SideNavBar />
-          </div>
-
           <div className="col py-3">
             <Routes>
               <Route path="/ViewReqDon" element={<ViewReqDon />} />
@@ -42,6 +35,7 @@ function App() {
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
+              <Route path="/ContactUs" element={<ContactUs />} />
               <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
             </Routes>
           </div>

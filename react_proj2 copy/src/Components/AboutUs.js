@@ -1,9 +1,15 @@
-// AboutUs.js
-
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './AboutUs.css'; // Import the CSS file for styling
 
 const AboutUs = () => {
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleBack = () => {
+    // Handle back button action here (e.g., redirect to previous page)
+    navigate("/Options"); // Redirect to the home page ("/")
+  };
+
   return (
     <div className="about-us-container">
       <div className="about-us-content">
@@ -24,6 +30,7 @@ const AboutUs = () => {
           Join us in our mission to build a more compassionate and equitable world. Together, we can make a difference and leave a lasting legacy of hope, kindness, and generosity for future generations to come.
         </p>
       </div>
+      <button className="back-button" onClick={handleBack}>Back To Options</button>
     </div>
   );
 };

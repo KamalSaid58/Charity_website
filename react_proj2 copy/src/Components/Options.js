@@ -15,7 +15,7 @@ const Options = () => {
   };
 
   const handleContactUs = () => {
-    navigate('/contact-us');
+    navigate('/ContactUs');
   };
 
   const handleAboutUs = () => {

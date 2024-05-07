@@ -1,22 +1,19 @@
-import { ReactNode } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import './NavigationBar.css'; // Import CSS file for styling
 
-
-function NavigationBar() {
+const NavigationBar = () => {
   return (
-    <Navbar className="bg-darkBeige" variant="dark" expand="lg" >
-      <Container fluid>
-        <Navbar.Brand href="#">Welcome</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#">Dashboard</Nav.Link>
-            <Nav.Link href="#">Shortcuts</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navigation-bar">
+      <div className="container">
+        
+        <ul className="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/AboutUs">About</a></li>
+          <li><a href="/donate">Donate</a></li>
+          <li><a href="/ContactUs">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 
