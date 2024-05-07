@@ -27,6 +27,10 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import SideNavBar from "./Components/SideNavBar";
 import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
+import ListOfToys from "./Pages/ListOfToys";
+import ListOfFood from "./Pages/ListOfFood";
+import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
+
 function App() {
   return (
     <div className="App">
@@ -62,6 +66,13 @@ function App() {
               <Route path="/ContactUs" element={<ContactUs />} />
               <Route path="/" element={<StartPage />} />{" "}
               {/* Include the StartPage route */}
+              <Route path="/ListOfToys" element={<ListOfToys />} />
+              <Route path="/ListOfFood" element={<ListOfFood />} />
+              <Route
+                path="/ListOfMedicalSupplies"
+                element={<ListOfMedicalSupplies />}
+              />
+              {/* <Route path="/Organ" element={<Organ />} /> */}
             </Routes>
           </div>
         </div>
