@@ -17,8 +17,6 @@ import Teacher from "./Pages/Teacher";
 import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
 
-
-
 function App() {
   let items = ["Kamal", "Said", "Kamal"];
   //Passing parameters to components
@@ -26,11 +24,11 @@ function App() {
   const navigate = useNavigate();
   return (
     <div className="App">
-      <NavigationBar />
+      <NavigationBar text="HAMADAAA"></NavigationBar>
       <div className="container-fluid">
         <div className="row flex-nowrap">
           <div className="d-flex flex-column align-items-center align-items-sm-start p-0 text-white min-vh-100 w-auto">
-          <SideNavBar></SideNavBar>
+            <SideNavBar></SideNavBar>
           </div>
 
           <div className="col py-3">
@@ -60,11 +58,6 @@ function App() {
               <Route path="/OrganList" element={<OrganList />} />
 
               <Route path="/DonorList" element={<DonorList />} />
-
-    
-
-
-
             </Routes>
           </div>
         </div>

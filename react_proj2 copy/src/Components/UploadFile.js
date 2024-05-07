@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { UploadOutlined } from '@ant-design/icons';
-import { Button, Upload, message } from 'antd';
-const UploadFile = () => {
-  const [fileList, setFileList] = useState([]);
+import React, { useState } from "react";
+import { UploadOutlined } from "@ant-design/icons";
+import { Button, Upload, message } from "antd";
+const UploadFile = ({ fileList, setFileList }) => {
   const handleChange = (info) => {
     let newFileList = [...info.fileList];
 
@@ -20,8 +19,23 @@ const UploadFile = () => {
     });
     setFileList(newFileList);
   };
+
+  const handleBeforeUpload = (file) => {
+    // Add the file to the fileList without uploading
+    setFileList([...fileList, file]);
+    return false; // Returning false prevents default upload behavior
+  };
+
+  const handleRemove = (file) => {
+    // Remove the file from the fileList
+    const newFileList = fileList.filter((f) => f !== file);
+    setFileList(newFileList);
+  };
+
   const props = {
-    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    beforeUpload: handleBeforeUpload,
+    customRequest: () => {}, // Prevent actual upload
+    fileList: fileList,
     onChange: handleChange,
     multiple: true,
   };

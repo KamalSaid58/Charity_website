@@ -1,24 +1,44 @@
-import React from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UploadFile from "../Components/UploadFile"
-import "../Styles/RegisterOrgan.css"
+import UploadFile from "../Components/UploadFile";
+import OrgData from "../OrgReg";
+import "../Styles/RegisterOrgan.css";
 
 function RegisterOrgan() {
+  const [fileList, setFileList] = useState([]);
+
   function checkNavigateTo() {
-    const inputs = document.querySelectorAll('input[type="text"], input[type="password"]');
+    const inputs = document.querySelectorAll(
+      'input[type="text"], input[type="password"]'
+    );
     let isEmpty = false;
-  
+
     inputs.forEach((input) => {
       if (!input.value.trim()) {
         isEmpty = true;
         return;
       }
     });
-    const fileInput = document.getElementById('file-upload');
+    const fileInput = document.getElementById("file-upload");
     if (!fileInput.files.length) {
       isEmpty = true;
     }
-  
+
+    OrgData.push({
+      firstName: "",
+      lastName: "",
+      gender: "",
+      email: "",
+      password: "",
+      number: "",
+      OrgName: "",
+      OrgType: "",
+      OrgAddress: "",
+      Area: "",
+      Goveernate: "",
+      pdf: fileList,
+    });
+
     if (isEmpty) {
       alert("One of the inputs are empty");
     } else {
@@ -26,61 +46,128 @@ function RegisterOrgan() {
       navigate("/LoginTrial");
     }
   }
-  
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="container p-3 my-1">
       <div className="row">
         <div className="col-4 col-md-6">
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="FirstName" placeholder="FirstName" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="FirstName"
+              placeholder="FirstName"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="LastName" placeholder="LastName" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="LastName"
+              placeholder="LastName"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="Gender" placeholder="Gender" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="Gender"
+              placeholder="Gender"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="Email" placeholder="Email" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="Email"
+              placeholder="Email"
+            />
           </div>
           <div className="mb-3">
-            <input type="Password" className="form-control form-control-sm" id="Password" placeholder="Password" />
+            <input
+              type="Password"
+              className="form-control form-control-sm"
+              id="Password"
+              placeholder="Password"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="Number" placeholder="Number" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="Number"
+              placeholder="Number"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="OrganizationName" placeholder="OrganizationName" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="OrganizationName"
+              placeholder="OrganizationName"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="OrganizationType" placeholder="OrganizationType" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="OrganizationType"
+              placeholder="OrganizationType"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="OrganizationAddress" placeholder="OrganizationAddress" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="OrganizationAddress"
+              placeholder="OrganizationAddress"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="Area" placeholder="Area" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="Area"
+              placeholder="Area"
+            />
           </div>
           <div className="mb-3">
-            <input type="text" className="form-control form-control-sm" id="Governate" placeholder="Governate" />
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              id="Governate"
+              placeholder="Governate"
+            />
           </div>
 
           <div className="mb-3">
-          <input type="file" id="file-upload" hidden />
+            <input type="file" id="file-upload" hidden />
             <label for="file-upload" className="upload-link">
-              <UploadFile></UploadFile>
+              <UploadFile
+                fileList={fileList}
+                setFileList={setFileList}
+              ></UploadFile>
             </label>
           </div>
-          
-
-          
-
 
           <div className="divider d-flex align-items-center my-4">
-            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76", marginRight: '10px'}} onClick={()=>navigate("/Register")}>Back</button>
-            <button type="button" className="btn btn-lg mb-4 text-white" style={{background:"#9F8C76"}} onClick={()=>checkNavigateTo()}>Register</button>
+            <button
+              type="button"
+              className="btn btn-lg mb-4 text-white"
+              style={{ background: "#9F8C76", marginRight: "10px" }}
+              onClick={() => navigate("/Register")}
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              className="btn btn-lg mb-4 text-white"
+              style={{ background: "#9F8C76" }}
+              onClick={() => checkNavigateTo()}
+            >
+              Register
+            </button>
           </div>
         </div>
       </div>
