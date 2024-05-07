@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-// Donor.js
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-=======
-import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../Components/NavigationBar';
-import CategorySelection from '../Components/CategorySelection';
-import gsap from 'gsap';
->>>>>>> 46e44e0a40ee114b0ed1f30019cc4c701fefc68f
+import NavigationBar from "../Components/NavigationBar";
+import CategorySelection from "../Components/CategorySelection";
+import gsap from "gsap";
 
 function Donor() {
   const navigate = useNavigate();
@@ -19,7 +13,7 @@ function Donor() {
   const $items = useRef([]);
 
   const handleViewRequestedItemsClick = () => {
-    navigate('/ViewReqDon');
+    navigate("/ViewReqDon");
   };
 
   const handleCategorySelect = (category) => {
@@ -30,7 +24,13 @@ function Donor() {
 
   useEffect(() => {
     const animate = () => {
-      if (!$root.current || !$items.current[selectedCategory] || !$indicator1.current || !$indicator2.current) return;
+      if (
+        !$root.current ||
+        !$items.current[selectedCategory] ||
+        !$indicator1.current ||
+        !$indicator2.current
+      )
+        return;
 
       const menuOffset = $root.current.getBoundingClientRect();
       const activeItem = $items.current[selectedCategory].current;
@@ -42,8 +42,8 @@ function Donor() {
         width: width,
         height: height,
         backgroundColor: "#111", // Adjust color if needed
-        ease: 'elastic.out(.7, .7)',
-        duration: 0.8
+        ease: "elastic.out(.7, .7)",
+        duration: 0.8,
       };
 
       gsap.to($indicator1.current, {
@@ -52,15 +52,15 @@ function Donor() {
 
       gsap.to($indicator2.current, {
         ...settings,
-        duration: 1
+        duration: 1,
       });
     };
 
     animate();
-    window.addEventListener('resize', animate);
+    window.addEventListener("resize", animate);
 
     return () => {
-      window.removeEventListener('resize', animate);
+      window.removeEventListener("resize", animate);
     };
   }, [selectedCategory]);
 
