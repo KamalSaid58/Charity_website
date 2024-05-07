@@ -25,11 +25,13 @@ import AboutUs from "./Components/AboutUs";
 import ContactUs from "./Components/ContactUs"; // Make sure to import StartPage
 import { Routes, Route, useNavigate } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
-import SideNavBar from "./Components/SideNavBar";
+import SideNavBarDonor from "./Components/SideNavBarDonor";
 import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 import ListOfToys from "./Pages/ListOfToys";
 import ListOfFood from "./Pages/ListOfFood";
 import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
+
+// Make sure to import StartPage
 
 function App() {
   return (
@@ -50,7 +52,7 @@ function App() {
               <Route path="/Donor" element={<Donor />} />
               <Route path="/Organ" element={<Organ />} />
 
-              <Route path="/ListofBloodDonation" element={<ListofBloodDonation/>}/>
+              {/* <Route path="/ListofBloodDonation" element={<ListofBloodDonation/>}/> */}
              
 
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
@@ -78,12 +80,14 @@ function App() {
               />
               
               
-              <Route path="/TeachingPosts" element={<TeachingPosts />} />
-              <Route path="/MedicalCases" element={<MedicalCases />} />
+              {/* <Route path="/TeachingPosts" element={<TeachingPosts />} />
+              <Route path="/MedicalCases" element={<MedicalCases />} /> */}
               
 
               
               {/* <Route path="/Organ" element={<Organ />} /> */}
+              <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
+              <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
             </Routes>
           </div>
         </div>
