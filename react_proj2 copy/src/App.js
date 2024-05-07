@@ -20,6 +20,24 @@ import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js";
 import ViewPendingDonations from "./Pages/ViewPendingDonations";
 import ViewDeliveryDetails from "./Pages/ViewDeliveryDetails";
 
+import React from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import NavigationBar from "./Components/NavigationBar";
+import SideNavBar from "./Components/SideNavBar";
+import ViewReqDon from "./Pages/ViewReqDon";
+import ViewListOfClothReq from "./Pages/ViewListOfClothReq";
+import LoginTrial from "./Pages/LoginTrial";
+import Register from "./Pages/Register";
+import Admin from "./Pages/Admin";
+import Donor from "./Pages/Donor";
+import Organ from "./Pages/Organ";
+import RegisterDonor from "./Pages/RegisterDonor";
+import RegisterOrgan from "./Pages/RegisterOrgan";
+import SchoolSupp from "./Pages/SchoolSupp";
+import StartPage from "./Components/StartPage";
+import Options from "./Components/Options";
+import AboutUs from "./Components/AboutUs"; // Make sure to import StartPage
+import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 function App() {
   const navigate = useNavigate();
   return (
@@ -52,25 +70,12 @@ function App() {
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
+              <Route
+                path="/UpdateDeliveryTime"
+                element={<UpdateDeliveryTime />}
+              />
               <Route path="/" element={<StartPage />} />{" "}
               {/* Include the StartPage route */}
-              <Route
-                path="/ViewOrganizationAdmin"
-                element={<ViewOrganizationAdmin />}
-              />{" "}
-              {/* Include the StartPage route */}
-              <Route
-                path="/ViewOrganizationDonor"
-                element={<ViewOrganizationDonor />}
-              />
-              <Route
-                path="/ViewDeliveryDetails"
-                element={<ViewDeliveryDetails />}
-              />
-              <Route
-                path="/ViewPendingDonations"
-                element={<ViewPendingDonations />}
-              />
             </Routes>
           </div>
         </div>
