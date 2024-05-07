@@ -13,7 +13,8 @@ import SchoolSupp from './Pages/SchoolSupp';
 import StartPage from './Components/StartPage';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs';
-import ContactUs from './Components/ContactUs'; // Make sure to import StartPage
+import ContactUs from './Components/ContactUs'; 
+import SideNavBarDonor from './Components/SideNavBarDonor';// Make sure to import StartPage
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
               <Route path="/ContactUs" element={<ContactUs />} />
+              <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
               <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
             </Routes>
           </div>

@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../Components/NavigationBar';
-import CategorySelection from '../Components/CategorySelection';
 import gsap from 'gsap';
+import SideNavBarDonor from '../Components/SideNavBarDonor';
 
 function Donor() {
   const navigate = useNavigate();
@@ -60,27 +59,8 @@ function Donor() {
 
   return (
     <div>
-      <NavigationBar />
-      <div className="category-selection-container">
-        <button
-          type="button"
-          className="btn btn-lg mb-4 text-white main-button"
-          style={{ background: "#007bff" }}
-          onClick={handleViewRequestedItemsClick}
-        >
-          View Requested Donation Items
-        </button>
-        <CategorySelection onSelectCategory={handleCategorySelect} />
-      </div>
-      <style>
-        {`
-          .category-selection-container {
-            margin-top: 20px;
-          }
-
-          /* Add any additional styles here */
-        `}
-      </style>
+      <SideNavBarDonor /> {/* Render SideNavBar component */}
+      {/* The rest of your Donor component content */}
     </div>
   );
 }

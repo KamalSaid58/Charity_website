@@ -1,3 +1,5 @@
+// CategorySelection component
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CategorySelection.css'; // Import CSS file for styling
