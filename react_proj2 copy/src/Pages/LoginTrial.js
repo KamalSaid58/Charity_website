@@ -27,7 +27,7 @@ function LoginTrial() {
           navigate("/Admin");
           break;
         case "Donor":
-          navigate("/Donor");
+          navigate("/SideNavBarDonor");
           break;
         case "Organ":
           navigate("/Organ");

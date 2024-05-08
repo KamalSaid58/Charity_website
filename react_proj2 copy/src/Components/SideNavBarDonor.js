@@ -4,7 +4,16 @@ import VerticalBarDemo from './VerticalBarDemo';
 import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import Container, Row, Col, Card from react-bootstrap
 import Donation from "../Donation.jpeg";
 import './SideNavBarDonor.css'; // Import the CSS file
-
+import ViewOrganizationDonor from '../Pages/ViewOrganizationDonor'
+import SchoolSupp from '../Pages/SchoolSupp';
+import Donor from '../Pages/Donor';
+import ViewListOfClothReq from '../Pages/ViewListOfClothReq';
+import { DollarCircleOutlined } from '@ant-design/icons';
+import ViewReqDon from '../Pages/ViewReqDon';
+import ListOfFood from '../Pages/ListOfFood';
+import ListofBloodDonation from '../Pages/ListofBloodDonation';
+import ListOfToys from '../Pages/ListOfToys';
+import ListOfMedicalSupplies from '../Pages/ListOfMedicalSupplies';
 
 import {
   ShoppingCartOutlined,
@@ -22,13 +31,18 @@ import NavigationBar from './NavigationBar';
 import { Button, Layout, Menu, theme } from 'antd';
 import PieChartDemo from './PieChartDemo';
 const { Header, Sider, Content } = Layout;
-
 const SideNavBarDonor = ({ defaultCollapsed = true }) => {
   // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const handleButtonClick =(page) =>{
+    setCurrentPage(page);
+
+
+  }
+  const [currentPage, setCurrentPage] = useState('SideNavBarDonor');
 
   // Define the handleCategorySelect function
   const handleCategorySelect = (categoryName) => {
@@ -52,23 +66,29 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             defaultSelectedKeys={['1']}
             style={{ borderRight: 0, fontSize: '15px' }}
           >
-           <Menu.Item key="1" icon={<ShoppingCartOutlined />} className="menu-item"> {/* Changed the icon here */}
-              <Link to="/ViewListOfClothReq" style={{ textDecoration: 'none' }}>Clothes</Link>
+            <Menu.Item key="1"  onClick={() => handleButtonClick('ViewReqDon')} icon={<DollarCircleOutlined />} >
+            Donations Lists {/* Changed the icon here */}
             </Menu.Item>
-            <Menu.Item key="2" icon={<ShoppingOutlined />} className="menu-item">
-              <Link to="/toys" style={{ textDecoration: 'none' }}>Toys</Link>
+           <Menu.Item key="2"  onClick={() => handleButtonClick('ViewListOfClothReq')} icon={<ShoppingCartOutlined />} >
+            Clothes {/* Changed the icon here */}
             </Menu.Item>
-            <Menu.Item key="3" icon={<CoffeeOutlined />} className="menu-item">
-              <Link to="/food" style={{ textDecoration: 'none' }}>Food</Link>
+            <Menu.Item key="3"  onClick={() => handleButtonClick('ListOfToys')} icon={<ShoppingOutlined />} >
+             Toys
             </Menu.Item>
-            <Menu.Item key="4" icon={<MedicineBoxOutlined />} className="menu-item">
-              <Link to="/medical-supplies" style={{ textDecoration: 'none' }}>Medical Supplies</Link>
+            <Menu.Item key="4"  onClick={() => handleButtonClick('ListOfFood')} icon={<CoffeeOutlined />} >
+            Food
             </Menu.Item>
-            <Menu.Item key="5" icon={<BookOutlined />} className="menu-item">
-              <Link to="/school-supplies" style={{ textDecoration: 'none' }}>School Supplies</Link>
+            <Menu.Item key="5" onClick={() => handleButtonClick('ViewOrganizationDonor')}icon={<UserOutlined />}>
+          View Organizations
             </Menu.Item>
-            <Menu.Item key="6" icon={<HeartOutlined />} className="menu-item">
-              <Link to="/blood-donations" style={{ textDecoration: 'none' }}>Blood Donations</Link>
+            <Menu.Item key="6"  onClick={() => handleButtonClick('SchoolSupp')} icon={<BookOutlined />}>
+            School Supplies
+            </Menu.Item>
+            <Menu.Item key="7"  onClick={() => handleButtonClick('ListofBloodDonation')} icon={<HeartOutlined />} >
+             Blood Donations
+            </Menu.Item>
+            <Menu.Item key="8"  onClick={() => handleButtonClick('ListOfMedicalSupplies')} icon={<MedicineBoxOutlined />} >
+             Medical Supplies
             </Menu.Item>
           </Menu>
         </Sider>
@@ -102,7 +122,8 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             <NavigationBar />
           </Header>
           <Content>
-            <Container>
+
+            {/* <Container>
             
               <Row className="justify-content-center mt-5">
               <Col md={4} className="mb-4 d-flex justify-content-center">
@@ -165,7 +186,18 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
                   </Card>
                 </Col>
               </Row>
-            </Container>
+            </Container> */}
+            <div>
+            {currentPage === 'ViewReqDon' && <ViewReqDon />} 
+            {currentPage === 'ViewOrganizationDonor' && <ViewOrganizationDonor />}
+      {currentPage === 'ViewListOfClothReq' && <ViewListOfClothReq />}
+      {currentPage === 'ListOfFood' && <ListOfFood />}
+      {currentPage === 'ListOfToys' && <ListOfToys />}
+      {currentPage === 'SchoolSupp' && <SchoolSupp />}
+      {currentPage === 'ListofBloodDonation' && <ListofBloodDonation />}
+      {currentPage === 'ListOfMedicalSupplies' && <ListOfMedicalSupplies />}
+    </div>
+          
           </Content>
         </Layout>
       </Layout>
