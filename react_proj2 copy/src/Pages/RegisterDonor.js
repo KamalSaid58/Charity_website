@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Select } from "antd";
+
 import UploadFile from "../Components/UploadFile";
 import "../Styles/RegisterDonor.css";
 import DonorData from "../DonorReg";
-import { Card, Flex, Button } from "antd";
-import { Space, Input, Radio, notification, Tooltip } from "antd";
+import {
+  Card,
+  Flex,
+  Button,
+  Space,
+  Input,
+  Radio,
+  notification,
+  Tooltip,
+  Form,
+  Select,
+} from "antd";
 
 const TextBoxRow = ({ children }) => {
   return <Space>{children}</Space>;
