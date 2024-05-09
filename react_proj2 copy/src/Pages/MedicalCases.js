@@ -66,6 +66,163 @@ const MedicalCases = () => {
           }}
         />
 
+        {title === "Medical Speciality" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={
+                selectedKeys.includes(" Neurosurgery") ? "primary" : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes(" Neurosurgery")
+                    ? []
+                    : [" Neurosurgery"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Neurosurgery
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Cardiology") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Cardiology") ? [] : ["Cardiology"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Cardiology
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Surgery") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Surgery") ? [] : ["Surgery"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Surgery
+            </Button>
+          </div>
+        )}
+
+        {title === "Organization Name" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes(" 57357") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes(" 57357") ? [] : [" 57357"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              57357
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Nasayeem") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Nasayeem") ? [] : ["Nasayeem"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Nasayeem
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("ElGawy") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("ElGawy") ? [] : ["ElGawy"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              ElGawy
+            </Button>
+          </div>
+        )}
+
+        {title === "Area" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={
+                selectedKeys.includes(" Fifth Settlement")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes(" Fifth Settlement")
+                    ? []
+                    : [" Fifth Settlement"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Fifth Settlement
+            </Button>
+
+            <Button
+              type={
+                selectedKeys.includes("Al Sayeda Zeinab")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Al Sayeda Zeinab")
+                    ? []
+                    : ["Al Sayeda Zeinab"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Al Sayeda Zeinab
+            </Button>
+          </div>
+        )}
+        {title === "Governate" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={
+                selectedKeys.includes(" Minister of Health")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes(" Minister of Health")
+                    ? []
+                    : [" Minister of Health"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Minister of Health
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Governer") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Governer") ? [] : ["Governer"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Governer
+            </Button>
+          </div>
+        )}
+
         <Space>
           <Button
             type="primary"
@@ -86,28 +243,6 @@ const MedicalCases = () => {
             }}
           >
             Reset
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
-              setSearchText(selectedKeys[0]);
-              setSearchedColumn(dataIndex);
-            }}
-          >
-            Filter
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
           </Button>
         </Space>
       </div>
@@ -153,13 +288,6 @@ const MedicalCases = () => {
     setSortedInfo({});
   };
 
-  /* const setAgeSort = () => {
-    setSortedInfo({
-      order: 'descend',
-      columnKey: 'age',
-    });
-  };*/
-
   const handleBackButtonClick = () => {
     navigate("/Donor");
   };
@@ -173,17 +301,13 @@ const MedicalCases = () => {
     setIsModalOpen(true);
   };
 
-  /*const handleQuantityChange = (record, quantity) => {
-    setDonationQuantities({ ...donationQuantities, [record.key]: quantity });
-  };*/
-
   const dataSource = [
     {
       key: "1",
-      medicalspec: "Neurosurgical",
+      medicalspec: " Neurosurgery",
       organizationname: "57357",
       area: "Al Sayeda Zeinab",
-      governorate: "Minister of Health",
+      governate: "Minister of Health",
       patientname: "Kareem",
       age: "20",
       gender: "Male",
@@ -197,7 +321,7 @@ const MedicalCases = () => {
       medicalspec: "Cardiology",
       organizationname: "Nasayeem",
       area: "Fifth Settlement",
-      governorate: "Minister of Health",
+      governate: "Minister of Health",
       patientname: "Abdelrahman",
       age: "40",
       gender: "Male",
@@ -208,24 +332,10 @@ const MedicalCases = () => {
     },
     {
       key: "3",
-      medicalspec: "Emergency medicine",
-      organizationname: "ElGawy",
-      area: "Fifth Settlement",
-      governorate: "Governer",
-      patientname: "Salma",
-      age: "34",
-      gender: "Female",
-      weight: "58",
-      address: "90 Street",
-      casedesc: "Broken arm",
-      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.67389984829!2d31.43156967629111!3d30.01751867493716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd75153e123%3A0xd6d98616e2c385f7!2sAir%20Force%20Specialized%20Hospital!5e0!3m2!1sen!2seg!4v1715005672810!5m2!1sen!2seg",
-    },
-    {
-      key: "4",
       medicalspec: "Surgery",
       organizationname: "ElGawy",
       area: "Fifth Settlement",
-      governorate: "Governer",
+      governate: "Governer",
       patientname: "Mostafa",
       age: "45",
       gender: "Male",
@@ -246,13 +356,13 @@ const MedicalCases = () => {
       title: "Medical Speciality",
       dataIndex: "medicalspec",
       key: "medicalspec",
-      ...getColumnSearchProps("medicalspec"),
+      ...getColumnSearchProps("medicalspec", "Medical Speciality"),
     },
     {
       title: "Organization Name",
       dataIndex: "organizationname",
       key: "organizationname",
-      ...getColumnSearchProps("organizationname"),
+      ...getColumnSearchProps("organizationname", "Organization Name"),
       // sorter: (a, b) => a.age - b.age,
       //sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
     },
@@ -260,24 +370,19 @@ const MedicalCases = () => {
       title: "Area",
       dataIndex: "area",
       key: "area",
-      ...getColumnSearchProps("area"),
+      ...getColumnSearchProps("area", "Area"),
     },
     {
-      title: "Governorate",
-      dataIndex: "governorate",
-      key: "governorate",
-      ...getColumnSearchProps("governorate"),
+      title: "Governate",
+      dataIndex: "governate",
+      key: "governate",
+      ...getColumnSearchProps("governate", "Governate"),
     },
     {
       title: "View",
       key: "details",
-      render: (text, record) => (
-        <Button
-          type="primary"
-          className="btn btn-lg mb-6 text-white w-20 d-flex justify-content-center align-items-center"
-          style={{ background: "#9F8C76" }}
-          onClick={() => handleActionClick(record)}
-        >
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
           Details
         </Button>
       ),
@@ -285,15 +390,10 @@ const MedicalCases = () => {
     {
       title: "Choose",
       key: "Choose",
-      render: (text, record) => (
+      render: (_, record) => (
         <>
           {contextHolder}
-          <Button
-            type="primary"
-            className="btn btn-lg mb-6 text-white w-20 d-flex justify-content-center align-items-center"
-            style={{ background: "#9F8C76" }}
-            onClick={() => info(record)}
-          >
+          <Button type="primary" onClick={() => info(record)}>
             Choose
           </Button>
         </>
@@ -310,14 +410,6 @@ const MedicalCases = () => {
         dataSource={dataSource}
         onChange={handleChange}
       />
-      <Button
-        type="button"
-        className="btn btn-lg mb-6 text-white w-20 d-flex justify-content-center align-items-center"
-        style={{ background: "#9F8C76" }}
-        onClick={handleBackButtonClick}
-      >
-        Back
-      </Button>
 
       <Modal
         open={isModalVisible}
@@ -341,7 +433,7 @@ const MedicalCases = () => {
             <p>Specialty Needed: {selectedRecord.medicalspec}</p>
             <p>Organization Name: {selectedRecord.organizationname}</p>
             <p>Area: {selectedRecord.area}</p>
-            <p>Governorate: {selectedRecord.governorate}</p>
+            <p>Governorate: {selectedRecord.governate}</p>
             <Button
               type="link"
               onClick={() => setIsModalOpen(true)}

@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Button, Space, Table, Modal, InputNumber } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import Highlighter from 'react-highlight-words';
+import React, { useState, useRef } from "react";
+import { Button, Space, Table, Modal, InputNumber } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import Highlighter from "react-highlight-words";
 import { useAsyncError, useNavigate } from "react-router-dom";
 
 const ListOfMedicalSupplies = () => {
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const [showTable, setShowTable] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [donationQuantities, setDonationQuantities] = useState({});
@@ -14,52 +14,47 @@ const ListOfMedicalSupplies = () => {
   const [sortedInfo, setSortedInfo] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
-  const [showPicture, setShowPicture] = useState(false); 
+  const [showPicture, setShowPicture] = useState(false);
   const navigate = useNavigate();
   const searchInput = useRef(null);
-  
+
   const originalDataSource = [
     {
-        key: '1',
-        Supplies: 'Medical Devices',
-        Type: 'Single Use',
-        Use: 'Inject Medication',
-        quantity: 5,
-        Picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBzdGWdbzpAevLfvxp9Zf0smnHSqCcE31MdU2-yJBWgg&s',
-      },
-      {
-        key: '2',
-        Supplies: 'Medical Equipments',
-        Type: 'First Aid',
-        Use:'Treat Minor Injuries',
-        quantity: 3,
-        Picture:'https://www.lakesidemedical.ca/app/uploads/featuredimage-The-Importance-of-Having-a-First-Aid-Kit-in-Your-Home-or-Place-of-Business.jpg',
-      },
-      {
-        key: '3',
-        Supplies: 'Medication',
-        Type: 'Tablets',
-        Use:'Deliver Oral Medication',
-        quantity: 8,
-        Picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdq_elvANB1QD58CDfS-XWxvTAr1TW_SQO2omwDS9lFA&s',
-      },
-      {
-        key: '4',
-        Supplies: 'Medical Devices',
-        Type: 'Imaging',
-        Use:'Identify disease or injury',
-        quantity: 10,
-        Picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0GGXwGYUBYoUAqU-DzLvi7RyY1mEAY_RCuLULBldsnw&s',
-      },
-      {
-        key: '5',
-        Supplies: 'Medication',
-        Type: 'Liquids',
-        Use:'Used by people who have diffcuilty swallowing tablets',
-        quantity: 10,
-        Picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJC2nLENfaEOjyJSIJ4lQ_M0OYkRZzvt6IA2tlp-tIQA&s',
-      },
-  
+      key: "1",
+      Supplies: "Medical Devices",
+      Type: "Single Use",
+      Use: "Inject Medication",
+      quantity: 5,
+      Picture:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBzdGWdbzpAevLfvxp9Zf0smnHSqCcE31MdU2-yJBWgg&s",
+    },
+    {
+      key: "2",
+      Supplies: "Medical Equipments",
+      Type: "First Aid",
+      Use: "Treat Minor Injuries",
+      quantity: 3,
+      Picture:
+        "https://www.lakesidemedical.ca/app/uploads/featuredimage-The-Importance-of-Having-a-First-Aid-Kit-in-Your-Home-or-Place-of-Business.jpg",
+    },
+    {
+      key: "3",
+      Supplies: "Medication",
+      Type: "Tablets",
+      Use: "Deliver Oral Medication",
+      quantity: 8,
+      Picture:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdq_elvANB1QD58CDfS-XWxvTAr1TW_SQO2omwDS9lFA&s",
+    },
+    {
+      key: "4",
+      Supplies: "Medical Devices",
+      Type: "Imaging",
+      Use: "Identify disease or injury",
+      quantity: 10,
+      Picture:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0GGXwGYUBYoUAqU-DzLvi7RyY1mEAY_RCuLULBldsnw&s",
+    },
   ];
 
   const [dataSource, setDataSource] = useState(originalDataSource);
@@ -72,11 +67,17 @@ const ListOfMedicalSupplies = () => {
 
   const handleReset = (clearFilters) => {
     clearFilters();
-    setSearchText('');
+    setSearchText("");
   };
 
   const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -85,13 +86,15 @@ const ListOfMedicalSupplies = () => {
       >
         <input
           ref={searchInput}
-          placeholder={'Search ${dataIndex}'}
+          placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
         <Space>
@@ -141,7 +144,7 @@ const ListOfMedicalSupplies = () => {
       </div>
     ),
     filterIcon: (filtered) => (
-      <SearchOutlined style={filtered ? { color: '#1890ff' } : {}} />
+      <SearchOutlined style={filtered ? { color: "#1890ff" } : {}} />
     ),
     onFilter: (value, record) =>
       record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
@@ -154,12 +157,12 @@ const ListOfMedicalSupplies = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
@@ -167,7 +170,7 @@ const ListOfMedicalSupplies = () => {
   });
 
   const handleChange = (pagination, filters, sorter) => {
-    console.log('Various parameters', pagination, filters, sorter);
+    console.log("Various parameters", pagination, filters, sorter);
     setFilteredInfo(filters);
     setSortedInfo(sorter);
   };
@@ -183,8 +186,8 @@ const ListOfMedicalSupplies = () => {
 
   const setAgeSort = () => {
     setSortedInfo({
-      order: 'descend',
-      columnKey: 'age',
+      order: "descend",
+      columnKey: "age",
     });
   };
 
@@ -224,33 +227,33 @@ const ListOfMedicalSupplies = () => {
 
   const columns = [
     {
-      title: 'Supplies',
-      dataIndex: 'Supplies',
-      key: 'Supplies',
-      ...getColumnSearchProps('Supplies'),
+      title: "Supplies",
+      dataIndex: "Supplies",
+      key: "Supplies",
+      ...getColumnSearchProps("Supplies"),
     },
     {
-      title: 'Type',
-      dataIndex: 'Type',
-      key: 'Type',
-      ...getColumnSearchProps('Type'),
+      title: "Type",
+      dataIndex: "Type",
+      key: "Type",
+      ...getColumnSearchProps("Type"),
       //sorter: (a, b) => a.age - b.age,
       //sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
     },
     {
-      title: 'Use',
-      dataIndex: 'Use',
-      key: 'Use',
-      ...getColumnSearchProps('Use'),
+      title: "Use",
+      dataIndex: "Use",
+      key: "Use",
+      ...getColumnSearchProps("Use"),
     },
     {
-      title: 'Fixed Quantity',
-      dataIndex: 'quantity',
-      key: 'quantity',
+      title: "Fixed Quantity",
+      dataIndex: "quantity",
+      key: "quantity",
     },
     {
-      title: 'Editable Quantity',
-      key: 'editableQuantity',
+      title: "Editable Quantity",
+      key: "editableQuantity",
       render: (text, record) => (
         <InputNumber
           min={0}
@@ -261,15 +264,17 @@ const ListOfMedicalSupplies = () => {
       ),
     },
     {
-      title: 'Donate',
-      key: 'donate',
+      title: "Donate",
+      key: "donate",
       render: (text, record) => (
-        <Button type="primary" onClick={() => handleDonate(record)}>Donate</Button>
+        <Button type="primary" onClick={() => handleDonate(record)}>
+          Donate
+        </Button>
       ),
     },
     {
-      title: 'View',
-      key: 'details',
+      title: "View",
+      key: "details",
       render: (text, record) => (
         <Button type="primary" onClick={() => handleActionClick(record)}>
           Details
@@ -277,31 +282,24 @@ const ListOfMedicalSupplies = () => {
       ),
     },
   ];
-  
 
   return (
     <div className="container">
       <h2>List of Medical Supplies Donation Requests</h2>
-      <Space style={{ marginBottom: 16 }}>
-        <Button onClick={setAgeSort}>Sort age</Button>
-        <Button onClick={clearFilters}>Clear filters</Button>
-        <Button onClick={clearAll}>Clear filters and sorters</Button>
-      </Space>
-      <Table columns={columns} dataSource={dataSource} onChange={handleChange} />
-      <Button
-        type="primary"
-        //className="btn btn-lg mb-4 text-white w-1"
-        //style={{ background: "#9F8C76" }}
-        onClick={handleBackButtonClick}
-      >
-        Back
-      </Button>
+      <Space style={{ marginBottom: 16 }}></Space>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        onChange={handleChange}
+      />
       <Modal
         title="Details"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setIsModalVisible(false)}>Close</Button>
+          <Button key="close" onClick={() => setIsModalVisible(false)}>
+            Close
+          </Button>,
         ]}
       >
         {selectedRecord && (
@@ -310,10 +308,16 @@ const ListOfMedicalSupplies = () => {
             <p>Type: {selectedRecord.Type}</p>
             <p>Use: {selectedRecord.Use}</p>
             <p>Quantity: {selectedRecord.quantity}</p>
-            {showPicture && <img src={selectedRecord.Picture} alt={selectedRecord.Category} style={{ width: 200 }} />}
+            {showPicture && (
+              <img
+                src={selectedRecord.Picture}
+                alt={selectedRecord.Category}
+                style={{ width: 200 }}
+              />
+            )}
           </div>
         )}
-         <Button onClick={handleViewPictureClick}>View Picture</Button>
+        <Button onClick={handleViewPictureClick}>View Picture</Button>
       </Modal>
     </div>
   );

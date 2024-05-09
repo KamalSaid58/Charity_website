@@ -32,6 +32,8 @@ import ListOfFood from "./Pages/ListOfFood";
 import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
 import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin.js";
 import TeachingPosts from "./Pages/TeachingPosts.js";
+import MedicalCases from "./Pages/MedicalCases.js";
+import ListofBloodDonation from "./Pages/ListofBloodDonation.js";
 
 // Make sure to import StartPage
 
@@ -43,8 +45,19 @@ function App() {
           <div className="col py-3">
             <Routes>
               <Route path="/ViewReqDonor" element={<ViewReqDonor />} />
+              <Route path="/ListOfFood" element={<ListOfFood />} />
               <Route path="/TeachingPosts" element={<TeachingPosts />} />
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
+              <Route path="/MedicalCases" element={<MedicalCases />} />
+              <Route path="/ListOfToys" element={<ListOfToys />} />
+              <Route
+                path="/ListOfMedicalSupplies"
+                element={<ListOfMedicalSupplies />}
+              />
+              <Route
+                path="/ListofBloodDonation"
+                element={<ListofBloodDonation />}
+              />
               <Route
                 path="/ViewDeliveryDetails"
                 element={<ViewDeliveryDetails />}
