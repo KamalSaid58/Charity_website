@@ -30,7 +30,6 @@ import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 import ListOfToys from "./Pages/ListOfToys";
 import ListOfFood from "./Pages/ListOfFood";
 import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
-import Test from "./Pages/Test.js";
 
 // Make sure to import StartPage
 
@@ -76,7 +75,6 @@ function App() {
                 path="/ListOfMedicalSupplies"
                 element={<ListOfMedicalSupplies />}
               />
-              <Route path="/Test" element={<Test />} />
               {/* <Route path="/TeachingPosts" element={<TeachingPosts />} />
               <Route path="/MedicalCases" element={<MedicalCases />} /> */}
               {/* <Route path="/Organ" element={<Organ />} /> */}

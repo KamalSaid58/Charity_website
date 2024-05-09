@@ -1,4 +1,4 @@
-import React, { Children, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Select } from "antd";
 import UploadFile from "../Components/UploadFile";
@@ -123,15 +123,6 @@ const CardContent = () => {
       );
     };
 
-    const successNotification = () => {
-      api.success({
-        message: "Register successful!",
-        description: "Use your email and password to login",
-        placement: "top",
-        duration: 3,
-      });
-    };
-
     const inputs = document.querySelectorAll(
       'input[type="text"], input[type="password"]'
     );
@@ -169,8 +160,7 @@ const CardContent = () => {
     if (isEmpty) {
       unfilledDataNotification();
     } else {
-      navigate("/LoginTrial");
-      successNotification();
+      navigate("/LoginTrial", { state: { Register: true } });
     }
   }
   const handleGoverChange = (value) => {
@@ -190,7 +180,11 @@ const CardContent = () => {
   return (
     <>
       {contextHolder}
-      <Card style={{ width: 400 }} bordered="true" title="Create Donor Account">
+      <Card
+        style={{ width: 400, marginTop: 150 }}
+        bordered="true"
+        title="Create Donor Account"
+      >
         {/* flex below controls vertical allignment */}
         <Flex justify="space-between" gap={15} vertical>
           <TextBoxRow>
@@ -340,7 +334,7 @@ const CardContent = () => {
                   placeholder="Profession"
                   value={selectedDonorType}
                   onChange={handleDonorTypeChange}
-                  style={{ width: 168 }}
+                  style={{ width: 161 }}
                 >
                   <Select.Option value="Regular donor">None</Select.Option>
                   <Select.Option value="Doctor">Doctor</Select.Option>
@@ -350,7 +344,7 @@ const CardContent = () => {
             </Form.Item>
 
             {showUploadButton && (
-              <div className="mb-3">
+              <>
                 <input type="file" id="file-upload" hidden />
                 <label for="file-upload" className="upload-link">
                   <UploadFile
@@ -358,7 +352,7 @@ const CardContent = () => {
                     setFileList={setFileList}
                   ></UploadFile>
                 </label>
-              </div>
+              </>
             )}
           </TextBoxRow>
 
