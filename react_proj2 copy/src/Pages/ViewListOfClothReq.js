@@ -4,7 +4,6 @@ import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { useNavigate } from "react-router-dom";
 
-
 const ViewListOfClothReq = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
@@ -248,40 +247,40 @@ const ViewListOfClothReq = () => {
       ),
     },
     // Hidden columns for additional details
-    {
-      title: 'Type',
-      dataIndex: 'type',
-      key: 'type',
-      visible: false,
-    },
-    {
-      title: 'Material',
-      dataIndex: 'material',
-      key: 'material',
-      visible: false,
-    },
-    {
-      title: 'Requested Quantity',
-      dataIndex: 'requestedQuantity',
-      key: 'requestedQuantity',
-      visible: false,
-    },
-    {
-      title: 'Quantity Needed',
-      dataIndex: 'quantity',
-      key: 'quantity',
-    },
-    {
-      title: 'Quantity Donated',
-      key: 'editableQuantity',
-      render: (text, record) => (
-        <InputNumber
-          min={0}
-          max={record.quantity}
-          defaultValue={0}
-          onChange={(value) => handleQuantityChange(record, value)}
-        />
-      ),
+      {
+        title: 'Type',
+        dataIndex: 'type',
+        key: 'type',
+        visible: false,
+      },
+      {
+        title: 'Material',
+        dataIndex: 'material',
+        key: 'material',
+        visible: false,
+      },
+      {
+        title: 'Requested Quantity',
+        dataIndex: 'requestedQuantity',
+        key: 'requestedQuantity',
+        visible: false,
+      },
+      {
+        title: 'Quantity Needed',
+        dataIndex: 'quantity',
+        key: 'quantity',
+      },
+      {
+        title: 'Quantity Donated',
+        key: 'editableQuantity',
+        render: (text, record) => (
+          <InputNumber
+            min={0}
+            max={record.quantity}
+            defaultValue={0}
+            onChange={(value) => handleQuantityChange(record, value)}
+          />
+        ),
     },
     {
       title: 'Donate',

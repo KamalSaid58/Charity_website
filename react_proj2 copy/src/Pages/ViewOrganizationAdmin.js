@@ -36,7 +36,6 @@ const ViewOrganizationAdmin = () => {
       type: 'Charity',
       governorate: 'Cairo',
       area: 'Maadi',
-      description: 'Address: x \n Place: y \n Location: z \n Pin: k',
     },
     {
       key: 2,
@@ -44,7 +43,6 @@ const ViewOrganizationAdmin = () => {
       type: 'Charity',
       governorate: 'Cairo',
       area: 'Tagamo3',
-      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     },
     {
       key: 3,
@@ -52,15 +50,20 @@ const ViewOrganizationAdmin = () => {
       type: 'Orphanage',  
       governorate: 'Cairo',
       area: 'Maadi',
-      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     },
-    {
+    { 
       key: 4,
       name: 'A7san 5eer',
       type: 'Charity',
       governorate: 'Bani Suef',
       area: 'Kobry',
-      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    },
+    {
+      key: 5,
+      name: 'El Doctor',
+      type: 'Hospital',
+      governorate: 'Bani Suef',
+      area: 'Kobry',
     },
   ]);
 
@@ -249,18 +252,6 @@ return (
     </Space>
     <Table
   columns={columns}
-  expandable={{
-    expandedRowRender: (record) => (
-      <p
-        style={{
-          margin: 0,
-        }}
-      >
-        {record.description}
-      </p>
-    ),
-    rowExpandable: (record) => record.name !== 'Not Expandable',
-  }}
   dataSource={data} onChange={handleChange}
 />;
   </>
