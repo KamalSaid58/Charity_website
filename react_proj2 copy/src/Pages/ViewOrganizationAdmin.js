@@ -31,35 +31,35 @@ const ViewOrganizationAdmin = () => {
       key: 1,
       name: "Kolo 5eer",
       type: "Charity",
-      governorate: "Cairo",
+      governate: "Cairo",
       area: "Maadi",
     },
     {
       key: 2,
       name: "Feeha 5eer",
       type: "Charity",
-      governorate: "Cairo",
+      governate: "Cairo",
       area: "Tagamo3",
     },
     {
       key: 3,
       name: "Fein Aboya",
       type: "Orphanage",
-      governorate: "Cairo",
+      governate: "Cairo",
       area: "Maadi",
     },
     {
       key: 4,
       name: "A7san 5eer",
       type: "Charity",
-      governorate: "Bani Suef",
+      governate: "Bani Suef",
       area: "Kobry",
     },
     {
       key: 5,
       name: "El Doctor",
       type: "Hospital",
-      governorate: "Bani Suef",
+      governate: "Bani Suef",
       area: "Kobry",
     },
   ]);
@@ -93,7 +93,7 @@ const ViewOrganizationAdmin = () => {
   };
 
   // search
-  const getColumnSearchProps = (dataIndex) => ({
+  const getColumnSearchProps = (dataIndex, title) => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -120,6 +120,105 @@ const ViewOrganizationAdmin = () => {
             display: "block",
           }}
         />
+        {title === "Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Charity") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Charity") ? [] : ["Charity"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Charity
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Hospital") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Hospital") ? [] : ["Hospital"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Hospital
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Orphanage") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Orphanage") ? [] : ["Orphanage"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Orphanage
+            </Button>
+          </div>
+        )}
+        {title === "Governate" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Bani Suef") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Bani Suef") ? [] : ["Bani Suef"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Bani Suef
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Cairo") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Cairo
+            </Button>
+          </div>
+        )}
+
+        {title === "Area" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Tagamo3") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Tagamo3") ? [] : ["Tagamo3"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Tagamo3
+            </Button>
+            <Button
+              type={selectedKeys.includes("Maadi") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Maadi") ? [] : ["Maadi"])
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Maadi
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Kobry") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Kobry") ? [] : ["Kobry"])
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Kobry
+            </Button>
+          </div>
+        )}
         <Space>
           <Button
             type="primary"
@@ -140,7 +239,7 @@ const ViewOrganizationAdmin = () => {
               close();
             }}
           >
-            close
+            Close
           </Button>
         </Space>
       </div>
@@ -188,45 +287,26 @@ const ViewOrganizationAdmin = () => {
       key: "name",
       width: "30%",
       // filteredValue is needed only if there are other columns with filters
-      filteredValue: filteredInfo.name || null,
-      ...getColumnSearchProps("name"),
+      ...getColumnSearchProps("name", "Name"),
     },
     {
       title: "Type",
       dataIndex: "type",
       key: "type",
       width: "20%",
-      filters: filterType.map((option) => ({
-        text: option,
-        value: option,
-      })),
-      filteredValue: filteredInfo.type || null,
-      onFilter: (value, record) => record.type.includes(value),
-      ellipsis: true,
+      ...getColumnSearchProps("type", "Type"),
     },
     {
-      title: "Governorate",
-      dataIndex: "governorate",
-      key: "governorate",
-      filters: filterGov.map((option) => ({
-        text: option,
-        value: option,
-      })),
-      filteredValue: filteredInfo.governorate || null,
-      onFilter: (value, record) => record.governorate.includes(value),
-      ellipsis: true,
+      title: "Governate",
+      dataIndex: "governate",
+      key: "governate",
+      ...getColumnSearchProps("governate", "Governate"),
     },
     {
       title: "Area",
       dataIndex: "area",
       key: "area",
-      filters: filterArea.map((option) => ({
-        text: option,
-        value: option,
-      })),
-      filteredValue: filteredInfo.area || null,
-      onFilter: (value, record) => record.area.includes(value),
-      ellipsis: true,
+      ...getColumnSearchProps("area", "Area"),
     },
     {
       title: "",
@@ -254,10 +334,8 @@ const ViewOrganizationAdmin = () => {
         style={{
           marginBottom: 16,
         }}
-      >
-        <Button onClick={clearFilters}>Clear All Filters</Button>
-      </Space>
-      <Table columns={columns} dataSource={data} onChange={handleChange} />;
+      ></Space>
+      <Table columns={columns} dataSource={data} onChange={handleChange} />
     </>
   );
 };

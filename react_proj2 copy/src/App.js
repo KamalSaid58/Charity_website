@@ -15,7 +15,7 @@ import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js";
 import ViewPendingDonations from "./Pages/ViewPendingDonations";
 import ViewDeliveryDetails from "./Pages/ViewDeliveryDetails";
 import React from "react";
-import ViewReqDon from "./Pages/ViewReqDon";
+import ViewReqDonor from "./Pages/ViewReqDonor.js";
 import ViewListOfClothReq from "./Pages/ViewListOfClothReq";
 import LoginTrial from "./Pages/LoginTrial";
 import SchoolSupp from "./Pages/SchoolSupp";
@@ -31,6 +31,7 @@ import ListOfToys from "./Pages/ListOfToys";
 import ListOfFood from "./Pages/ListOfFood";
 import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
 import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin.js";
+import TeachingPosts from "./Pages/TeachingPosts.js";
 
 // Make sure to import StartPage
 
@@ -41,7 +42,13 @@ function App() {
         <div className="row flex-nowrap">
           <div className="col py-3">
             <Routes>
-              <Route path="/ViewReqDon" element={<ViewReqDon />} />
+              <Route path="/ViewReqDonor" element={<ViewReqDonor />} />
+              <Route path="/TeachingPosts" element={<TeachingPosts />} />
+              <Route path="/SchoolSupp" element={<SchoolSupp />} />
+              <Route
+                path="/ViewDeliveryDetails"
+                element={<ViewDeliveryDetails />}
+              />
               <Route
                 path="/ViewListOfClothReq"
                 element={<ViewListOfClothReq />}
@@ -73,8 +80,16 @@ function App() {
               <Route path="/ListOfToys" element={<ListOfToys />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />
               <Route
-                path="/OrganizationAdmin"
+                path="/ViewOrganizationAdmin"
                 element={<ViewOrganizationAdmin />}
+              />
+              <Route
+                path="/ViewOrganizationDonor"
+                element={<ViewOrganizationDonor />}
+              />
+              <Route
+                path="/ViewPendingDonations"
+                element={<ViewPendingDonations />}
               />
               <Route
                 path="/ListOfMedicalSupplies"

@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Button, Table, Modal, InputNumber, Input } from 'antd'; // Import Input component
-import { SearchOutlined } from '@ant-design/icons';
-import Highlighter from 'react-highlight-words';
+import React, { useState, useRef } from "react";
+import { Button, Table, Modal, InputNumber, Input } from "antd"; // Import Input component
+import { SearchOutlined } from "@ant-design/icons";
+import Highlighter from "react-highlight-words";
 import { useNavigate } from "react-router-dom";
 
-const ViewSchoolSuppliesRequests = () => {
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+const SchoolSupp = () => {
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const [showTable, setShowTable] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [donationQuantities, setDonationQuantities] = useState({});
@@ -19,23 +19,23 @@ const ViewSchoolSuppliesRequests = () => {
 
   const originalDataSource = [
     {
-      key: '1',
-      category: 'Books',
-      item: 'Notebooks',
+      key: "1",
+      category: "Books",
+      item: "Notebooks",
       requestedQuantity: 100,
       quantityNeeded: 80,
     },
     {
-      key: '2',
-      category: 'Stationary',
-      item: 'Pencils',
+      key: "2",
+      category: "Stationary",
+      item: "Pencils",
       requestedQuantity: 200,
       quantityNeeded: 150,
     },
     {
-      key: '3',
-      category: 'Stationary',
-      item: 'Erasers',
+      key: "3",
+      category: "Stationary",
+      item: "Erasers",
       requestedQuantity: 50,
       quantityNeeded: 30,
     },
@@ -51,11 +51,17 @@ const ViewSchoolSuppliesRequests = () => {
 
   const handleReset = (clearFilters) => {
     clearFilters();
-    setSearchText('');
+    setSearchText("");
   };
 
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -66,13 +72,79 @@ const ViewSchoolSuppliesRequests = () => {
           ref={searchInput}
           placeholder={`Search ${title}`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
+        {title === "Category" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Books") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Books") ? [] : ["Books"])
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Books
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Stationary") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Stationary") ? [] : ["Stationary"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Stationary
+            </Button>
+          </div>
+        )}
+
+        {title === "Item" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Notebooks") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Notebooks") ? [] : ["Notebooks"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Notebooks
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Pencils") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Pencils") ? [] : ["Pencils"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Pencils
+            </Button>
+            <Button
+              type={selectedKeys.includes("Erasers") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Erasers") ? [] : ["Erasers"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+            >
+              Erasers
+            </Button>
+          </div>
+        )}
         <Button
           type="primary"
           onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
@@ -97,10 +169,13 @@ const ViewSchoolSuppliesRequests = () => {
       </div>
     ),
     filterIcon: (filtered) => (
-      <SearchOutlined style={filtered ? { color: '#1890ff' } : {}} />
+      <SearchOutlined style={filtered ? { color: "#1890ff" } : {}} />
     ),
     onFilter: (value, record) => {
-      return record[dataIndex].toString().toLowerCase().includes(value.toLowerCase());
+      return record[dataIndex]
+        .toString()
+        .toLowerCase()
+        .includes(value.toLowerCase());
     },
     onFilterDropdownOpenChange: (visible) => {
       if (visible && searchInput.current) {
@@ -111,12 +186,12 @@ const ViewSchoolSuppliesRequests = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
@@ -124,7 +199,7 @@ const ViewSchoolSuppliesRequests = () => {
   });
 
   const handleChange = (pagination, filters, sorter) => {
-    console.log('Various parameters', pagination, filters, sorter);
+    console.log("Various parameters", pagination, filters, sorter);
     setFilteredInfo(filters);
     setSortedInfo(sorter);
   };
@@ -152,7 +227,6 @@ const ViewSchoolSuppliesRequests = () => {
     setDataSource(updatedDataSource);
     setDonationQuantities({});
   };
-  
 
   const handleQuantityChange = (record, value) => {
     const newDonationQuantities = {
@@ -161,36 +235,36 @@ const ViewSchoolSuppliesRequests = () => {
     };
     setDonationQuantities(newDonationQuantities);
   };
-  
+
   const columns = [
     {
-      title: 'Category',
-      dataIndex: 'category',
-      key: 'category',
-      ...getColumnSearchProps('category', 'Category'),
+      title: "Category",
+      dataIndex: "category",
+      key: "category",
+      ...getColumnSearchProps("category", "Category"),
     },
     {
-      title: 'Item',
-      dataIndex: 'item',
-      key: 'item',
-      ...getColumnSearchProps('item', 'Item'),
+      title: "Item",
+      dataIndex: "item",
+      key: "item",
+      ...getColumnSearchProps("item", "Item"),
     },
     {
-      title: 'Requested Quantity',
-      dataIndex: 'requestedQuantity',
-      key: 'requestedQuantity',
-      ...getColumnSearchProps('requestedQuantity', 'Requested Quantity'),
+      title: "Requested Quantity",
+      dataIndex: "requestedQuantity",
+      key: "requestedQuantity",
+      ...getColumnSearchProps("requestedQuantity", "Requested Quantity"),
     },
     {
-      title: 'Quantity Needed',
-      dataIndex: 'quantityNeeded',
-      key: 'quantityNeeded',
+      title: "Quantity Needed",
+      dataIndex: "quantityNeeded",
+      key: "quantityNeeded",
       render: (text) => <span>{text}</span>,
     },
     {
-      title: 'Quantity Donated',
-      key: 'quantityDonated',
-      render: (text, record) => (
+      title: "Quantity Donated",
+      key: "quantityDonated",
+      render: (_, record) => (
         <InputNumber
           min={0}
           defaultValue={0}
@@ -199,39 +273,41 @@ const ViewSchoolSuppliesRequests = () => {
       ),
     },
     {
-      title: 'Donate',
-      key: 'donate',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => handleDonate(record)}>Donate</Button>
+      title: "Donate",
+      key: "donate",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleDonate(record)}>
+          Donate
+        </Button>
       ),
     },
     {
-      title: 'View Details',
-      key: 'details',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => handleActionClick(record)}>View Details</Button>
+      title: "View Details",
+      key: "details",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          View Details
+        </Button>
       ),
     },
   ];
 
   return (
     <div className="container">
-      <h2>View List of School Supplies Donation Requests</h2>
-      <Table columns={columns} dataSource={dataSource} onChange={handleChange} />
-      <Button
-        type="button"
-        className="btn btn-lg mb-4 text-white w-1"
-        style={{ background: "#9F8C76" }}
-        onClick={handleBackButtonClick}
-      >
-        Back
-      </Button>
+      <h2>School Supplies Donation Requests</h2>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        onChange={handleChange}
+      />
       <Modal
         title="Details"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setIsModalVisible(false)}>Close</Button>
+          <Button key="close" onClick={() => setIsModalVisible(false)}>
+            Close
+          </Button>,
         ]}
       >
         {selectedRecord && (
@@ -247,4 +323,4 @@ const ViewSchoolSuppliesRequests = () => {
   );
 };
 
-export default ViewSchoolSuppliesRequests;
+export default SchoolSupp;
