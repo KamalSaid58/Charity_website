@@ -17,13 +17,14 @@ function Register() {
 
   return (
     <Container>
-      <Row className="justify-content-center mt-5">
+      <Row className="justify-content-center mt-5" style={{ marginTop: 500 }}>
         <Col md={4} className="mb-4">
           <Card
             style={{
               width: "20rem",
               border: "2px solid #000",
               borderRadius: "10px",
+              marginTop: 100,
             }}
           >
             <Card.Img
@@ -52,6 +53,7 @@ function Register() {
               width: "20rem",
               border: "2px solid #000",
               borderRadius: "10px",
+              marginTop: 100,
             }}
           >
             <Card.Img
