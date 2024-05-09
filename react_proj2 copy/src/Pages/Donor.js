@@ -1,73 +1,86 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
-import SideNavBarDonor from '../Components/SideNavBarDonor';
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Card, Divider, Carousel, Flex, Button, Row, Col } from "antd";
+import "./Donor.css";
+
+const OrganizationsCarousel = () => {
+  const contentStyle = {
+    margin: 0,
+    height: "160px",
+    color: "#fff",
+    lineHeight: "160px",
+    textAlign: "center",
+    background: "#364d79",
+  };
+
+  return (
+    <Carousel arrows autoplay>
+      <div>
+        <h3 style={contentStyle}>1</h3>
+      </div>
+      <div>
+        <h3 style={contentStyle}>2</h3>
+      </div>
+      <div>
+        <h3 style={contentStyle}>3</h3>
+      </div>
+      <div>
+        <h3 style={contentStyle}>4</h3>
+      </div>
+    </Carousel>
+  );
+};
+
+const NewDonationPosts = () => {
+  return (
+    <Flex vertical>
+      <h1>New Donation Posts</h1>
+      <h4>Organization 1 has posted x</h4>
+      <h4>Organization 2 has posted y</h4>
+    </Flex>
+  );
+};
+
+const UpcomingDeliveries = () => {
+  return (
+    <Flex vertical>
+      <h1>Deliveries</h1>
+      <h4>Delivery coming in 5 minutes at location x! get Ready!</h4>
+      <h4>You have a delivery day x y at location z! </h4>
+    </Flex>
+  );
+};
+
+const DashboardButtons = () => {
+  return (
+    <Flex>
+      <Button>Donate Now!</Button>
+      <div style={{ marginRight: 1150 }}></div>
+      <Button>Update Delivery Location</Button>
+    </Flex>
+  );
+};
 
 function Donor() {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const $root = useRef(null);
-  const $indicator1 = useRef(null);
-  const $indicator2 = useRef(null);
-  const $items = useRef([]);
-
-  const handleViewRequestedItemsClick = () => {
-    navigate("/ViewReqDon");
-  };
-
-  const handleCategorySelect = (category) => {
-    console.log(`Selected category: ${category}`);
-    setSelectedCategory(category);
-    // Implement logic to handle selected category
-  };
-
-  useEffect(() => {
-    const animate = () => {
-      if (
-        !$root.current ||
-        !$items.current[selectedCategory] ||
-        !$indicator1.current ||
-        !$indicator2.current
-      )
-        return;
-
-      const menuOffset = $root.current.getBoundingClientRect();
-      const activeItem = $items.current[selectedCategory].current;
-      const { width, height, top, left } = activeItem.getBoundingClientRect();
-
-      const settings = {
-        x: left - menuOffset.x,
-        y: top - menuOffset.y,
-        width: width,
-        height: height,
-        backgroundColor: "#111", // Adjust color if needed
-        ease: "elastic.out(.7, .7)",
-        duration: 0.8,
-      };
-
-      gsap.to($indicator1.current, {
-        ...settings,
-      });
-
-      gsap.to($indicator2.current, {
-        ...settings,
-        duration: 1,
-      });
-    };
-
-    animate();
-    window.addEventListener("resize", animate);
-
-    return () => {
-      window.removeEventListener("resize", animate);
-    };
-  }, [selectedCategory]);
 
   return (
-    <div>
-      <SideNavBarDonor /> {/* Render SideNavBar component */}
-      {/* The rest of your Donor component content */}
-    </div>
+    <Card style={{ width: 1500, height: 800 }}>
+      {OrganizationsCarousel()}
+      <Divider style={{ borderWidth: 1, borderColor: "black" }} />
+      <Row>
+        <Col span={11}>{NewDonationPosts()}</Col>
+        <Col span={2}>
+          <Divider
+            type="vertical"
+            style={{ borderWidth: 1, borderColor: "black", height: "100%" }}
+          />
+        </Col>
+        <Col span={11}>{UpcomingDeliveries()}</Col>
+      </Row>
+      <Divider style={{ borderWidth: 1, borderColor: "black" }} />
+      {DashboardButtons()}
+    </Card>
   );
 }
 
