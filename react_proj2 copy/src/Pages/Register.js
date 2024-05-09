@@ -16,7 +16,7 @@ function Register() {
   };
 
   return (
-    <Container>
+    <Container class="shadow p-3 mb-5 bg-body rounded">
       <Row className="justify-content-center mt-5">
         <Col md={4} className="mb-4">
           <Card

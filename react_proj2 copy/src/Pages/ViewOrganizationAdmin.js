@@ -1,108 +1,106 @@
-import React, { useRef, useState } from 'react';
-import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table } from 'antd';
-import Highlighter from 'react-highlight-words';
+import React, { useRef, useState } from "react";
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Space, Table, Popconfirm } from "antd";
+import Highlighter from "react-highlight-words";
 const columns = [
   {
-    title: 'Organization Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: "Organization Name",
+    dataIndex: "name",
+    key: "name",
   },
   {
-    title: 'Organization Type',
-    dataIndex: 'type',
-    key: 'type',
+    title: "Organization Type",
+    dataIndex: "type",
+    key: "type",
   },
   {
-    title: 'Governorate',
-    dataIndex: 'governorate',
-    key: 'governorate',
+    title: "Governorate",
+    dataIndex: "governorate",
+    key: "governorate",
   },
   {
-    title: 'Area',
-    dataIndex: 'area',
-    key: 'area',
+    title: "Area",
+    dataIndex: "area",
+    key: "area",
   },
 ];
 
-
-
 const ViewOrganizationAdmin = () => {
-
   const [data, setData] = useState([
     {
       key: 1,
-      name: 'Kolo 5eer',
-      type: 'Charity',
-      governorate: 'Cairo',
-      area: 'Maadi',
+      name: "Kolo 5eer",
+      type: "Charity",
+      governorate: "Cairo",
+      area: "Maadi",
     },
     {
       key: 2,
-      name: 'Feeha 5eer',
-      type: 'Charity',
-      governorate: 'Cairo',
-      area: 'Tagamo3',
+      name: "Feeha 5eer",
+      type: "Charity",
+      governorate: "Cairo",
+      area: "Tagamo3",
     },
     {
       key: 3,
-      name: 'Fein Aboya',
-      type: 'Orphanage',  
-      governorate: 'Cairo',
-      area: 'Maadi',
+      name: "Fein Aboya",
+      type: "Orphanage",
+      governorate: "Cairo",
+      area: "Maadi",
     },
-    { 
+    {
       key: 4,
-      name: 'A7san 5eer',
-      type: 'Charity',
-      governorate: 'Bani Suef',
-      area: 'Kobry',
+      name: "A7san 5eer",
+      type: "Charity",
+      governorate: "Bani Suef",
+      area: "Kobry",
     },
     {
       key: 5,
-      name: 'El Doctor',
-      type: 'Hospital',
-      governorate: 'Bani Suef',
-      area: 'Kobry',
+      name: "El Doctor",
+      type: "Hospital",
+      governorate: "Bani Suef",
+      area: "Kobry",
     },
   ]);
 
-  const handleDeletionClick = (record) =>
-    {
-      const newData = [...data];
-      
-      for (let i = 0; i < newData.length; i++) {
-        if (newData[i].key === record.key) {
-          newData.splice(i, 1);
-          break; // Exit loop since we found and removed the item
-        }
+  const handleDeletionClick = (record) => {
+    const newData = [...data];
+
+    for (let i = 0; i < newData.length; i++) {
+      if (newData[i].key === record.key) {
+        newData.splice(i, 1);
+        break; // Exit loop since we found and removed the item
+      }
     }
     setData(newData);
-  }
-  const filterArea = [...new Set(data.map(item => item.area))];
-  const filterGov = [...new Set(data.map(item => item.governorate))];
-  const filterType = [...new Set(data.map(item => item.type))];
-  
+  };
+  const filterArea = [...new Set(data.map((item) => item.area))];
+  const filterGov = [...new Set(data.map((item) => item.governorate))];
+  const filterType = [...new Set(data.map((item) => item.type))];
 
-
-
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();  
+    confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
   const clearFilters = () => {
     setFilteredInfo({});
-    setSearchText('');
+    setSearchText("");
   };
-
 
   // search
   const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -113,11 +111,13 @@ const ViewOrganizationAdmin = () => {
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
         <Space>
@@ -132,7 +132,7 @@ const ViewOrganizationAdmin = () => {
           >
             Search
           </Button>
-          
+
           <Button
             type="link"
             size="small"
@@ -148,7 +148,7 @@ const ViewOrganizationAdmin = () => {
     filterIcon: (filtered) => (
       <SearchOutlined
         style={{
-          color: filtered ? '#1677ff' : undefined,
+          color: filtered ? "#1677ff" : undefined,
         }}
       />
     ),
@@ -163,12 +163,12 @@ const ViewOrganizationAdmin = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
@@ -177,27 +177,26 @@ const ViewOrganizationAdmin = () => {
   // filter
   const [filteredInfo, setFilteredInfo] = useState({});
   const handleChange = (pagination, filters, sorter) => {
-    console.log('Various parameters', pagination, filters, sorter);
+    console.log("Various parameters", pagination, filters, sorter);
     setFilteredInfo(filters);
   };
 
-
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      width: '30%',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      width: "30%",
       // filteredValue is needed only if there are other columns with filters
-      filteredValue:filteredInfo.name || null,
-      ...getColumnSearchProps('name'),
+      filteredValue: filteredInfo.name || null,
+      ...getColumnSearchProps("name"),
     },
     {
-      title: 'Type',
-      dataIndex: 'type',
-      key: 'type',
-      width: '20%',
-      filters: filterType.map(option => ({
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
+      width: "20%",
+      filters: filterType.map((option) => ({
         text: option,
         value: option,
       })),
@@ -206,10 +205,10 @@ const ViewOrganizationAdmin = () => {
       ellipsis: true,
     },
     {
-      title: 'Governorate',
-      dataIndex: 'governorate',
-      key: 'governorate',
-      filters: filterGov.map(option => ({
+      title: "Governorate",
+      dataIndex: "governorate",
+      key: "governorate",
+      filters: filterGov.map((option) => ({
         text: option,
         value: option,
       })),
@@ -218,10 +217,10 @@ const ViewOrganizationAdmin = () => {
       ellipsis: true,
     },
     {
-      title: 'Area',
-      dataIndex: 'area',
-      key: 'area',
-      filters: filterArea.map(option => ({
+      title: "Area",
+      dataIndex: "area",
+      key: "area",
+      filters: filterArea.map((option) => ({
         text: option,
         value: option,
       })),
@@ -230,31 +229,36 @@ const ViewOrganizationAdmin = () => {
       ellipsis: true,
     },
     {
-      title: '',
-      key: 'delete',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => handleDeletionClick(record)}>
-          Delete
-        </Button>
+      title: "",
+      key: "delete",
+      render: (_, record) => (
+        <div>
+          <Popconfirm
+            title="Are you sure you want to delete this record?"
+            onConfirm={() => handleDeletionClick(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger shape="rectangle">
+              Delete
+            </Button>
+          </Popconfirm>
+        </div>
       ),
     },
-
   ];
 
-return (
-  <>
-    <Space
-      style={{
-        marginBottom: 16,
-      }}
-    >
-      <Button onClick={clearFilters}>Clear All Filters</Button>
-    </Space>
-    <Table
-  columns={columns}
-  dataSource={data} onChange={handleChange}
-/>;
-  </>
-);
+  return (
+    <>
+      <Space
+        style={{
+          marginBottom: 16,
+        }}
+      >
+        <Button onClick={clearFilters}>Clear All Filters</Button>
+      </Space>
+      <Table columns={columns} dataSource={data} onChange={handleChange} />;
+    </>
+  );
 };
 export default ViewOrganizationAdmin;
