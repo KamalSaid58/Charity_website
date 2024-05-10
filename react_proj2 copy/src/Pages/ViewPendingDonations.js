@@ -126,6 +126,7 @@ const ViewOrganizationDonor = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Charity
             </Button>
@@ -138,6 +139,7 @@ const ViewOrganizationDonor = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Hospital
             </Button>
@@ -150,6 +152,7 @@ const ViewOrganizationDonor = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Orphanage
             </Button>
@@ -165,6 +168,7 @@ const ViewOrganizationDonor = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Bani Suef
             </Button>
@@ -175,6 +179,7 @@ const ViewOrganizationDonor = () => {
                 setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Cairo
             </Button>
@@ -191,6 +196,7 @@ const ViewOrganizationDonor = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Tagamo3
             </Button>
@@ -200,6 +206,7 @@ const ViewOrganizationDonor = () => {
                 setSelectedKeys(selectedKeys.includes("Maadi") ? [] : ["Maadi"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Maadi
             </Button>
@@ -210,6 +217,7 @@ const ViewOrganizationDonor = () => {
                 setSelectedKeys(selectedKeys.includes("Kobry") ? [] : ["Kobry"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Kobry
             </Button>
@@ -306,12 +314,10 @@ const ViewOrganizationDonor = () => {
 
   return (
     <>
-      <Space
-        style={{
-          marginBottom: 16,
-        }}
-      ></Space>
-      <Table columns={columns} dataSource={data} onChange={handleChange} />;
+      <div className="container">
+        <h2>Pending Donations</h2>
+        <Table columns={columns} dataSource={data} onChange={handleChange} />
+      </div>
     </>
   );
 };

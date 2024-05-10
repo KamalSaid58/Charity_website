@@ -73,6 +73,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               A positive
             </Button>
@@ -87,6 +88,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               AB positive
             </Button>
@@ -99,6 +101,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               O negative
             </Button>
@@ -110,6 +113,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               A negative
             </Button>
@@ -125,6 +129,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Charity
             </Button>
@@ -137,6 +142,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Hospital
             </Button>
@@ -149,6 +155,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Orphanage
             </Button>
@@ -165,6 +172,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Nasayeem
             </Button>
@@ -177,6 +185,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Cleopatra
             </Button>
@@ -189,6 +198,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Elgawy
             </Button>
@@ -209,6 +219,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Fifth settlment
             </Button>
@@ -221,6 +232,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Nasr city
             </Button>
@@ -243,6 +255,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Minister of health
             </Button>
@@ -255,6 +268,7 @@ const ListofBloodDonation = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Governer
             </Button>

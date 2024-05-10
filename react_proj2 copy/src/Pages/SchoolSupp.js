@@ -89,6 +89,7 @@ const SchoolSupp = () => {
                 setSelectedKeys(selectedKeys.includes("Books") ? [] : ["Books"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Books
             </Button>
@@ -101,6 +102,7 @@ const SchoolSupp = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Stationary
             </Button>
@@ -117,6 +119,7 @@ const SchoolSupp = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Notebooks
             </Button>
@@ -129,6 +132,7 @@ const SchoolSupp = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Pencils
             </Button>
@@ -140,6 +144,7 @@ const SchoolSupp = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Erasers
             </Button>

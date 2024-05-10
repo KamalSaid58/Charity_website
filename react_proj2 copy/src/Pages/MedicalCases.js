@@ -80,6 +80,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Neurosurgery
             </Button>
@@ -92,6 +93,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Cardiology
             </Button>
@@ -104,6 +106,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Surgery
             </Button>
@@ -120,6 +123,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               57357
             </Button>
@@ -132,6 +136,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Nasayeem
             </Button>
@@ -144,6 +149,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               ElGawy
             </Button>
@@ -166,6 +172,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Fifth Settlement
             </Button>
@@ -184,6 +191,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Al Sayeda Zeinab
             </Button>
@@ -205,6 +213,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Minister of Health
             </Button>
@@ -217,6 +226,7 @@ const MedicalCases = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Governer
             </Button>

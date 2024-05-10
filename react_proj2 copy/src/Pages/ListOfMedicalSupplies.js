@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Button, Space, Table, Modal, InputNumber } from "antd";
+import { Button, Space, Table, Modal, InputNumber, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { useAsyncError, useNavigate } from "react-router-dom";
@@ -21,40 +21,40 @@ const ListOfMedicalSupplies = () => {
   const originalDataSource = [
     {
       key: "1",
-      Supplies: "Medical Devices",
-      Type: "Single Use",
-      Use: "Inject Medication",
+      supplies: "Medical Devices",
+      type: "Single Use",
+      use: "Inject Medication",
       quantity: 5,
-      Picture:
+      picture:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBzdGWdbzpAevLfvxp9Zf0smnHSqCcE31MdU2-yJBWgg&s",
     },
     {
       key: "2",
-      Supplies: "Medical Equipments",
-      Type: "First Aid",
-      Use: "Treat Minor Injuries",
+      supplies: "Medical Equipments",
+      type: "First Aid",
+      use: "Treat Minor Injuries",
       quantity: 3,
-      Picture:
+      picture:
         "https://www.lakesidemedical.ca/app/uploads/featuredimage-The-Importance-of-Having-a-First-Aid-Kit-in-Your-Home-or-Place-of-Business.jpg",
     },
     {
       key: "3",
-      Supplies: "Medication",
-      Type: "Tablets",
-      Use: "Deliver Oral Medication",
+      supplies: "Medication",
+      type: "Tablets",
+      use: "Deliver Oral Medication",
       quantity: 8,
-      Picture:
+      picture:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdq_elvANB1QD58CDfS-XWxvTAr1TW_SQO2omwDS9lFA&s",
     },
-    {
-      key: "4",
-      Supplies: "Medical Devices",
-      Type: "Imaging",
-      Use: "Identify disease or injury",
-      quantity: 10,
-      Picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0GGXwGYUBYoUAqU-DzLvi7RyY1mEAY_RCuLULBldsnw&s",
-    },
+    // {
+    //   key: "4",
+    //   supplies: "Medical Devices",
+    //   type: "Imaging",
+    //   use: "Identify disease or injury",
+    //   quantity: 10,
+    //   picture:
+    //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0GGXwGYUBYoUAqU-DzLvi7RyY1mEAY_RCuLULBldsnw&s",
+    // },
   ];
 
   const [dataSource, setDataSource] = useState(originalDataSource);
@@ -70,7 +70,7 @@ const ListOfMedicalSupplies = () => {
     setSearchText("");
   };
 
-  const getColumnSearchProps = (dataIndex) => ({
+  const getColumnSearchProps = (dataIndex, title) => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -84,7 +84,7 @@ const ListOfMedicalSupplies = () => {
         }}
         onKeyDown={(e) => e.stopPropagation()}
       >
-        <input
+        <Input
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
@@ -97,6 +97,162 @@ const ListOfMedicalSupplies = () => {
             display: "block",
           }}
         />
+        {title === "Supplies" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={
+                selectedKeys.includes("Medical Devices") ? "primary" : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Medical Devices")
+                    ? []
+                    : ["Medical Devices"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Medical Devices
+            </Button>
+
+            <Button
+              type={
+                selectedKeys.includes("Medical Equipments")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Medical Equipments")
+                    ? []
+                    : ["Medical Equipments"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Medical Equipments
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Medication") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Medication") ? [] : ["Medication"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Medication
+            </Button>
+          </div>
+        )}
+
+        {title === "Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Single Use") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Single Use") ? [] : ["Single Use"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Single Use
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("First Aid") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("First Aid") ? [] : ["First Aid"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              First Aid
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Tablets") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Tablets") ? [] : ["Tablets"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Tablets
+            </Button>
+          </div>
+        )}
+        {title === "Use" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={
+                selectedKeys.includes("Inject Medication")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Inject Medication")
+                    ? []
+                    : ["Inject Medication"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Inject Medication
+            </Button>
+
+            <Button
+              type={
+                selectedKeys.includes("Deliver Oral Medication")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Deliver Oral Medication")
+                    ? []
+                    : ["Deliver Oral Medication"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Deliver Oral Medication
+            </Button>
+
+            <Button
+              type={
+                selectedKeys.includes("Treat Minor Injuries")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Treat Minor Injuries")
+                    ? []
+                    : ["Treat Minor Injuries"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Treat Minor Injuries
+            </Button>
+          </div>
+        )}
+
         <Space>
           <Button
             type="primary"
@@ -117,28 +273,6 @@ const ListOfMedicalSupplies = () => {
             }}
           >
             Reset
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
-              setSearchText(selectedKeys[0]);
-              setSearchedColumn(dataIndex);
-            }}
-          >
-            Filter
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
           </Button>
         </Space>
       </div>
@@ -175,32 +309,16 @@ const ListOfMedicalSupplies = () => {
     setSortedInfo(sorter);
   };
 
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
-  const clearAll = () => {
-    setFilteredInfo({});
-    setSortedInfo({});
-  };
-
-  const setAgeSort = () => {
-    setSortedInfo({
-      order: "descend",
-      columnKey: "age",
-    });
-  };
-
-  const handleBackButtonClick = () => {
-    navigate("/Donor");
-  };
-
   const handleActionClick = (record) => {
     setSelectedRecord(record);
     setIsModalVisible(true);
   };
   const handleViewPictureClick = () => {
     setShowPicture(true);
+  };
+  const handleHidePictureClick = () => {
+    setShowPicture(false);
+    setIsModalVisible(false);
   };
 
   const handleDonate = (record) => {
@@ -228,23 +346,21 @@ const ListOfMedicalSupplies = () => {
   const columns = [
     {
       title: "Supplies",
-      dataIndex: "Supplies",
-      key: "Supplies",
-      ...getColumnSearchProps("Supplies"),
+      dataIndex: "supplies",
+      key: "supplies",
+      ...getColumnSearchProps("supplies", "Supplies"),
     },
     {
       title: "Type",
-      dataIndex: "Type",
-      key: "Type",
-      ...getColumnSearchProps("Type"),
-      //sorter: (a, b) => a.age - b.age,
-      //sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
+      dataIndex: "type",
+      key: "type",
+      ...getColumnSearchProps("type", "Type"),
     },
     {
       title: "Use",
-      dataIndex: "Use",
-      key: "Use",
-      ...getColumnSearchProps("Use"),
+      dataIndex: "use",
+      key: "use",
+      ...getColumnSearchProps("use", "Use"),
     },
     {
       title: "Fixed Quantity",
@@ -254,7 +370,7 @@ const ListOfMedicalSupplies = () => {
     {
       title: "Editable Quantity",
       key: "editableQuantity",
-      render: (text, record) => (
+      render: (_, record) => (
         <InputNumber
           min={0}
           max={record.quantity}
@@ -266,7 +382,7 @@ const ListOfMedicalSupplies = () => {
     {
       title: "Donate",
       key: "donate",
-      render: (text, record) => (
+      render: (_, record) => (
         <Button type="primary" onClick={() => handleDonate(record)}>
           Donate
         </Button>
@@ -275,7 +391,7 @@ const ListOfMedicalSupplies = () => {
     {
       title: "View",
       key: "details",
-      render: (text, record) => (
+      render: (_, record) => (
         <Button type="primary" onClick={() => handleActionClick(record)}>
           Details
         </Button>
@@ -297,21 +413,21 @@ const ListOfMedicalSupplies = () => {
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setIsModalVisible(false)}>
+          <Button key="close" onClick={handleHidePictureClick}>
             Close
           </Button>,
         ]}
       >
         {selectedRecord && (
           <div>
-            <p>Supplies: {selectedRecord.Supplies}</p>
-            <p>Type: {selectedRecord.Type}</p>
-            <p>Use: {selectedRecord.Use}</p>
+            <p>Supplies: {selectedRecord.supplies}</p>
+            <p>Type: {selectedRecord.type}</p>
+            <p>Use: {selectedRecord.use}</p>
             <p>Quantity: {selectedRecord.quantity}</p>
             {showPicture && (
               <img
-                src={selectedRecord.Picture}
-                alt={selectedRecord.Category}
+                src={selectedRecord.picture}
+                alt={selectedRecord.category}
                 style={{ width: 200 }}
               />
             )}

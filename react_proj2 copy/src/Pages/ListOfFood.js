@@ -106,6 +106,7 @@ const ListOfFood = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Fruits
             </Button>
@@ -118,6 +119,7 @@ const ListOfFood = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Vegtebales
             </Button>
@@ -132,6 +134,7 @@ const ListOfFood = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Canned Foods
             </Button>
@@ -145,6 +148,7 @@ const ListOfFood = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Canned Foods
             </Button>
@@ -158,6 +162,7 @@ const ListOfFood = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Fresh Meals
             </Button>
@@ -171,6 +176,7 @@ const ListOfFood = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Baked Goods
             </Button>

@@ -83,6 +83,33 @@ const ViewListOfClothReq = () => {
             display: "block",
           }}
         />
+
+        {title === "Item Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("T-Shirt") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("T-Shirt") ? [] : ["T-Shirt"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              T-Shirt
+            </Button>
+            <Button
+              type={selectedKeys.includes("Short") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Short") ? [] : ["Short"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Short
+            </Button>
+          </div>
+        )}
         {title === "Gender" && (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
@@ -91,6 +118,7 @@ const ViewListOfClothReq = () => {
                 setSelectedKeys(selectedKeys.includes("Male") ? [] : ["Male"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Male
             </Button>
@@ -102,6 +130,7 @@ const ViewListOfClothReq = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Female
             </Button>
@@ -117,6 +146,7 @@ const ViewListOfClothReq = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Summer
             </Button>
@@ -128,6 +158,7 @@ const ViewListOfClothReq = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Winter
             </Button>
@@ -240,19 +271,12 @@ const ViewListOfClothReq = () => {
       ...getColumnSearchProps("name", "Item Type"),
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
-      sorter: (a, b) => a.age - b.age,
-      sortOrder: sortedInfo.columnKey === "age" ? sortedInfo.order : null,
-      ...getColumnSearchProps("age", "Age"),
-    },
-    {
       title: "Gender",
       dataIndex: "gender",
       key: "gender",
       ...getColumnSearchProps("gender", "Gender"),
     },
+
     {
       title: "Season",
       dataIndex: "season",
@@ -260,9 +284,42 @@ const ViewListOfClothReq = () => {
       ...getColumnSearchProps("season", "Season"),
     },
     {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+      sorter: (a, b) => a.age - b.age,
+      sortOrder: sortedInfo.columnKey === "age" ? sortedInfo.order : null,
+    },
+    {
+      title: "Quantity Needed",
+      dataIndex: "quantity",
+      key: "quantity",
+    },
+    {
+      title: "Quantity Donated",
+      key: "editableQuantity",
+      render: (_, record) => (
+        <InputNumber
+          min={0}
+          max={record.quantity}
+          defaultValue={0}
+          onChange={(value) => handleQuantityChange(record, value)}
+        />
+      ),
+    },
+    {
+      title: "Donate",
+      key: "donate",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleDonate(record)}>
+          Donate
+        </Button>
+      ),
+    },
+    {
       title: "View",
       key: "details",
-      render: (text, record) => (
+      render: (_, record) => (
         <Button type="primary" onClick={() => handleActionClick(record)}>
           Details
         </Button>
@@ -286,32 +343,6 @@ const ViewListOfClothReq = () => {
       dataIndex: "requestedQuantity",
       key: "requestedQuantity",
       visible: false,
-    },
-    {
-      title: "Quantity Needed",
-      dataIndex: "quantity",
-      key: "quantity",
-    },
-    {
-      title: "Quantity Donated",
-      key: "editableQuantity",
-      render: (text, record) => (
-        <InputNumber
-          min={0}
-          max={record.quantity}
-          defaultValue={0}
-          onChange={(value) => handleQuantityChange(record, value)}
-        />
-      ),
-    },
-    {
-      title: "Donate",
-      key: "donate",
-      render: (text, record) => (
-        <Button type="primary" onClick={() => handleDonate(record)}>
-          Donate
-        </Button>
-      ),
     },
   ];
 

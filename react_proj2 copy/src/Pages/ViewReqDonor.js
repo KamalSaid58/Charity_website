@@ -21,7 +21,7 @@ const ViewReqDonor = () => {
     setSearchText("");
   };
 
-  const getColumnSearchProps = (dataIndex) => ({
+  const getColumnSearchProps = (dataIndex, title) => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -48,6 +48,95 @@ const ViewReqDonor = () => {
             display: "block",
           }}
         />
+        {title === "Category" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Clothes") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Clothes") ? [] : ["Clothes"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Clothes
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Toys") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Toys") ? [] : ["Toys"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Toys
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Food") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Food") ? [] : ["Food"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Food
+            </Button>
+            <Button
+              type={
+                selectedKeys.includes("Medical Supplies")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Medical Supplies")
+                    ? []
+                    : ["Medical Supplies"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Medical Supplies
+            </Button>
+            <Button
+              type={
+                selectedKeys.includes("Blood Supplies") ? "primary" : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Blood Supplies")
+                    ? []
+                    : ["Blood Supplies"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Blood Supplies
+            </Button>
+            <Button
+              type={
+                selectedKeys.includes("School Supplies") ? "primary" : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("School Supplies")
+                    ? []
+                    : ["School Supplies"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              School Supplies
+            </Button>
+          </div>
+        )}
+
         <Space>
           <Button
             type="primary"
@@ -68,28 +157,6 @@ const ViewReqDonor = () => {
             }}
           >
             Reset
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
-              setSearchText(selectedKeys[0]);
-              setSearchedColumn(dataIndex);
-            }}
-          >
-            Filter
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
           </Button>
         </Space>
       </div>
@@ -180,14 +247,14 @@ const ViewReqDonor = () => {
       title: "Category",
       dataIndex: "category",
       key: "category",
-      ...getColumnSearchProps("category"),
+      ...getColumnSearchProps("category", "Category"),
     },
 
     {
       title: "Item Name",
       dataIndex: "ItemN",
       key: "ItemN",
-      ...getColumnSearchProps("address"),
+      ...getColumnSearchProps("ItemN", "Item Name"),
     },
     {
       title: "Items Quantity",
@@ -196,10 +263,6 @@ const ViewReqDonor = () => {
       sorter: (a, b) => a.item - b.item,
     },
   ];
-
-  const handleBackButtonClick = () => {
-    navigate("/Donor"); // Assuming "/" is the path to navigate back
-  };
 
   return (
     <div className="container">

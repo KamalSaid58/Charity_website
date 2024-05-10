@@ -104,6 +104,7 @@ const ListOfToys = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Board Games
             </Button>
@@ -114,6 +115,7 @@ const ListOfToys = () => {
                 setSelectedKeys(selectedKeys.includes("Dolls") ? [] : ["Dolls"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Dolls
             </Button>
@@ -124,6 +126,7 @@ const ListOfToys = () => {
                 setSelectedKeys(selectedKeys.includes("Cars") ? [] : ["Cars"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Cars
             </Button>
@@ -137,6 +140,7 @@ const ListOfToys = () => {
                 setSelectedKeys(selectedKeys.includes("Male") ? [] : ["Male"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Male
             </Button>
@@ -149,6 +153,7 @@ const ListOfToys = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Female
             </Button>
@@ -210,32 +215,17 @@ const ListOfToys = () => {
     setSortedInfo(sorter);
   };
 
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
-  const clearAll = () => {
-    setFilteredInfo({});
-    setSortedInfo({});
-  };
-
-  const setAgeSort = () => {
-    setSortedInfo({
-      order: "descend",
-      columnKey: "age",
-    });
-  };
-
-  const handleBackButtonClick = () => {
-    navigate("/Donor");
-  };
-
   const handleActionClick = (record) => {
     setSelectedRecord(record);
     setIsModalVisible(true);
   };
   const handleViewPictureClick = () => {
     setShowPicture(true);
+  };
+
+  const handleHidePictureClick = () => {
+    setShowPicture(false);
+    setIsModalVisible(false);
   };
 
   const handleDonate = (record) => {
@@ -333,7 +323,7 @@ const ListOfToys = () => {
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setIsModalVisible(false)}>
+          <Button key="close" onClick={handleHidePictureClick}>
             Close
           </Button>,
         ]}
@@ -354,6 +344,7 @@ const ListOfToys = () => {
             )}
           </div>
         )}
+        <Button onClick={handleViewPictureClick}>View Picture</Button>
       </Modal>
       ;
     </div>

@@ -71,6 +71,7 @@ const TeachingPosts = () => {
                 setSelectedKeys(selectedKeys.includes("Math") ? [] : ["Math"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Math
             </Button>
@@ -82,6 +83,7 @@ const TeachingPosts = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Physics
             </Button>
@@ -93,6 +95,7 @@ const TeachingPosts = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Chemistry
             </Button>
@@ -108,6 +111,7 @@ const TeachingPosts = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Tagamo3
             </Button>
@@ -117,6 +121,7 @@ const TeachingPosts = () => {
                 setSelectedKeys(selectedKeys.includes("Obour") ? [] : ["Obour"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Obour
             </Button>
@@ -132,6 +137,7 @@ const TeachingPosts = () => {
                 )
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Bani Suef
             </Button>
@@ -142,6 +148,7 @@ const TeachingPosts = () => {
                 setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
               }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Cairo
             </Button>

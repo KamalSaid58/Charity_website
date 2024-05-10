@@ -47,16 +47,6 @@ const OrganList = () => {
       OrganType: "Orphanage",
       OrganAddress: "Fifth settlement",
     },
-    {
-      key: "4",
-      RepName: "Maha Farouk",
-      RepGender: "Female",
-      RepEmail: "@maha.farouk",
-      RepNumber: "01024355931",
-      OrganName: "WafaaCancer",
-      OrganType: "Cancer",
-      OrganAddress: "Ewesna,Kafr abo elhasan",
-    },
   ];
 
   const [dataSource, setDataSource] = useState(originalDataSource);
@@ -201,7 +191,7 @@ const OrganList = () => {
     }
   };
 
-  const getColumnSearchProps = (dataIndex) => ({
+  const getColumnSearchProps = (dataIndex, title) => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -228,6 +218,144 @@ const OrganList = () => {
             display: "block",
           }}
         />
+
+        {title === "Name" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={
+                selectedKeys.includes("KamalClothes") ? "primary" : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("KamalClothes") ? [] : ["KamalClothes"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              KamalClothes
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("WafaaFire") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("WafaaFire") ? [] : ["WafaaFire"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              WafaaFire
+            </Button>
+
+            <Button
+              type={
+                selectedKeys.includes("SaidOrphanage") ? "primary" : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("SaidOrphanage")
+                    ? []
+                    : ["SaidOrphanage"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              SaidOrphanage
+            </Button>
+          </div>
+        )}
+        {title === "Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Clothes") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Clothes") ? [] : ["Clothes"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Clothes
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Fire heal") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Fire heal") ? [] : ["Fire heal"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Fire heal
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Orphanage") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Orphanage") ? [] : ["Orphanage"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Orphanage
+            </Button>
+          </div>
+        )}
+
+        {title === "Address" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Cairo") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Cairo
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Alexandria") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Alexandria") ? [] : ["Alexandria"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Alexandria
+            </Button>
+
+            <Button
+              type={
+                selectedKeys.includes("Fifth settlement")
+                  ? "primary"
+                  : "default"
+              }
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Fifth settlement")
+                    ? []
+                    : ["Fifth settlement"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Fifth settlement
+            </Button>
+          </div>
+        )}
         <Space>
           <Button
             type="primary"
@@ -248,28 +376,6 @@ const OrganList = () => {
             }}
           >
             Reset
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
-              setSearchText(selectedKeys[0]);
-              setSearchedColumn(dataIndex);
-            }}
-          >
-            Filter
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              close();
-            }}
-          >
-            close
           </Button>
         </Space>
       </div>
@@ -325,19 +431,19 @@ const OrganList = () => {
       title: "Name",
       dataIndex: "OrganName",
       key: "OrganName",
-      ...getColumnSearchProps("OrganName"),
+      ...getColumnSearchProps("OrganName", "Name"),
     },
     {
       title: "Type",
       dataIndex: "OrganType",
       key: "OrganType",
-      ...getColumnSearchProps("OrganType"),
+      ...getColumnSearchProps("OrganType", "Type"),
     },
     {
       title: "Address",
       dataIndex: "OrganAddress",
       key: "OrganAddress",
-      ...getColumnSearchProps("OrganAddress"),
+      ...getColumnSearchProps("OrganAddress", "Address"),
     },
 
     {
@@ -388,7 +494,7 @@ const OrganList = () => {
 
   return (
     <div className="container">
-      <h2>Organizations</h2>
+      <h2>Organizations Requests</h2>
       <Table columns={columns} dataSource={dataSource} />
       <Modal
         title="Details"
@@ -412,23 +518,13 @@ const OrganList = () => {
           </div>
         )}
       </Modal>
-      <button
-        type="button"
-        className="btn btn-lg mb-4 text-white"
-        style={{ background: "#9F8C76" }}
-        onClick={handleBackButtonClick}
-      >
-        Back
-      </button>
-      <button
-        type="button"
-        className="btn btn-lg mb-4 text-white"
-        style={{ background: "#9F8C76" }}
+      <Button
+        type="primary"
         onClick={handleDownload}
         disabled={selectedRowKeys.length === 0}
       >
         Download
-      </button>
+      </Button>
     </div>
   );
 };
