@@ -28,6 +28,7 @@ import styles from "./Donor.css";
 import charityImage from "./donorCarousel/charityimage.jpg";
 import maadiImage from "./donorCarousel/maadi.jpg";
 import omeldonia from "./donorCarousel/omeldonia.jpg";
+import Toolbar from "react-multi-date-picker/plugins/toolbar";
 
 const { Text, Link } = Typography;
 
@@ -189,12 +190,30 @@ const UpcomingDeliveries = () => {
     </div>
   );
 };
+const ChooseDate = () => {
+  const today = new Date();
+  const [values, setValues] = useState([]);
+  const datePickerRef = useRef(null);
+
+  const handleExit = () => {
+    // Perform any action you want on exiting the calendar
+    // For example, you can close the calendar here
+    if (datePickerRef.current) {
+      datePickerRef.current.hideCalendar();
+    }
+  };
+  return (
+    <DatePicker
+      minDate={today}
+      multiple
+      value={values}
+      onChange={setValues}
+      plugins={[<Toolbar position="bottom" />]}
+    />
+  );
+};
 
 const DashboardButtons = () => {
-  const ChooseDate = () => {
-    return <DatePicker multiple value={values} onChange={setValues} />;
-  };
-
   const ChooseTime = () => {
     return <TimePicker.RangePicker use12Hours format="h a" />;
   };
@@ -219,8 +238,6 @@ const DashboardButtons = () => {
 
   const [deliveryDrawer, setDeliveryDrawer] = useState(false);
 
-  const [values, setValues] = useState();
-
   const [api, contextHolder] = notification.useNotification();
   const updatedDelivery = () => {
     api["success"]({
@@ -229,6 +246,7 @@ const DashboardButtons = () => {
         "All pending donation requests will now be planned around these dates.",
       placement: "top",
     });
+    onClose();
   };
 
   const showDeliveryDrawer = () => {
