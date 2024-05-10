@@ -45,13 +45,13 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             theme="dark"
             mode="inline"
             defaultSelectedKeys={['1']}
-            style={{ borderRight: 0, fontSize: '20px' }}
+            style={{ borderRight: 0, fontSize: '15px' }}
           >
             <Menu.Item key="1" icon={<UserOutlined />}>
               <Link to="/ViewListOfClothReq" style={{ textDecoration: 'none' }}>Clothes</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<ShoppingOutlined />}>
-              <Link to="/toys" style={{ textDecoration: 'none' }}>Toys</Link>
+              <Link to="/ListOfToys" style={{ textDecoration: 'none' }}>Toys</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<CoffeeOutlined />}>
               <Link to="/food" style={{ textDecoration: 'none' }}>Food</Link>
