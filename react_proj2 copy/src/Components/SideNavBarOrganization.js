@@ -7,17 +7,11 @@ import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UserOutlined,
   ShoppingOutlined,
-  CoffeeOutlined,
-  MedicineBoxOutlined,
-  BookOutlined,
-  HeartOutlined,
   DollarCircleOutlined,
 } from "@ant-design/icons";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
-import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
@@ -29,13 +23,7 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
   const handleButtonClick = (page) => {
     setCurrentPage(page);
   };
-  const [currentPage, setCurrentPage] = useState("Donor");
-
-  // Define the handleCategorySelect function
-  const handleCategorySelect = (categoryName) => {
-    console.log(`Selected category: ${categoryName}`);
-    // Add your logic for handling the selected category here
-  };
+  const [currentPage, setCurrentPage] = useState(undefined);
 
   return (
     <div style={{ height: "100vh" }}>

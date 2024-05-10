@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
+import Admin from "../Pages/Admin";
 import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
@@ -23,7 +24,7 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
   const handleButtonClick = (page) => {
     setCurrentPage(page);
   };
-  const [currentPage, setCurrentPage] = useState("Donor");
+  const [currentPage, setCurrentPage] = useState("Admin");
 
   return (
     <div style={{ height: "100vh" }}>
@@ -118,6 +119,8 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
 
           <Content>
             <div>
+              {currentPage === "Admin" && <Admin />}
+
               {currentPage === "ViewOrganizationAdmin" && (
                 <ViewOrganizationAdmin />
               )}
