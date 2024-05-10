@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaUser } from "react-icons/fa"; // Import the user icon from Font Awesome
-import "./NavigationBar.css"; // Import CSS file for styling
+import "./AdminNavBar.css"; // Import CSS file for styling
 
-const NavigationBar = () => {
+const AdminNavBar = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   // Function to toggle the visibility of the dropdown menu
@@ -59,4 +59,4 @@ const NavigationBar = () => {
   );
 };
 
-export default NavigationBar;
+export default AdminNavBar;

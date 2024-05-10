@@ -38,6 +38,8 @@ import SideNavBarAdmin from "./Components/SideNavBarAdmin.js";
 import SideNavBarOrganization from "./Components/SideNavBarOrganization.js";
 import SideNavBarDoctor from "./Components/SideNavBarDoctor.js";
 import SideNavBarTeacher from "./Components/SideNavBarTeacher.js";
+import AccountSettings from "./Pages/AccountSettings.js";
+
 // Make sure to import StartPage
 
 function App() {
@@ -88,11 +90,9 @@ function App() {
                 path="/UpdateDeliveryTime"
                 element={<UpdateDeliveryTime />}
               />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/" element={<StartPage />} />
               <Route path="/ContactUs" element={<ContactUs />} />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/" element={<StartPage />} />
               <Route path="/ListOfToys" element={<ListOfToys />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />
               <Route
@@ -111,9 +111,6 @@ function App() {
                 path="/ListOfMedicalSupplies"
                 element={<ListOfMedicalSupplies />}
               />
-              {/* <Route path="/TeachingPosts" element={<TeachingPosts />} />
-              <Route path="/MedicalCases" element={<MedicalCases />} /> */}
-              {/* <Route path="/Organ" element={<Organ />} /> */}
               <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
               <Route path="/SideNavBarDoctor" element={<SideNavBarDoctor />} />
               <Route
@@ -127,6 +124,7 @@ function App() {
                 path="/SideNavBarOrganization"
                 element={<SideNavBarOrganization />}
               />
+              <Route path="/AccountSettings" element={<AccountSettings />} />
             </Routes>
           </div>
         </div>
