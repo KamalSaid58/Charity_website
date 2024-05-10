@@ -15,6 +15,10 @@ import {
   Table,
   Timeline,
   ConfigProvider,
+  Drawer,
+  Calendar,
+  TimePicker,
+  Select,
 } from "antd";
 import { HeartTwoTone } from "@ant-design/icons";
 import styles from "./Donor.css";
@@ -184,10 +188,53 @@ const UpcomingDeliveries = () => {
 };
 
 const DashboardButtons = () => {
+  const [deliveryDrawer, setDeliveryDrawer] = useState(false);
+
+  const showDeliveryDrawer = () => {
+    setDeliveryDrawer(true);
+  };
+
+  const onClose = () => {
+    setDeliveryDrawer(false);
+  };
+
   return (
     <Flex justify="space-between" align="center">
       <Button>Donate Now!</Button>
-      <Button>Update Delivery Location</Button>
+      <Button onClick={showDeliveryDrawer}>Update Delivery Location</Button>
+      <Drawer
+        title="Delivery Details "
+        onClose={onClose}
+        open={deliveryDrawer}
+        style={{ backgroundColor: "white" }}
+      >
+        <Flex vertical gap="small">
+          <Text style={{ color: "black" }}>
+            Select the days you are going to be available
+          </Text>
+          <Calendar fullscreen={false} />
+
+          <Text style={{ color: "black" }}>
+            Select the hours you will be available for these days
+          </Text>
+          <TimePicker.RangePicker use12Hours format="h a" />
+
+          <Text style={{ colo: "black" }}>Choose a pickup method</Text>
+          <Select type="text" className="defaultValue" style={{ width: 135 }}>
+            <Select.Option key="motorcycle" value="motorcycle">
+              Motorcycle
+            </Select.Option>
+
+            <Select.Option key="car" value="car">
+              Car
+            </Select.Option>
+
+            <Select.Option key="truck" value="truck">
+              Truck
+            </Select.Option>
+          </Select>
+        </Flex>
+      </Drawer>
     </Flex>
   );
 };
