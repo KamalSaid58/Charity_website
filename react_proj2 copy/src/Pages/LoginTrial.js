@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { notification } from "antd";
 import "./LoginTrial.css";
-
+import RegisterDonor from "./RegisterDonor";
 function LoginTrial() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -41,9 +42,26 @@ function LoginTrial() {
   const handleBack = () => {
     navigate("/Options"); // Redirect to the home page ("/")
   };
+  const location = useLocation();
+  const { state } = location;
+  const [api, contextHolder] = notification.useNotification();
 
+  const successNotification = () => {
+    api.success({
+      message: "Register successful!",
+      description: "Use your email and password to login",
+      placement: "top",
+      duration: 3,
+    });
+  };
+  useEffect(() => {
+    if (state && state.Register) {
+      successNotification();
+    }
+  }, [state]);
   return (
     <div className="login-container">
+      {contextHolder}
       <div className="login-content">
         <h2 className="login-title">Welcome Back!</h2>
         <div className="form-group">
