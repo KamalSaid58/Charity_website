@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
+  Tag,
+  Space,
   Divider,
   Typography,
   Carousel,
@@ -10,6 +12,9 @@ import {
   Row,
   Col,
   Image,
+  Table,
+  Timeline,
+  ConfigProvider,
 } from "antd";
 import { HeartTwoTone } from "@ant-design/icons";
 import styles from "./Donor.css";
@@ -90,52 +95,99 @@ const OrganizationsCarousel = () => {
 
 const NewDonationPosts = () => {
   return (
-    <Flex
-      vertical
-      justify="flex-start"
-      align="flex-start"
-      style={{ height: 180 }}
+    <ConfigProvider
+      theme={{
+        token: {
+          fontSize: 20,
+        },
+      }}
     >
-      {/* spin={true} */}
-      <Flex gap="5px" align="start">
-        <HeartTwoTone twoToneColor="#eb2f96" style={{ marginTop: 5 }} />
-        <h4>Donation Posts</h4>
+      <Flex vertical align="flex-start" gap="small">
+        <h1>Donation Posts</h1>
+        <Timeline
+          items={[
+            {
+              children: "Fein Aboya Orphanage created a post asking for food",
+            },
+            {
+              children: "I am looking for medication",
+            },
+            {
+              children: "teeeeeeeeeeeeeeeeeeeeeeeeexttt",
+            },
+            {
+              children: "ttttttttttttttttttttttttttttttttttttttttttttttttttttt",
+            },
+          ]}
+        />
       </Flex>
-      <h4>Organization 1 has posted x</h4>
-      <h4>Organization 2 has posted y</h4>
-    </Flex>
+    </ConfigProvider>
   );
 };
 
 const UpcomingDeliveries = () => {
-  return (
-    <Flex vertical>
-      <Flex gap="5px" align="start">
-        <HeartTwoTone twoToneColor="#eb2f96" style={{ marginTop: 5 }} />
-        <h4>Deliveries</h4>
-      </Flex>
-      <Flex gap="5px" align="start">
-        bullet point: Mostafa is on his way to pick up your donation of clothes
-        in 30 minutes at location x.
-      </Flex>
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Time",
+      dataIndex: "time",
+      key: "time",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+    },
 
-      <Flex gap="5px" align="start">
-        bullet point: Mostafa is coming up to pick up your donation of
-        medication at 20/20/2025 at location y.
-      </Flex>
-    </Flex>
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Space size="middle">
+          <a>Contact {record.name}</a>
+          <a>Cancel</a>
+        </Space>
+      ),
+    },
+  ];
+  const data = [
+    {
+      key: "1",
+      time: "30 minutes",
+      name: "Mo3tasm",
+      address: "Ta7t beitak",
+    },
+    {
+      key: "2",
+      time: "20/20/2024",
+      name: "Ana",
+      address: "Ta7t beitak",
+    },
+    {
+      key: "3",
+      time: "20/20/2024",
+      name: "aaaaaaaaaaa",
+      address: "Ta7t beitak",
+    },
+  ];
+  return (
+    <div>
+      <h1 align="left">Upcoming Deliveries</h1>
+      <Table columns={columns} dataSource={data} />
+    </div>
   );
 };
 
 const DashboardButtons = () => {
   return (
-    <Flex>
-      <Flex justify="flex-start">
-        <Button>Donate Now!</Button>
-      </Flex>
-      <Flex justify="flex-end">
-        <Button>Update Delivery Location</Button>
-      </Flex>
+    <Flex justify="space-between" align="center">
+      <Button>Donate Now!</Button>
+      <Button>Update Delivery Location</Button>
     </Flex>
   );
 };
@@ -148,7 +200,7 @@ function Donor() {
       style={{
         maxWidth: "100%",
         overflowX: "auto",
-        backgroundColor: "lightblue",
+        // backgroundColor: "lightblue",
       }}
     >
       <Card
@@ -158,6 +210,7 @@ function Donor() {
           minHeight: 800,
           marginTop: 30,
           marginLeft: 30,
+          // backgroundColor: "lightblue",
         }}
       >
         {OrganizationsCarousel()}
