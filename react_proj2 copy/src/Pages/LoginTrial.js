@@ -41,7 +41,7 @@ function LoginTrial() {
           break;
 
         default:
-          navigate("/");
+          alert("Wrong username or password");
       }
     }
   };
