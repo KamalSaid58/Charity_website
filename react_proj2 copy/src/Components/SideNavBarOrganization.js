@@ -1,20 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import VerticalBarDemo from "./VerticalBarDemo";
-import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import Container, Row, Col, Card from react-bootstrap
-import Donation from "../Donation.jpeg";
-import "./SideNavBarDonor.css"; // Import the CSS file
-import ViewOrganizationDonor from "../Pages/ViewOrganizationDonor";
-import SchoolSupp from "../Pages/SchoolSupp";
-import Donor from "../Pages/Donor";
-import ViewListOfClothReq from "../Pages/ViewListOfClothReq";
-import { DollarCircleOutlined } from "@ant-design/icons";
-import ViewReqDon from "../Pages/ViewReqDonor";
-import ListOfFood from "../Pages/ListOfFood";
-import ListofBloodDonation from "../Pages/ListofBloodDonation";
-import ListOfToys from "../Pages/ListOfToys";
-import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
-
+import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
+import OrganList from "../Pages/OrganList";
+import DonorList from "../Pages/DonorList";
 import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
@@ -25,14 +13,14 @@ import {
   MedicineBoxOutlined,
   BookOutlined,
   HeartOutlined,
+  DollarCircleOutlined,
 } from "@ant-design/icons";
-import CategorySelection from "./CategorySelection";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
-import PieChartDemo from "./PieChartDemo";
+import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
-const SideNavBarDonor = ({ defaultCollapsed = true }) => {
+const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
   // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
@@ -75,59 +63,24 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
-              onClick={() => handleButtonClick("ViewReqDon")}
+              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
               icon={<DollarCircleOutlined />}
             >
-              Donations Lists {/* Changed the icon here */}
+              Registered Organizations
             </Menu.Item>
             <Menu.Item
               key="2"
-              onClick={() => handleButtonClick("ViewListOfClothReq")}
+              onClick={() => handleButtonClick("OrganList")}
               icon={<ShoppingCartOutlined />}
             >
-              Clothes {/* Changed the icon here */}
+              Organization Submissions
             </Menu.Item>
             <Menu.Item
               key="3"
-              onClick={() => handleButtonClick("ListOfToys")}
+              onClick={() => handleButtonClick("DonorList")}
               icon={<ShoppingOutlined />}
             >
-              Toys
-            </Menu.Item>
-            <Menu.Item
-              key="4"
-              onClick={() => handleButtonClick("ListOfFood")}
-              icon={<CoffeeOutlined />}
-            >
-              Food
-            </Menu.Item>
-            <Menu.Item
-              key="5"
-              onClick={() => handleButtonClick("ViewOrganizationDonor")}
-              icon={<UserOutlined />}
-            >
-              Organizations
-            </Menu.Item>
-            <Menu.Item
-              key="6"
-              onClick={() => handleButtonClick("SchoolSupp")}
-              icon={<BookOutlined />}
-            >
-              School Supplies
-            </Menu.Item>
-            <Menu.Item
-              key="7"
-              onClick={() => handleButtonClick("ListofBloodDonation")}
-              icon={<HeartOutlined />}
-            >
-              Blood Donations
-            </Menu.Item>
-            <Menu.Item
-              key="8"
-              onClick={() => handleButtonClick("ListOfMedicalSupplies")}
-              icon={<MedicineBoxOutlined />}
-            >
-              Medical Supplies
+              Donor Submissions
             </Menu.Item>
           </Menu>
         </Sider>
@@ -177,19 +130,11 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
 
           <Content>
             <div>
-              {currentPage === "Donor" && <Donor />}
-              {currentPage === "ViewReqDon" && <ViewReqDon />}
-              {currentPage === "ViewOrganizationDonor" && (
-                <ViewOrganizationDonor />
+              {currentPage === "ViewOrganizationAdmin" && (
+                <ViewOrganizationAdmin />
               )}
-              {currentPage === "ViewListOfClothReq" && <ViewListOfClothReq />}
-              {currentPage === "ListOfFood" && <ListOfFood />}
-              {currentPage === "ListOfToys" && <ListOfToys />}
-              {currentPage === "SchoolSupp" && <SchoolSupp />}
-              {currentPage === "ListofBloodDonation" && <ListofBloodDonation />}
-              {currentPage === "ListOfMedicalSupplies" && (
-                <ListOfMedicalSupplies />
-              )}
+              {currentPage === "OrganList" && <OrganList />}
+              {currentPage === "DonorList" && <DonorList />}
             </div>
           </Content>
         </Layout>
@@ -198,4 +143,4 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
   );
 };
 
-export default SideNavBarDonor;
+export default SideNavBarOrganization;

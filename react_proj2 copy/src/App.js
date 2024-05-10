@@ -34,6 +34,7 @@ import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin.js";
 import TeachingPosts from "./Pages/TeachingPosts.js";
 import MedicalCases from "./Pages/MedicalCases.js";
 import ListofBloodDonation from "./Pages/ListofBloodDonation.js";
+import SideNavBarAdmin from "./Components/SideNavBarAdmin.js";
 
 // Make sure to import StartPage
 
@@ -114,6 +115,7 @@ function App() {
               <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
               <Route path="/" element={<StartPage />} />{" "}
               {/* Include the StartPage route */}
+              <Route path="/SideNavBarAdmin" element={<SideNavBarAdmin />} />
             </Routes>
           </div>
         </div>
