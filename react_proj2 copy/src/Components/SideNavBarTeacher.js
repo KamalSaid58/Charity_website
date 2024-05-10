@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import VerticalBarDemo from "./VerticalBarDemo";
-import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import Container, Row, Col, Card from react-bootstrap
-import Donation from "../Donation.jpeg";
 import "./SideNavBarDonor.css"; // Import the CSS file
 import ViewOrganizationDonor from "../Pages/ViewOrganizationDonor";
 import SchoolSupp from "../Pages/SchoolSupp";
@@ -14,6 +11,7 @@ import ListOfFood from "../Pages/ListOfFood";
 import ListofBloodDonation from "../Pages/ListofBloodDonation";
 import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
+import TeachingPosts from "../Pages/TeachingPosts";
 
 import {
   ShoppingCartOutlined,
@@ -25,14 +23,13 @@ import {
   MedicineBoxOutlined,
   BookOutlined,
   HeartOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
-import CategorySelection from "./CategorySelection";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
-import PieChartDemo from "./PieChartDemo";
 const { Header, Sider, Content } = Layout;
 
-const SideNavBarDonor = ({ defaultCollapsed = true }) => {
+const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
   // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
@@ -123,7 +120,13 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             >
               Medical Supplies
             </Menu.Item>
-            MedicalCases
+            <Menu.Item
+              key="9"
+              onClick={() => handleButtonClick("TeachingPosts")}
+              icon={<TeamOutlined />}
+            >
+              Teaching Posts
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout
@@ -185,6 +188,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />
               )}
+              {currentPage === "TeachingPosts" && <TeachingPosts />}
             </div>
           </Content>
         </Layout>
@@ -193,4 +197,4 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
   );
 };
 
-export default SideNavBarDonor;
+export default SideNavBarTeacher;

@@ -36,6 +36,8 @@ import MedicalCases from "./Pages/MedicalCases.js";
 import ListofBloodDonation from "./Pages/ListofBloodDonation.js";
 import SideNavBarAdmin from "./Components/SideNavBarAdmin.js";
 import SideNavBarOrganization from "./Components/SideNavBarOrganization.js";
+import SideNavBarDoctor from "./Components/SideNavBarDoctor.js";
+import SideNavBarTeacher from "./Components/SideNavBarTeacher.js";
 // Make sure to import StartPage
 
 function App() {
@@ -113,6 +115,11 @@ function App() {
               <Route path="/MedicalCases" element={<MedicalCases />} /> */}
               {/* <Route path="/Organ" element={<Organ />} /> */}
               <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
+              <Route path="/SideNavBarDoctor" element={<SideNavBarDoctor />} />
+              <Route
+                path="/SideNavBarTeacher"
+                element={<SideNavBarTeacher />}
+              />
               <Route path="/" element={<StartPage />} />{" "}
               {/* Include the StartPage route */}
               <Route path="/SideNavBarAdmin" element={<SideNavBarAdmin />} />

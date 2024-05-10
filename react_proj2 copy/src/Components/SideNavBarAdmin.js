@@ -5,11 +5,11 @@ import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
 import Admin from "../Pages/Admin";
 import {
-  ShoppingCartOutlined,
+  ProfileOutlined,
+  UserOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  ShoppingOutlined,
-  DollarCircleOutlined,
+  BankOutlined,
 } from "@ant-design/icons";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
@@ -53,23 +53,23 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
             <Menu.Item
               key="1"
               onClick={() => handleButtonClick("ViewOrganizationAdmin")}
-              icon={<DollarCircleOutlined />}
+              icon={<BankOutlined />}
             >
-              Registered Organizations
+              Organizations
             </Menu.Item>
             <Menu.Item
               key="2"
               onClick={() => handleButtonClick("OrganList")}
-              icon={<ShoppingCartOutlined />}
+              icon={<ProfileOutlined />}
             >
-              Organization Submissions
+              Pending Organizations
             </Menu.Item>
             <Menu.Item
               key="3"
               onClick={() => handleButtonClick("DonorList")}
-              icon={<ShoppingOutlined />}
+              icon={<UserOutlined />}
             >
-              Donor Submissions
+              Pending Donors
             </Menu.Item>
           </Menu>
         </Sider>
@@ -107,7 +107,7 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "black")}
               />
               <Link
-                to="/donor" // Link to 'Donor' page
+                onClick={() => setCurrentPage("Admin")}
                 className="title"
                 style={{ cursor: "pointer", textDecoration: "none" }} // Change cursor to pointer on hover
               >

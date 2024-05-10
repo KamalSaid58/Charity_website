@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
+import Organ from "../Pages/Organ";
 import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
@@ -15,7 +16,6 @@ import { Button, Layout, Menu, theme } from "antd";
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
-  // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -23,7 +23,7 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
   const handleButtonClick = (page) => {
     setCurrentPage(page);
   };
-  const [currentPage, setCurrentPage] = useState(undefined);
+  const [currentPage, setCurrentPage] = useState("Organ");
 
   return (
     <div style={{ height: "100vh" }}>
@@ -106,7 +106,7 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "black")}
               />
               <Link
-                to="/donor" // Link to 'Donor' page
+                onClick={() => setCurrentPage("Organ")}
                 className="title"
                 style={{ cursor: "pointer", textDecoration: "none" }} // Change cursor to pointer on hover
               >
@@ -118,6 +118,7 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
 
           <Content>
             <div>
+              {currentPage === "Organ" && <Organ />}{" "}
               {currentPage === "ViewOrganizationAdmin" && (
                 <ViewOrganizationAdmin />
               )}
