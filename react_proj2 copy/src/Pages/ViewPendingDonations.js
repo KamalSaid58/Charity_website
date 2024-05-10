@@ -1,48 +1,102 @@
-import React, { useRef, useState } from 'react';
-import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table } from 'antd';
-import Highlighter from 'react-highlight-words';
-const data = [
+import React, { useRef, useState } from "react";
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Space, Table } from "antd";
+import Highlighter from "react-highlight-words";
+const columns = [
   {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
+    title: "Organization Name",
+    dataIndex: "name",
+    key: "name",
   },
   {
-    key: '2',
-    name: 'Joe Black',
-    age: 42,
-    address: 'London No. 1 Lake Park',
+    title: "Organization Type",
+    dataIndex: "type",
+    key: "type",
   },
   {
-    key: '3',
-    name: 'Jim Green',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
+    title: "Governate",
+    dataIndex: "governate",
+    key: "governate",
   },
   {
-    key: '4',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
+    title: "Area",
+    dataIndex: "area",
+    key: "area",
   },
 ];
-const ViewPendingDonations = () => {
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+const data = [
+  {
+    key: 1,
+    name: "Kolo 5eer",
+    type: "Charity",
+    governate: "Cairo",
+    area: "Maadi",
+    description: "Address: x \n Place: y \n Location: z \n Pin: k",
+  },
+  {
+    key: 2,
+    name: "Feeha 5eer",
+    type: "Charity",
+    governate: "Cairo",
+    area: "Tagamo3",
+    description: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  },
+  {
+    key: 3,
+    name: "Fein Aboya",
+    type: "Orphanage",
+    governate: "Cairo",
+    area: "Maadi",
+    description: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  },
+  {
+    key: 4,
+    name: "A7san 5eer",
+    type: "Charity",
+    governate: "Bani Suef",
+    area: "Kobry",
+    description: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  },
+  {
+    key: 5,
+    name: "Abo kamal",
+    type: "Hospital",
+    governate: "Cairo",
+    area: "Tagamo3",
+    description: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  },
+];
+
+const filterArea = [...new Set(data.map((item) => item.area))];
+const filterGov = [...new Set(data.map((item) => item.governorate))];
+const filterType = [...new Set(data.map((item) => item.type))];
+
+const ViewOrganizationDonor = () => {
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
-  const handleReset = (clearFilters) => {
-    clearFilters();
-    setSearchText('');
+  const clearFilters = () => {
+    setFilteredInfo({});
+    setSearchText("");
   };
-  const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+  const handleReset = (clearFilters) => {
+    setSearchText("");
+  };
+
+  // search
+  const getColumnSearchProps = (dataIndex, title) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -53,13 +107,122 @@ const ViewPendingDonations = () => {
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
+        {title === "Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Charity") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Charity") ? [] : ["Charity"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Charity
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Hospital") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Hospital") ? [] : ["Hospital"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Hospital
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Orphanage") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Orphanage") ? [] : ["Orphanage"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Orphanage
+            </Button>
+          </div>
+        )}
+        {title === "Governate" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Bani Suef") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Bani Suef") ? [] : ["Bani Suef"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Bani Suef
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Cairo") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Cairo
+            </Button>
+          </div>
+        )}
+
+        {title === "Area" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Tagamo3") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Tagamo3") ? [] : ["Tagamo3"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Tagamo3
+            </Button>
+            <Button
+              type={selectedKeys.includes("Maadi") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Maadi") ? [] : ["Maadi"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Maadi
+            </Button>
+
+            <Button
+              type={selectedKeys.includes("Kobry") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Kobry") ? [] : ["Kobry"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Kobry
+            </Button>
+          </div>
+        )}
         <Space>
           <Button
             type="primary"
@@ -72,28 +235,7 @@ const ViewPendingDonations = () => {
           >
             Search
           </Button>
-          <Button
-            onClick={() => clearFilters && handleReset(clearFilters)}
-            size="small"
-            style={{
-              width: 90,
-            }}
-          >
-            Reset
-          </Button>
-          <Button
-            type="link"
-            size="small"
-            onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
-              setSearchText(selectedKeys[0]);
-              setSearchedColumn(dataIndex);
-            }}
-          >
-            Filter
-          </Button>
+
           <Button
             type="link"
             size="small"
@@ -109,7 +251,7 @@ const ViewPendingDonations = () => {
     filterIcon: (filtered) => (
       <SearchOutlined
         style={{
-          color: filtered ? '#1677ff' : undefined,
+          color: filtered ? "#1677ff" : undefined,
         }}
       />
     ),
@@ -124,41 +266,59 @@ const ViewPendingDonations = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
       ),
   });
+  // filter
+  const [filteredInfo, setFilteredInfo] = useState({});
+  const handleChange = (pagination, filters, sorter) => {
+    console.log("Various parameters", pagination, filters, sorter);
+    setFilteredInfo(filters);
+  };
+
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      width: '30%',
-      ...getColumnSearchProps('name'),
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      // filteredValue is needed only if there are other columns with filters
+      ...getColumnSearchProps("name", "Name"),
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
-      width: '20%',
-      ...getColumnSearchProps('age'),
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
+      ...getColumnSearchProps("type", "Type"),
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-      ...getColumnSearchProps('address'),
-      sorter: (a, b) => a.address.length - b.address.length,
-      sortDirections: ['descend', 'ascend'],
+      title: "Governate",
+      dataIndex: "governate",
+      key: "governate",
+      ...getColumnSearchProps("governate", "Governate"),
+    },
+    {
+      title: "Area",
+      dataIndex: "area",
+      key: "area",
+      ...getColumnSearchProps("area", "Area"),
     },
   ];
-  return <Table columns={columns} dataSource={data} />;
+
+  return (
+    <>
+      <div className="container">
+        <h2>Pending Donations</h2>
+        <Table columns={columns} dataSource={data} onChange={handleChange} />
+      </div>
+    </>
+  );
 };
-export default ViewPendingDonations;
+export default ViewOrganizationDonor;
