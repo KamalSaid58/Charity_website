@@ -190,63 +190,111 @@ const UpcomingDeliveries = () => {
     </div>
   );
 };
-const ChooseDate = () => {
+
+const ChooseDate = ({ onChange }) => {
   const today = new Date();
   const [values, setValues] = useState([]);
-  const datePickerRef = useRef(null);
-
-  const handleExit = () => {
-    // Perform any action you want on exiting the calendar
-    // For example, you can close the calendar here
-    if (datePickerRef.current) {
-      datePickerRef.current.hideCalendar();
-    }
+  const handleDateChange = (dates) => {
+    onChange(dates);
   };
   return (
     <DatePicker
       minDate={today}
       multiple
       value={values}
-      onChange={setValues}
+      onChange={handleDateChange}
       plugins={[<Toolbar position="bottom" />]}
     />
   );
 };
 
+const SelectPickup = ({ onChange }) => {
+  const handleChange = (value) => {
+    onChange(value);
+  };
+  return (
+    <Select
+      type="text"
+      className="defaultValue"
+      style={{ width: 135 }}
+      onChange={handleChange}
+    >
+      <Select.Option key="" value=""></Select.Option>
+      <Select.Option key="motorcycle" value="motorcycle">
+        Motorcycle
+      </Select.Option>
+
+      <Select.Option key="car" value="car">
+        Car
+      </Select.Option>
+
+      <Select.Option key="truck" value="truck">
+        Truck
+      </Select.Option>
+    </Select>
+  );
+};
+
+const ChooseTime = ({ onChange }) => {
+  const handleTimeChange = (timeString) => {
+    onChange(timeString);
+  };
+
+  return (
+    <TimePicker.RangePicker
+      use12Hours
+      format="h a"
+      onChange={handleTimeChange}
+    />
+  );
+};
+
 const DashboardButtons = () => {
-  const ChooseTime = () => {
-    return <TimePicker.RangePicker use12Hours format="h a" />;
-  };
-
-  const SelectPickup = () => {
-    return (
-      <Select type="text" className="defaultValue" style={{ width: 135 }}>
-        <Select.Option key="motorcycle" value="motorcycle">
-          Motorcycle
-        </Select.Option>
-
-        <Select.Option key="car" value="car">
-          Car
-        </Select.Option>
-
-        <Select.Option key="truck" value="truck">
-          Truck
-        </Select.Option>
-      </Select>
-    );
-  };
-
   const [deliveryDrawer, setDeliveryDrawer] = useState(false);
 
   const [api, contextHolder] = notification.useNotification();
+  const [pickupType, setPickupType] = useState("");
+  const [selectedTime, setSelectedTime] = useState([]);
+  const [selectedDates, setSelectedDates] = useState([]);
+
   const updatedDelivery = () => {
-    api["success"]({
-      message: "Successfully updated delivery date!",
-      description:
-        "All pending donation requests will now be planned around these dates.",
-      placement: "top",
-    });
-    onClose();
+    let isEmpty = false;
+    console.log(pickupType);
+    console.log(selectedTime);
+    console.log(selectedDates);
+    let selectedTimeLength = 1;
+    let selectedDateLength = 1;
+    if (selectedTime === null || selectedTime.length === 0) {
+      selectedTimeLength = 0;
+    }
+    if (selectedDates === null || selectedDates.length === 0) {
+      selectedDateLength = 0;
+    }
+    if (
+      (pickupType !== "" &&
+        (selectedTimeLength === 0 || selectedDateLength === 0)) ||
+      (selectedTimeLength !== 0 &&
+        (pickupType === "" || selectedDateLength === 0)) ||
+      (selectedDateLength !== 0 &&
+        (pickupType === "" || selectedTimeLength === 0))
+    ) {
+      isEmpty = true;
+    }
+    if (!isEmpty) {
+      api["success"]({
+        message: "Successfully updated delivery date!",
+        description:
+          "All pending donation requests will now be planned around these dates.",
+        placement: "top",
+      });
+      onClose();
+    } else {
+      api["error"]({
+        message: "Some boxes are empty",
+        description: "Either Fill out all the boxes or have them all empty",
+        placement: "top",
+      });
+    }
   };
 
   const showDeliveryDrawer = () => {
@@ -257,21 +305,34 @@ const DashboardButtons = () => {
     setDeliveryDrawer(false);
   };
 
+  const handlePickupChange = (value) => {
+    setPickupType(value);
+  };
+  const handleTimeChange = (value) => {
+    setSelectedTime(value);
+  };
+  const handleDateChange = (newDates) => {
+    setSelectedDates(newDates);
+  };
   const items = [
     {
       key: "1",
       label: "What day(s) are you free at?",
-      children: <ChooseDate />,
+      children: (
+        <ChooseDate value={selectedDates} onChange={handleDateChange} />
+      ),
     },
     {
       key: "2",
       label: "What time are you avaliable for these days?",
-      children: <ChooseTime />,
+      children: <ChooseTime value={selectedTime} onChange={handleTimeChange} />,
     },
     {
       key: "3",
       label: "What type of pickup would you prefer?",
-      children: <SelectPickup />,
+      children: (
+        <SelectPickup value={pickupType} onChange={handlePickupChange} />
+      ),
     },
   ];
 
@@ -290,7 +351,7 @@ const DashboardButtons = () => {
           <Flex vertical gap="small" justify="flex-end">
             <Collapse items={items} bordered={false} defaultActiveKey={["1"]} />
             <Button type="primary" onClick={() => updatedDelivery()}>
-              Confirm Day
+              Confirm Dates
             </Button>
           </Flex>
         </Drawer>

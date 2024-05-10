@@ -26,7 +26,6 @@ import ContactUs from "./Components/ContactUs"; // Make sure to import StartPage
 import { Routes, Route, useNavigate } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import SideNavBarDonor from "./Components/SideNavBarDonor";
-import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 import ListOfToys from "./Pages/ListOfToys";
 import ListOfFood from "./Pages/ListOfFood";
 import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
@@ -86,10 +85,6 @@ function App() {
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/Options" element={<Options />} />
               <Route path="/AboutUs" element={<AboutUs />} />
-              <Route
-                path="/UpdateDeliveryTime"
-                element={<UpdateDeliveryTime />}
-              />
               <Route path="/" element={<StartPage />} />
               <Route path="/ContactUs" element={<ContactUs />} />
               <Route path="/" element={<StartPage />} />
