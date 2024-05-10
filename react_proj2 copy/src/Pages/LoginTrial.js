@@ -67,11 +67,12 @@ function LoginTrial() {
           />
         </div>
         <div className="form-check mb-4">
-          <input type="checkbox" className="form-check-input" id="rememberMe" />
-          <label className="form-check-label" htmlFor="rememberMe">
-            Remember me
-          </label>
-        </div>
+  <input type="checkbox" className="form-check-input" id="rememberMe" />
+  <label className="form-check-label" htmlFor="rememberMe">
+    Remember me
+  </label>
+</div>
+
         <div className="text-center">
           <button
             type="button"

@@ -183,8 +183,10 @@ const ViewOrganizationDonor = () => {
         value: option,
       })),
       filteredValue: filteredInfo.type || null,
+      
       onFilter: (value, record) => record.type.includes(value),
       ellipsis: true,
+      
     },
     {
       title: 'Governorate',

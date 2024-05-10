@@ -32,6 +32,7 @@ import { Button, Layout, Menu, theme } from 'antd';
 import PieChartDemo from './PieChartDemo';
 const { Header, Sider, Content } = Layout;
 const SideNavBarDonor = ({ defaultCollapsed = true }) => {
+
   // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
@@ -93,34 +94,42 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
           </Menu>
         </Sider>
         <Layout style={{ marginLeft: collapsed ? 80 : 200, transition: 'margin-left 0.2s' }}>
-          <Header
-            style={{
-              padding: 0,
-              background: colorBgContainer,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                  fontSize: '50px',
-                  width: 64,
-                  height: 64,
-                  color: 'black', // initial color
-                }}
-                className="custom-button" // Add a class for styling
-                // CSS for hover
-                onMouseEnter={(e) => e.currentTarget.style.color = 'lightblue'} 
-                onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
-              />
-            </div>
-            <NavigationBar />
-          </Header>
+        <Header
+  style={{
+    padding: 0,
+    background: colorBgContainer,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  }}
+>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <Button
+      type="text"
+      icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+      onClick={() => setCollapsed(!collapsed)}
+      style={{
+        fontSize: '50px',
+        width: 64,
+        height: 64,
+        color: 'black', // initial color
+      }}
+      className="custom-button" // Add a class for styling
+      // CSS for hover
+      onMouseEnter={(e) => e.currentTarget.style.color = 'lightblue'} 
+      onMouseLeave={(e) => e.currentTarget.style.color = 'black'}
+    />
+    <Link
+      to="/donor" // Link to 'Donor' page
+      className="title"
+      style={{ cursor: 'pointer', textDecoration: 'none' }} // Change cursor to pointer on hover
+    >
+      GOAT
+    </Link>
+  </div>
+  <NavigationBar />
+</Header>
+
           <Content>
 
             {/* <Container>
