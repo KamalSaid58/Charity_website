@@ -14,6 +14,8 @@ import {
 import { HeartTwoTone } from "@ant-design/icons";
 import styles from "./Donor.css";
 import charityImage from "./donorCarousel/charityimage.jpg";
+import maadiImage from "./donorCarousel/maadi.jpg";
+import omeldonia from "./donorCarousel/omeldonia.jpg";
 
 const { Text, Link } = Typography;
 
@@ -50,16 +52,37 @@ const OrganizationsCarousel = () => {
   return (
     <Carousel arrows style={{ height: 400 }}>
       <div>
-        <SlideCarousel
-          CarouselImage={charityImage}
-          textContent="A7san 5eer Charity is excited to announce that they are hosting
+        <h3 style={contentStyle}>
+          <SlideCarousel
+            CarouselImage={maadiImage}
+            textContent="A7san 5eer Charity is excited to announce that they are hosting
           a special fundraiser event in the heart of Cairo's vibrant Maadi
           district on May 29th, 2024 to provide food for the poor. Click
           here for more info."
-        />
+          />
+        </h3>
       </div>
       <div>
-        <h3 style={contentStyle}>4</h3>
+        <h3 style={contentStyle}>
+          <SlideCarousel
+            CarouselImage={charityImage}
+            textContent="A7san 5eer Charity is excited to announce that they are hosting
+          a special fundraiser event in the heart of Cairo's vibrant Maadi
+          district on May 29th, 2024 to provide food for the poor. Click
+          here for more info."
+          />
+        </h3>
+      </div>
+      <div>
+        <h3 style={contentStyle}>
+          <SlideCarousel
+            CarouselImage={omeldonia}
+            textContent="A7san 5eer Charity is excited to announce that they are hosting
+          a special fundraiser event in the heart of Cairo's vibrant Maadi
+          district on May 29th, 2024 to provide food for the poor. Click
+          here for more info."
+          />
+        </h3>
       </div>
     </Carousel>
   );
@@ -107,9 +130,12 @@ const UpcomingDeliveries = () => {
 const DashboardButtons = () => {
   return (
     <Flex>
-      <Button>Donate Now!</Button>
-      <div style={{ marginRight: 1150 }}></div>
-      <Button>Update Delivery Location</Button>
+      <Flex justify="flex-start">
+        <Button>Donate Now!</Button>
+      </Flex>
+      <Flex justify="flex-end">
+        <Button>Update Delivery Location</Button>
+      </Flex>
     </Flex>
   );
 };
