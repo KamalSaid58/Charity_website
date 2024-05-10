@@ -191,7 +191,7 @@ const CardContent = () => {
     <>
       {contextHolder}
       <Card
-        style={{ width: 400, marginTop: 150 }}
+        style={{ width: 400, marginTop: 25 }}
         bordered="true"
         title="Create Donor Account"
       >

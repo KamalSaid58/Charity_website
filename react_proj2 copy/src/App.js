@@ -34,6 +34,7 @@ import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin.js";
 import TeachingPosts from "./Pages/TeachingPosts.js";
 import MedicalCases from "./Pages/MedicalCases.js";
 import ListofBloodDonation from "./Pages/ListofBloodDonation.js";
+import AccountSettings from "./Pages/AccountSettings.js";
 
 // Make sure to import StartPage
 
@@ -85,11 +86,9 @@ function App() {
                 path="/UpdateDeliveryTime"
                 element={<UpdateDeliveryTime />}
               />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/" element={<StartPage />} />
               <Route path="/ContactUs" element={<ContactUs />} />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/" element={<StartPage />} />
               <Route path="/ListOfToys" element={<ListOfToys />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />
               <Route
@@ -108,12 +107,8 @@ function App() {
                 path="/ListOfMedicalSupplies"
                 element={<ListOfMedicalSupplies />}
               />
-              {/* <Route path="/TeachingPosts" element={<TeachingPosts />} />
-              <Route path="/MedicalCases" element={<MedicalCases />} /> */}
-              {/* <Route path="/Organ" element={<Organ />} /> */}
               <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/AccountSettings" element={<AccountSettings />} />
             </Routes>
           </div>
         </div>

@@ -17,7 +17,7 @@ function Register() {
 
   return (
     <Container>
-      <Row className="justify-content-center mt-5" style={{ marginTop: 500 }}>
+      <Row className="justify-content-center mt-0" style={{ marginTop: 500 }}>
         <Col md={4} className="mb-4">
           <Card
             style={{
@@ -39,7 +39,7 @@ function Register() {
                 Register as an organization to post donation requests.
               </Card.Text>
               <div className="text-center">
-                <Button variant="success" onClick={handleOrganizationClick}>
+                <Button type="primary" onClick={handleOrganizationClick}>
                   Register
                 </Button>
               </div>
@@ -48,7 +48,6 @@ function Register() {
         </Col>
         <Col md={4} className="mb-4 d-flex justify-content-center">
           <Card
-            className="rounded-4"
             style={{
               width: "20rem",
               border: "2px solid #000",
@@ -68,7 +67,7 @@ function Register() {
                 Register as a donor to donate items to organizations.
               </Card.Text>
               <div className="text-center">
-                <Button variant="success" onClick={handleDonorClick}>
+                <Button type="primary" onClick={handleDonorClick}>
                   Register
                 </Button>
               </div>
@@ -76,6 +75,11 @@ function Register() {
           </Card>
         </Col>
       </Row>
+      <div className="text-center mt-4">
+        <Button type="primary" onClick={() => navigate("/Options")}>
+          Back
+        </Button>
+      </div>
     </Container>
   );
 }
