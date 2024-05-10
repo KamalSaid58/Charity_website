@@ -40,7 +40,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
   const handleButtonClick = (page) => {
     setCurrentPage(page);
   };
-  const [currentPage, setCurrentPage] = useState("SideNavBarDonor");
+  const [currentPage, setCurrentPage] = useState("Donor");
 
   // Define the handleCategorySelect function
   const handleCategorySelect = (categoryName) => {
@@ -105,7 +105,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
               onClick={() => handleButtonClick("ViewOrganizationDonor")}
               icon={<UserOutlined />}
             >
-              View Organizations
+              Organizations
             </Menu.Item>
             <Menu.Item
               key="6"
@@ -240,6 +240,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
               </Row>
             </Container> */}
             <div>
+              {currentPage === "Donor" && <Donor />}
               {currentPage === "ViewReqDon" && <ViewReqDon />}
               {currentPage === "ViewOrganizationDonor" && (
                 <ViewOrganizationDonor />
