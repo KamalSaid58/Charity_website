@@ -18,8 +18,11 @@ import {
   Drawer,
   Calendar,
   TimePicker,
+  Collapse,
   Select,
+  notification,
 } from "antd";
+import DatePicker from "react-multi-date-picker";
 import { HeartTwoTone } from "@ant-design/icons";
 import styles from "./Donor.css";
 import charityImage from "./donorCarousel/charityimage.jpg";
@@ -188,7 +191,45 @@ const UpcomingDeliveries = () => {
 };
 
 const DashboardButtons = () => {
+  const ChooseDate = () => {
+    return <DatePicker multiple value={values} onChange={setValues} />;
+  };
+
+  const ChooseTime = () => {
+    return <TimePicker.RangePicker use12Hours format="h a" />;
+  };
+
+  const SelectPickup = () => {
+    return (
+      <Select type="text" className="defaultValue" style={{ width: 135 }}>
+        <Select.Option key="motorcycle" value="motorcycle">
+          Motorcycle
+        </Select.Option>
+
+        <Select.Option key="car" value="car">
+          Car
+        </Select.Option>
+
+        <Select.Option key="truck" value="truck">
+          Truck
+        </Select.Option>
+      </Select>
+    );
+  };
+
   const [deliveryDrawer, setDeliveryDrawer] = useState(false);
+
+  const [values, setValues] = useState();
+
+  const [api, contextHolder] = notification.useNotification();
+  const updatedDelivery = () => {
+    api["success"]({
+      message: "Successfully updated delivery date!",
+      description:
+        "All pending donation requests will now be planned around these dates.",
+      placement: "top",
+    });
+  };
 
   const showDeliveryDrawer = () => {
     setDeliveryDrawer(true);
@@ -198,44 +239,45 @@ const DashboardButtons = () => {
     setDeliveryDrawer(false);
   };
 
+  const items = [
+    {
+      key: "1",
+      label: "What day(s) are you free at?",
+      children: <ChooseDate />,
+    },
+    {
+      key: "2",
+      label: "What time are you avaliable for these days?",
+      children: <ChooseTime />,
+    },
+    {
+      key: "3",
+      label: "What type of pickup would you prefer?",
+      children: <SelectPickup />,
+    },
+  ];
+
   return (
-    <Flex justify="space-between" align="center">
-      <Button>Donate Now!</Button>
-      <Button onClick={showDeliveryDrawer}>Update Delivery Location</Button>
-      <Drawer
-        title="Delivery Details "
-        onClose={onClose}
-        open={deliveryDrawer}
-        style={{ backgroundColor: "white" }}
-      >
-        <Flex vertical gap="small">
-          <Text style={{ color: "black" }}>
-            Select the days you are going to be available
-          </Text>
-          <Calendar fullscreen={false} />
-
-          <Text style={{ color: "black" }}>
-            Select the hours you will be available for these days
-          </Text>
-          <TimePicker.RangePicker use12Hours format="h a" />
-
-          <Text style={{ colo: "black" }}>Choose a pickup method</Text>
-          <Select type="text" className="defaultValue" style={{ width: 135 }}>
-            <Select.Option key="motorcycle" value="motorcycle">
-              Motorcycle
-            </Select.Option>
-
-            <Select.Option key="car" value="car">
-              Car
-            </Select.Option>
-
-            <Select.Option key="truck" value="truck">
-              Truck
-            </Select.Option>
-          </Select>
-        </Flex>
-      </Drawer>
-    </Flex>
+    <>
+      {contextHolder}
+      <Flex justify="space-between" align="center">
+        <Button>Donate Now!</Button>
+        <Button onClick={showDeliveryDrawer}>Update Delivery Location</Button>
+        <Drawer
+          title="Delivery Details "
+          onClose={onClose}
+          open={deliveryDrawer}
+          style={{ backgroundColor: "white" }}
+        >
+          <Flex vertical gap="small" justify="flex-end">
+            <Collapse items={items} bordered={false} defaultActiveKey={["1"]} />
+            <Button type="primary" onClick={() => updatedDelivery()}>
+              Confirm Day
+            </Button>
+          </Flex>
+        </Drawer>
+      </Flex>
+    </>
   );
 };
 
