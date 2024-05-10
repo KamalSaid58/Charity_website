@@ -24,8 +24,8 @@ const OrganizationsCarousel = () => {
     margin: 0,
     height: "400px",
     color: "#fff",
-    // lineHeight: "160px",
-    // textAlign: "center",
+    lineHeight: "160px",
+    textAlign: "center",
     background: "#364d79",
   };
 
