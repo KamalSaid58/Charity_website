@@ -35,7 +35,7 @@ const data = [
     email: "DoctorNafso@gmail.com",
     phone: "12394815215102",
     address: "Qism Bani Sweif",
-    src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14646.310052091709!2d31.32400042518346!3d29.977454992140498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458394c2be29789%3A0x7ff2df760097841f!2sPearl%20Hospital!5e0!3m2!1sen!2seg!4v1715359552729!5m2!1sen!2seg",
+    src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17079.073701355126!2d31.11523975587669!3d29.040063689442217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145a25c821f9913b%3A0x4ebfd906dbc1efed!2sPearl%20Hospital!5e0!3m2!1sen!2seg!4v1715360490666!5m2!1sen!2seg",
   },
   {
     key: 2,
@@ -80,7 +80,7 @@ const data = [
     email: "MohandasKamal@gmail.com",
     phone: "29320932",
     address: "Ring Road",
-    src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.428952793114!2d31.2068117!3d30.0481239!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458412f0611f0e1%3A0xdf5bc6992523b85!2sBadran%20Hospital!5e0!3m2!1sen!2seg!4v1715358937982!5m2!1sen!2seg",
+    src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14646.310052091709!2d31.32400042518346!3d29.977454992140498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458394c2be29789%3A0x7ff2df760097841f!2sPearl%20Hospital!5e0!3m2!1sen!2seg!4v1715359552729!5m2!1sen!2seg",
   },
 ];
 
