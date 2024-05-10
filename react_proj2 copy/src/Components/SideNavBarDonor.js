@@ -123,7 +123,6 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             >
               Medical Supplies
             </Menu.Item>
-            MedicalCases
           </Menu>
         </Sider>
         <Layout

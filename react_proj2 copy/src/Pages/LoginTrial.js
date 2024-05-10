@@ -30,9 +30,16 @@ function LoginTrial() {
         case "Donor":
           navigate("/SideNavBarDonor");
           break;
-        case "Organ":
-          navigate("/Organ");
+        case "Doctor":
+          navigate("/SideNavBarDoctor");
           break;
+        case "Teacher":
+          navigate("/SideNavBarTeacher");
+          break;
+        case "Organization":
+          navigate("/SideNavBarOrganization");
+          break;
+
         default:
           navigate("/");
       }
@@ -85,11 +92,11 @@ function LoginTrial() {
           />
         </div>
         <div className="form-check mb-4">
-  <input type="checkbox" className="form-check-input" id="rememberMe" />
-  <label className="form-check-label" htmlFor="rememberMe">
-    Remember me
-  </label>
-</div>
+          <input type="checkbox" className="form-check-input" id="rememberMe" />
+          <label className="form-check-label" htmlFor="rememberMe">
+            Remember me
+          </label>
+        </div>
 
         <div className="text-center">
           <button
