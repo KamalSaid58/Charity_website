@@ -65,7 +65,7 @@ function Donor() {
 
   return (
     <div>
-      <SideNavBarDonor /> {/* Render SideNavBar component */}
+      {/* Render SideNavBar component */}
       {/* The rest of your Donor component content */}
     </div>
   );
