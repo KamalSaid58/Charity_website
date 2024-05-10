@@ -4,8 +4,37 @@
 .donor-category-selection {
   margin-top: 20px;
 }
-body {
+.body {
   background-color: lightblue;
+}
+
+.head-text {
+  position: relative;
+}
+
+.text-background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  padding: 10px; /* Add some padding to the box */
+  border-radius: 5px; /* Optional: add border radius for rounded corners */
+}
+
+
+
+.text-on-image {
+ position: absolute;
+ color:black;
+ left:10px;
+ bottom: 60%;
+}
+
+.text-background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Apply styles only to the category selection section */

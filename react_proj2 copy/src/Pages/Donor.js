@@ -1,30 +1,62 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, Divider, Carousel, Flex, Button, Row, Col } from "antd";
+import {
+  Card,
+  Divider,
+  Typography,
+  Carousel,
+  Flex,
+  Button,
+  Row,
+  Col,
+  Image,
+} from "antd";
 import { HeartTwoTone } from "@ant-design/icons";
+import styles from "./Donor.css";
+import charityImage from "./donorCarousel/charityimage.jpg";
 
-import "./Donor.css";
+const { Text, Link } = Typography;
 
 const OrganizationsCarousel = () => {
   const contentStyle = {
     margin: 0,
-    height: "160px",
+    height: "400px",
     color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
+    // lineHeight: "160px",
+    // textAlign: "center",
     background: "#364d79",
   };
 
+  const SlideCarousel = ({ CarouselImage, textContent }) => {
+    return (
+      <h3 style={contentStyle}>
+        <div className="head-text">
+          <Image
+            src={CarouselImage}
+            alt="Freedom Blog"
+            style={{ width: 1800 }}
+          />
+          <div className="text-background">
+            <div className="text-on-image">
+              <Text style={{ color: "white", textAlign: "left" }}>
+                {textContent}
+              </Text>
+            </div>
+          </div>
+        </div>
+      </h3>
+    );
+  };
   return (
-    <Carousel arrows autoplay>
+    <Carousel arrows style={{ height: 400 }}>
       <div>
-        <h3 style={contentStyle}>1</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>2</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
+        <SlideCarousel
+          CarouselImage={charityImage}
+          textContent="A7san 5eer Charity is excited to announce that they are hosting
+          a special fundraiser event in the heart of Cairo's vibrant Maadi
+          district on May 29th, 2024 to provide food for the poor. Click
+          here for more info."
+        />
       </div>
       <div>
         <h3 style={contentStyle}>4</h3>
@@ -35,7 +67,12 @@ const OrganizationsCarousel = () => {
 
 const NewDonationPosts = () => {
   return (
-    <Flex vertical justify="flex-start" align="flex-start">
+    <Flex
+      vertical
+      justify="flex-start"
+      align="flex-start"
+      style={{ height: 180 }}
+    >
       {/* spin={true} */}
       <Flex gap="5px" align="start">
         <HeartTwoTone twoToneColor="#eb2f96" style={{ marginTop: 5 }} />
