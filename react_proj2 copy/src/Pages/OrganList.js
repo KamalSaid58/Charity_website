@@ -447,6 +447,15 @@ const OrganList = () => {
     },
 
     {
+      title: "View",
+      key: "details",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          Details
+        </Button>
+      ),
+    },
+    {
       title: "Accept/Reject",
       dataIndex: "Accept/Reject",
       key: "Accept/Reject",
@@ -479,15 +488,6 @@ const OrganList = () => {
             />
           </Popconfirm>
         </div>
-      ),
-    },
-    {
-      title: "View",
-      key: "details",
-      render: (_, record) => (
-        <Button type="primary" onClick={() => handleActionClick(record)}>
-          Details
-        </Button>
       ),
     },
   ];
