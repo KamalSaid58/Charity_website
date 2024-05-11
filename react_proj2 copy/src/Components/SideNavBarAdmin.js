@@ -4,6 +4,7 @@ import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
 import Admin from "../Pages/Admin";
+import AccountSettings from "../Pages/AccountSettings";
 import {
   ProfileOutlined,
   UserOutlined,
@@ -126,6 +127,7 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
               )}
               {currentPage === "OrganList" && <OrganList />}
               {currentPage === "DonorList" && <DonorList />}
+              {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>
         </Layout>

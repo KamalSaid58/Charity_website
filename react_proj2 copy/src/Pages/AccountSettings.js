@@ -42,7 +42,7 @@ const AccountSettings = () => {
           className={`list-group-item list-group-item-action `}
           data-toggle="list"
           href="#account-general"
-          onClick={() => setActiveTab("account-change-address")}
+          onClick={() => alert("All your changes have been saved successfuly")}
         >
           Save
         </a>

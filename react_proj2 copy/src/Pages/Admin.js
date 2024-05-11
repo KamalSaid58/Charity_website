@@ -5,9 +5,10 @@ import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import
 import Donation from "../Donation.jpeg";
 import "./Admin.css"; // Import the CSS file
 
-import { DollarCircleOutlined } from "@ant-design/icons";
+import { DollarCircleOutlined, SettingOutlined } from "@ant-design/icons";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
+import AccountSettings from "../Pages/AccountSettings";
 
 import {
   ShoppingCartOutlined,
@@ -80,6 +81,13 @@ const Admin = ({ defaultCollapsed = true }) => {
             >
               Organizations {/* Changed the icon here */}
             </Menu.Item>
+            <Menu.Item
+              key="3"
+              onClick={() => handleButtonClick("AccountSettings")}
+              icon={<SettingOutlined />}
+            >
+              Settings {/* Changed the icon here */}
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout
@@ -130,6 +138,7 @@ const Admin = ({ defaultCollapsed = true }) => {
             <div>
               {currentPage === "DonorList" && <DonorList />}
               {currentPage === "OrganList" && <OrganList />}
+              {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>
         </Layout>

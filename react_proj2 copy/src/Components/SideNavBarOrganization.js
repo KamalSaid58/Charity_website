@@ -4,12 +4,14 @@ import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
 import Organ from "../Pages/Organ";
+import AccountSettings from "../Pages/AccountSettings";
 import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ShoppingOutlined,
   DollarCircleOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
@@ -70,6 +72,13 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
             >
               Donor Submissions
             </Menu.Item>
+            <Menu.Item
+              key="4"
+              onClick={() => handleButtonClick("AccountSettings")}
+              icon={<SettingOutlined />}
+            >
+              Settings
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout
@@ -124,6 +133,7 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
               )}
               {currentPage === "OrganList" && <OrganList />}
               {currentPage === "DonorList" && <DonorList />}
+              {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>
         </Layout>

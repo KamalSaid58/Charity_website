@@ -40,12 +40,6 @@ const NavigationBar = () => {
                 Contact Us
               </button>
               <button
-                className="dropdown-button"
-                onClick={() => (window.location.href = "/AccountSettings")}
-              >
-                Settings
-              </button>
-              <button
                 className="dropdown-button logout-button"
                 onClick={() => (window.location.href = "/Options")}
               >
