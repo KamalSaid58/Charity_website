@@ -34,13 +34,15 @@ function DonationPost() {
 
   const onFinish = (values) => {
     const requiredFields = ["category"];
-    const emptyFields = requiredFields.filter(field => !values[field]);
+    const emptyFields = requiredFields.filter((field) => !values[field]);
     if (emptyFields.length > 0) {
-      message.error(`Please fill all required fields: ${emptyFields.join(", ")}`);
+      message.error(
+        `Please fill all required fields: ${emptyFields.join(", ")}`
+      );
     } else {
-      message.success('Your data has been entered successfully');
+      message.success("Your data has been entered successfully");
       setCategory("");
-      navigate("/DonationPost");
+      form.resetFields();
     }
   };
 
@@ -62,11 +64,11 @@ function DonationPost() {
           rules={[
             {
               required: true,
-              message: 'Please select a category!',
+              message: "Please select a category!",
             },
           ]}
         >
-          <Select onChange={value => setCategory(value)} value={category}>
+          <Select onChange={(value) => setCategory(value)} value={category}>
             <Option value="toys">Toys</Option>
             <Option value="clothes">Clothes</Option>
             <Option value="food">Food</Option>
@@ -84,7 +86,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter type!',
+                  message: "Please enter type!",
                 },
               ]}
             >
@@ -96,7 +98,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter age!',
+                  message: "Please enter age!",
                 },
               ]}
             >
@@ -108,11 +110,11 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select gender!',
+                  message: "Please select gender!",
                 },
               ]}
             >
-              <Select onChange={value => setGender(value)} value={Gender}>
+              <Select onChange={(value) => setGender(value)} value={Gender}>
                 <Option value="male">Male</Option>
                 <Option value="female">Female</Option>
               </Select>
@@ -123,11 +125,14 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select toy category!',
+                  message: "Please select toy category!",
                 },
               ]}
             >
-              <Select onChange={value => setCategorytoys(value)} value={categorytoys}>
+              <Select
+                onChange={(value) => setCategorytoys(value)}
+                value={categorytoys}
+              >
                 <Option value="board games">Board games</Option>
                 <Option value="stuffed toys">Stuffed toys</Option>
                 <Option value="dolls">Dolls</Option>
@@ -141,7 +146,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter quantity!',
+                  message: "Please enter quantity!",
                 },
               ]}
             >
@@ -158,7 +163,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter type!',
+                  message: "Please enter type!",
                 },
               ]}
             >
@@ -170,7 +175,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter age!',
+                  message: "Please enter age!",
                 },
               ]}
             >
@@ -182,11 +187,11 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select gender!',
+                  message: "Please select gender!",
                 },
               ]}
             >
-              <Select onChange={value => setGender(value)} value={Gender}>
+              <Select onChange={(value) => setGender(value)} value={Gender}>
                 <Option value="male">Male</Option>
                 <Option value="female">Female</Option>
               </Select>
@@ -197,11 +202,14 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select season!',
+                  message: "Please select season!",
                 },
               ]}
             >
-              <Select onChange={value => setCategorytoys(value)} value={categorytoys}>
+              <Select
+                onChange={(value) => setCategorytoys(value)}
+                value={categorytoys}
+              >
                 <Option value="summer">Summer</Option>
                 <Option value="winter">Winter</Option>
                 <Option value="spring">Spring</Option>
@@ -214,7 +222,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter material!',
+                  message: "Please enter material!",
                 },
               ]}
             >
@@ -226,7 +234,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter quantity!',
+                  message: "Please enter quantity!",
                 },
               ]}
             >
@@ -243,11 +251,14 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select food category!',
+                  message: "Please select food category!",
                 },
               ]}
             >
-              <Select onChange={value => setCategoryfood(value)} value={categoryfood}>
+              <Select
+                onChange={(value) => setCategoryfood(value)}
+                value={categoryfood}
+              >
                 <Option value="fruits">Fruits</Option>
                 <Option value="vegetables">Vegetables</Option>
                 <Option value="canned food">Canned Food</Option>
@@ -261,7 +272,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter name!',
+                  message: "Please enter name!",
                 },
               ]}
             >
@@ -273,7 +284,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter quantity!',
+                  message: "Please enter quantity!",
                 },
               ]}
             >
@@ -290,11 +301,14 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select medical supplies!',
+                  message: "Please select medical supplies!",
                 },
               ]}
             >
-              <Select onChange={value => setCategorymedical(value)} value={categorymedical}>
+              <Select
+                onChange={(value) => setCategorymedical(value)}
+                value={categorymedical}
+              >
                 <Option value="medical devices">Medical Devices</Option>
                 <Option value="medical equipments">Medical Equipments</Option>
                 <Option value="medication">Medication</Option>
@@ -306,7 +320,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter device type!',
+                  message: "Please enter device type!",
                 },
               ]}
             >
@@ -318,7 +332,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter use!',
+                  message: "Please enter use!",
                 },
               ]}
             >
@@ -330,7 +344,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter quantity!',
+                  message: "Please enter quantity!",
                 },
               ]}
             >
@@ -347,11 +361,14 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select school supplies category!',
+                  message: "Please select school supplies category!",
                 },
               ]}
             >
-              <Select onChange={value => setCategoryschool(value)} value={categoryschool}>
+              <Select
+                onChange={(value) => setCategoryschool(value)}
+                value={categoryschool}
+              >
                 <Option value="stationary">Stationary</Option>
                 <Option value="books">Books</Option>
               </Select>
@@ -365,7 +382,7 @@ function DonationPost() {
                   rules={[
                     {
                       required: true,
-                      message: 'Please enter type!',
+                      message: "Please enter type!",
                     },
                   ]}
                 >
@@ -377,7 +394,7 @@ function DonationPost() {
                   rules={[
                     {
                       required: true,
-                      message: 'Please enter amount!',
+                      message: "Please enter amount!",
                     },
                   ]}
                 >
@@ -393,7 +410,7 @@ function DonationPost() {
                   rules={[
                     {
                       required: true,
-                      message: 'Please enter book name!',
+                      message: "Please enter book name!",
                     },
                   ]}
                 >
@@ -413,7 +430,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter patient name!',
+                  message: "Please enter patient name!",
                 },
               ]}
             >
@@ -425,7 +442,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter blood type!',
+                  message: "Please enter blood type!",
                 },
               ]}
             >
@@ -437,7 +454,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter hospital name!',
+                  message: "Please enter hospital name!",
                 },
               ]}
             >
@@ -449,7 +466,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter hospital area!',
+                  message: "Please enter hospital area!",
                 },
               ]}
             >
@@ -461,7 +478,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter governorate!',
+                  message: "Please enter governorate!",
                 },
               ]}
             >
@@ -473,7 +490,7 @@ function DonationPost() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter hospital address!',
+                  message: "Please enter hospital address!",
                 },
               ]}
             >
@@ -483,9 +500,6 @@ function DonationPost() {
         )}
 
         <div className="divider d-flex align-items-center my-4">
-          <Button type="primary" style={{ marginRight: "10px" }} onClick={() => navigate(-1)}>
-            Back
-          </Button>
           <Button type="primary" htmlType="submit">
             Create
           </Button>

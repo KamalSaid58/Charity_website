@@ -17,6 +17,7 @@ import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import TeachingPosts from "../Pages/TeachingPosts";
 import AccountSettings from "../Pages/AccountSettings";
+import ClassandSubjectSelectionTeacher from "../Pages/ClassandSubjectSelectionTeacher";
 
 import {
   ShoppingCartOutlined,
@@ -134,7 +135,9 @@ const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="10"
-              // onClick={() => handleButtonClick("AccountSettings")}
+              onClick={() =>
+                handleButtonClick("ClassandSubjectSelectionTeacher")
+              }
               icon={<EditOutlined />}
             >
               Specify Details
@@ -204,6 +207,9 @@ const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfToys" && <ListOfToys />}
               {currentPage === "SchoolSupp" && <SchoolSupp />}
               {currentPage === "ListofBloodDonation" && <ListofBloodDonation />}
+              {currentPage === "ClassandSubjectSelectionTeacher" && (
+                <ClassandSubjectSelectionTeacher />
+              )}
               {currentPage === "AccountSettings" && <AccountSettings />}
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />

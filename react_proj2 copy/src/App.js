@@ -40,7 +40,13 @@ import SideNavBarDoctor from "./Components/SideNavBarDoctor.js";
 import SideNavBarTeacher from "./Components/SideNavBarTeacher.js";
 import AccountSettings from "./Pages/AccountSettings.js";
 import ViewDonorsAdmin from "./Pages/ViewDonorsAdmin.js";
-import SetDoctorLoc from "./Pages/SetDoctorLoc.js";
+
+import ClinicLocationForm from "./Pages/ClinicLocationForm.js";
+import ClassandSubjectSelectionTeacher from "./Pages/ClassandSubjectSelectionTeacher.js";
+import DonationPost from "./Pages/DonationPost.js";
+import UpdateDeleteDonation from "./Pages/UpdateDeleteDonation.js";
+import FulfilledDonationPosts from "./Pages/FulfilledDonationPosts.js";
+import VolunteerPosts from "./Pages/VolunteerPosts";
 // Make sure to import StartPage
 
 function App() {
@@ -51,11 +57,21 @@ function App() {
           <div className="col py-3">
             <Routes>
               <Route path="/ViewReqDonor" element={<ViewReqDonor />} />
+              <Route path="/VolunteerPosts" element={<VolunteerPosts />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />
               <Route path="/TeachingPosts" element={<TeachingPosts />} />
               <Route path="/SchoolSupp" element={<SchoolSupp />} />
               <Route path="/MedicalCases" element={<MedicalCases />} />
               <Route path="/ListOfToys" element={<ListOfToys />} />
+              <Route path="/DonationPost" element={<DonationPost />} />
+              <Route
+                path="/FulfilledDonationPosts"
+                element={<FulfilledDonationPosts />}
+              />
+              <Route
+                path="/UpdateDeleteDonation"
+                element={<UpdateDeleteDonation />}
+              />
               <Route
                 path="/ListOfMedicalSupplies"
                 element={<ListOfMedicalSupplies />}
@@ -97,6 +113,14 @@ function App() {
               <Route path="/ListOfToys" element={<ListOfToys />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />
               <Route
+                path="/ClassandSubjectSelectionTeacher"
+                element={<ClassandSubjectSelectionTeacher />}
+              />
+              <Route
+                path="/ClinicLocationForm"
+                element={<ClinicLocationForm />}
+              />
+              <Route
                 path="/ViewOrganizationAdmin"
                 element={<ViewOrganizationAdmin />}
               />
@@ -127,7 +151,6 @@ function App() {
               />
               <Route path="/AccountSettings" element={<AccountSettings />} />
               <Route path="/ViewDonorsAdmin" element={<ViewDonorsAdmin />} />
-              <Route path="/SetDoctorLoc" element={<SetDoctorLoc />} />
             </Routes>
           </div>
         </div>

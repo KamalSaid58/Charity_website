@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Form, Input, Popconfirm, Table ,Modal} from 'antd';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Button, Form, Input, Popconfirm, Table, Modal } from "antd";
 
 const EditableContext = React.createContext(null);
 
@@ -49,13 +49,13 @@ const EditableCell = ({
         ...values,
       });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      console.log("Save failed:", errInfo);
     }
   };
 
   let childNode = children;
 
-  if (editable && title !== 'operation') {
+  if (editable && title !== "operation") {
     childNode = editing ? (
       <Form.Item
         style={{
@@ -88,56 +88,52 @@ const EditableCell = ({
 };
 
 const FulfilledDonationPosts = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [selectedRecord, setSelectedRecord] = useState(null);
-  
-   
-  
-    const handleEditSave = () => {
-      // Implement your logic to save the edited record
-      setIsModalVisible(false);
-    };
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState(null);
+
+  const handleEditSave = () => {
+    // Implement your logic to save the edited record
+    setIsModalVisible(false);
+  };
   const [dataSource, setDataSource] = useState([
     {
-      key: '1',//moda,
-      category: 'Food',
-      categoryoffood:'Canned food',//modal
-      itemname: 'Dolphin tuna can ',//modal
-      quantity: '4',
+      key: "1", //moda,
+      category: "Food",
+      categoryoffood: "Canned food", //modal
+      itemname: "Dolphin tuna can ", //modal
+      quantity: "4",
     },
     {
-        key: '2',//modal
-        category:'Medical supply',
-        categoryoffood:'Medication',//modal
-        itemname: 'Tablets',//modal
-        use:'Drugs',//modal
-        quantity: '4',
+      key: "2", //modal
+      category: "Medical supply",
+      categoryoffood: "Medication", //modal
+      itemname: "Tablets", //modal
+      use: "Drugs", //modal
+      quantity: "4",
     },
     {
-        key: '3',//modal
-        category:'Toys',
-        categoryoffood:'Board games',//modal
-        age: '10',//modal
-        gender:'Male',//modal
-        quantity: '2',
+      key: "3", //modal
+      category: "Toys",
+      categoryoffood: "Board games", //modal
+      age: "10", //modal
+      gender: "Male", //modal
+      quantity: "2",
     },
     {
-        key: '4',//moda,
-        category: 'Food',
-        categoryoffood:'Fresh food',//modal
-        itemname: 'Orange',//modal
-        quantity: '4 Kg',
-        
-      },
-      {
-        key: '5',//modal
-        category:'Toys',
-        categoryoffood:'Dolls',//modal
-        age: '2',//modal
-        gender:'Female',//modal
-        quantity: '1',
+      key: "4", //moda,
+      category: "Food",
+      categoryoffood: "Fresh food", //modal
+      itemname: "Orange", //modal
+      quantity: "4 Kg",
     },
-    
+    {
+      key: "5", //modal
+      category: "Toys",
+      categoryoffood: "Dolls", //modal
+      age: "2", //modal
+      gender: "Female", //modal
+      quantity: "1",
+    },
   ]);
   const [count, setCount] = useState(2);
 
@@ -145,8 +141,6 @@ const FulfilledDonationPosts = () => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
   };
-
- 
 
   const handleSave = (row) => {
     const newData = [...dataSource];
@@ -171,39 +165,43 @@ const FulfilledDonationPosts = () => {
   };
   const columns = [
     {
-      title: 'Key',
-      dataIndex: 'key',
-      width: '30%',
-      
+      title: "Key",
+      dataIndex: "key",
+      width: "30%",
     },
     {
-      title: 'Category',
-      dataIndex: 'category',
+      title: "Category",
+      dataIndex: "category",
     },
     {
-      title: 'Quantity',
-      dataIndex: 'quantity',
+      title: "Quantity",
+      dataIndex: "quantity",
+    },
+
+    {
+      title: "View",
+      key: "details",
+      render: (text, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          Details
+        </Button>
+      ),
     },
     {
-      title: 'operation',
-      dataIndex: 'operation',
+      title: "",
+      dataIndex: "",
       render: (_, record) =>
-        dataSource.length >= 1 && record.key !== 'deleteRow' ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-            <a>Delete</a>
+        dataSource.length >= 1 && record.key !== "deleteRow" ? (
+          <Popconfirm
+            title="Are you sure you want to delete?"
+            onConfirm={() => handleDelete(record.key)}
+          >
+            <Button type="primary" danger shape="rectangle">
+              Delete
+            </Button>
           </Popconfirm>
         ) : null,
     },
-    {
-        title: 'View',
-        key: 'details',
-        render: (text, record) => (
-          <Button type="primary" 
-          onClick={() => handleActionClick(record)}>
-            Details
-          </Button>
-        ),
-      },
   ].map((col) => ({
     ...col,
     onCell: (record) => ({
@@ -217,19 +215,21 @@ const FulfilledDonationPosts = () => {
 
   return (
     <div>
-        <h2>Fulfilled Doantion Posts</h2>
+      <h2>Complete Donation Posts</h2>
       <Table
         components={components}
         bordered
         dataSource={dataSource}
         columns={columns}
       />
-    <Modal
+      <Modal
         title="Details"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setIsModalVisible(false)}>Close</Button>,
+          <Button key="close" onClick={() => setIsModalVisible(false)}>
+            Close
+          </Button>,
         ]}
       >
         {selectedRecord && (
@@ -237,36 +237,32 @@ const FulfilledDonationPosts = () => {
             <p>Key: {selectedRecord.key}</p>
             <p>Category: {selectedRecord.category}</p>
             <p>Quantity: {selectedRecord.quantity}</p>
-            {selectedRecord.category === 'Food' && (
+            {selectedRecord.category === "Food" && (
               <>
-            <p>Category of Food: {selectedRecord.categoryoffood}</p>
+                <p>Category of Food: {selectedRecord.categoryoffood}</p>
 
-            <p>Item Name: {selectedRecord.itemname}</p>
-
+                <p>Item Name: {selectedRecord.itemname}</p>
               </>
             )}
-            {selectedRecord.category === 'Medical supply' && (
+            {selectedRecord.category === "Medical supply" && (
               <>
-             <p>Category of Medicine: {selectedRecord.categoryoffood}</p>
+                <p>Category of Medicine: {selectedRecord.categoryoffood}</p>
 
-             <p>Item Name: {selectedRecord.itemname}</p>
+                <p>Item Name: {selectedRecord.itemname}</p>
 
-             <p>Use: {selectedRecord.use}</p>
-
+                <p>Use: {selectedRecord.use}</p>
               </>
             )}
-            {selectedRecord.category === 'Toys' && (
+            {selectedRecord.category === "Toys" && (
               <>
-            <p>Category of Toys: {selectedRecord.categoryoffood}</p>
-            <p>Age: {selectedRecord.age}</p>
-            <p>Gender: {selectedRecord.gender}</p>
-            
+                <p>Category of Toys: {selectedRecord.categoryoffood}</p>
+                <p>Age: {selectedRecord.age}</p>
+                <p>Gender: {selectedRecord.gender}</p>
               </>
             )}
           </div>
         )}
       </Modal>
-
     </div>
   );
 };
