@@ -39,7 +39,7 @@ import SideNavBarOrganization from "./Components/SideNavBarOrganization.js";
 import SideNavBarDoctor from "./Components/SideNavBarDoctor.js";
 import SideNavBarTeacher from "./Components/SideNavBarTeacher.js";
 import AccountSettings from "./Pages/AccountSettings.js";
-
+import ViewDonorsAdmin from "./Pages/ViewDonorsAdmin.js";
 // Make sure to import StartPage
 
 function App() {
@@ -125,6 +125,7 @@ function App() {
                 element={<SideNavBarOrganization />}
               />
               <Route path="/AccountSettings" element={<AccountSettings />} />
+              <Route path="/ViewDonorsAdmin" element={<ViewDonorsAdmin />} />
             </Routes>
           </div>
         </div>
