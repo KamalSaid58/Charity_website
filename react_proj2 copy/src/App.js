@@ -15,7 +15,7 @@ import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js";
 import ViewPendingDonations from "./Pages/ViewPendingDonations";
 import ViewDeliveryDetails from "./Pages/ViewDeliveryDetails";
 import React from "react";
-import ViewReqDon from "./Pages/ViewReqDon";
+import ViewReqDonor from "./Pages/ViewReqDonor.js";
 import ViewListOfClothReq from "./Pages/ViewListOfClothReq";
 import LoginTrial from "./Pages/LoginTrial";
 import SchoolSupp from "./Pages/SchoolSupp";
@@ -30,7 +30,16 @@ import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 import ListOfToys from "./Pages/ListOfToys";
 import ListOfFood from "./Pages/ListOfFood";
 import ListOfMedicalSupplies from "./Pages/ListOfMedicalSupplies";
-
+import ViewOrganizationAdmin from "./Pages/ViewOrganizationAdmin.js";
+import TeachingPosts from "./Pages/TeachingPosts.js";
+import MedicalCases from "./Pages/MedicalCases.js";
+import ListofBloodDonation from "./Pages/ListofBloodDonation.js";
+import SideNavBarAdmin from "./Components/SideNavBarAdmin.js";
+import SideNavBarOrganization from "./Components/SideNavBarOrganization.js";
+import SideNavBarDoctor from "./Components/SideNavBarDoctor.js";
+import SideNavBarTeacher from "./Components/SideNavBarTeacher.js";
+import AccountSettings from "./Pages/AccountSettings.js";
+import ViewDonorsAdmin from "./Pages/ViewDonorsAdmin.js";
 // Make sure to import StartPage
 
 function App() {
@@ -40,7 +49,24 @@ function App() {
         <div className="row flex-nowrap">
           <div className="col py-3">
             <Routes>
-              <Route path="/ViewReqDon" element={<ViewReqDon />} />
+              <Route path="/ViewReqDonor" element={<ViewReqDonor />} />
+              <Route path="/ListOfFood" element={<ListOfFood />} />
+              <Route path="/TeachingPosts" element={<TeachingPosts />} />
+              <Route path="/SchoolSupp" element={<SchoolSupp />} />
+              <Route path="/MedicalCases" element={<MedicalCases />} />
+              <Route path="/ListOfToys" element={<ListOfToys />} />
+              <Route
+                path="/ListOfMedicalSupplies"
+                element={<ListOfMedicalSupplies />}
+              />
+              <Route
+                path="/ListofBloodDonation"
+                element={<ListofBloodDonation />}
+              />
+              <Route
+                path="/ViewDeliveryDetails"
+                element={<ViewDeliveryDetails />}
+              />
               <Route
                 path="/ViewListOfClothReq"
                 element={<ViewListOfClothReq />}
@@ -51,10 +77,7 @@ function App() {
               <Route path="/Admin" element={<Admin />} />
               <Route path="/Donor" element={<Donor />} />
               <Route path="/Organ" element={<Organ />} />
-
               {/* <Route path="/ListofBloodDonation" element={<ListofBloodDonation/>}/> */}
-             
-
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />
               <Route path="/ChangePassword" element={<ChangePassword />} />
@@ -67,27 +90,42 @@ function App() {
                 path="/UpdateDeliveryTime"
                 element={<UpdateDeliveryTime />}
               />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/" element={<StartPage />} />
               <Route path="/ContactUs" element={<ContactUs />} />
-              <Route path="/" element={<StartPage />} />{" "}
-              {/* Include the StartPage route */}
+              <Route path="/" element={<StartPage />} />
               <Route path="/ListOfToys" element={<ListOfToys />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />
+              <Route
+                path="/ViewOrganizationAdmin"
+                element={<ViewOrganizationAdmin />}
+              />
+              <Route
+                path="/ViewOrganizationDonor"
+                element={<ViewOrganizationDonor />}
+              />
+              <Route
+                path="/ViewPendingDonations"
+                element={<ViewPendingDonations />}
+              />
               <Route
                 path="/ListOfMedicalSupplies"
                 element={<ListOfMedicalSupplies />}
               />
-              
-              
-              {/* <Route path="/TeachingPosts" element={<TeachingPosts />} />
-              <Route path="/MedicalCases" element={<MedicalCases />} /> */}
-              
-
-              
-              {/* <Route path="/Organ" element={<Organ />} /> */}
               <Route path="/SideNavBarDonor" element={<SideNavBarDonor />} />
-              <Route path="/" element={<StartPage />} /> {/* Include the StartPage route */}
+              <Route path="/SideNavBarDoctor" element={<SideNavBarDoctor />} />
+              <Route
+                path="/SideNavBarTeacher"
+                element={<SideNavBarTeacher />}
+              />
+              <Route path="/" element={<StartPage />} />{" "}
+              {/* Include the StartPage route */}
+              <Route path="/SideNavBarAdmin" element={<SideNavBarAdmin />} />
+              <Route
+                path="/SideNavBarOrganization"
+                element={<SideNavBarOrganization />}
+              />
+              <Route path="/AccountSettings" element={<AccountSettings />} />
+              <Route path="/ViewDonorsAdmin" element={<ViewDonorsAdmin />} />
             </Routes>
           </div>
         </div>

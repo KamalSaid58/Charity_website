@@ -1,34 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-
-import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import Container, Row, Col, Card from react-bootstrap
-import Donation from "../Donation.jpeg";
-import "./Admin.css"; // Import the CSS file
-
-import { DollarCircleOutlined, SettingOutlined } from "@ant-design/icons";
+import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
+import Admin from "../Pages/Admin";
 import AccountSettings from "../Pages/AccountSettings";
-import ViewOrganizationAdmin from "./ViewOrganizationAdmin";
-import CurrentDonors from "./CurrentDonors";
-
 import {
-  ShoppingCartOutlined,
+  ProfileOutlined,
+  UserOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UserOutlined,
-  ShoppingOutlined,
-  CoffeeOutlined,
-  MedicineBoxOutlined,
-  BookOutlined,
-  HeartOutlined,
+  BankOutlined,
 } from "@ant-design/icons";
-
-import AdminNavBar from "../Components/AdminNavBar";
+import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
-
 const { Header, Sider, Content } = Layout;
-const Admin = ({ defaultCollapsed = true }) => {
+
+const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
   // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
@@ -38,12 +26,6 @@ const Admin = ({ defaultCollapsed = true }) => {
     setCurrentPage(page);
   };
   const [currentPage, setCurrentPage] = useState("Admin");
-
-  // Define the handleCategorySelect function
-  const handleCategorySelect = (categoryName) => {
-    console.log(`Selected category: ${categoryName}`);
-    // Add your logic for handling the selected category here
-  };
 
   return (
     <div style={{ height: "100vh" }}>
@@ -71,39 +53,24 @@ const Admin = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
-              onClick={() => handleButtonClick("DonorList")}
-              icon={<UserOutlined />}
+              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
+              icon={<BankOutlined />}
             >
-              Donors {/* Changed the icon here */}
+              Organizations
             </Menu.Item>
             <Menu.Item
               key="2"
               onClick={() => handleButtonClick("OrganList")}
-              icon={<ShoppingCartOutlined />}
+              icon={<ProfileOutlined />}
             >
-              Organizations {/* Changed the icon here */}
+              Pending Organizations
             </Menu.Item>
-
             <Menu.Item
               key="3"
-              onClick={() => handleButtonClick("CurrentDonors")}
+              onClick={() => handleButtonClick("DonorList")}
               icon={<UserOutlined />}
             >
-              Current Donors {/* Changed the icon here */}
-            </Menu.Item>
-            <Menu.Item
-              key="4"
-              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
-              icon={<ShoppingCartOutlined />}
-            >
-              Current Organizations {/* Changed the icon here */}
-            </Menu.Item>
-            <Menu.Item
-              key="5"
-              onClick={() => handleButtonClick("AccountSettings")}
-              icon={<SettingOutlined />}
-            >
-              Settings {/* Changed the icon here */}
+              Pending Donors
             </Menu.Item>
           </Menu>
         </Sider>
@@ -141,25 +108,25 @@ const Admin = ({ defaultCollapsed = true }) => {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "black")}
               />
               <Link
-                to="/donor" // Link to 'Donor' page
+                onClick={() => setCurrentPage("Admin")}
                 className="title"
                 style={{ cursor: "pointer", textDecoration: "none" }} // Change cursor to pointer on hover
               >
                 GOAT
               </Link>
             </div>
-            <AdminNavBar />
+            <NavigationBar />
           </Header>
 
           <Content>
             <div>
-              {currentPage === "DonorList" && <DonorList />}
-              {currentPage === "OrganList" && <OrganList />}
+              {currentPage === "Admin" && <Admin />}
 
               {currentPage === "ViewOrganizationAdmin" && (
                 <ViewOrganizationAdmin />
               )}
-              {currentPage === "CurrentDonors" && <CurrentDonors />}
+              {currentPage === "OrganList" && <OrganList />}
+              {currentPage === "DonorList" && <DonorList />}
               {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>
@@ -169,4 +136,4 @@ const Admin = ({ defaultCollapsed = true }) => {
   );
 };
 
-export default Admin;
+export default SideNavBarAdmin;

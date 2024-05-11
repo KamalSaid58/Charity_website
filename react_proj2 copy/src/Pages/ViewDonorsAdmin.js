@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { PDFDocument, rgb } from "pdf-lib";
 
-const OrganList = () => {
+const DonorList = () => {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -19,33 +19,39 @@ const OrganList = () => {
   const originalDataSource = [
     {
       key: "1",
-      RepName: "Kamal Said",
-      RepGender: "Male",
-      RepEmail: "@kamal.said",
-      RepNumber: "01147193000",
-      OrganName: "KamalClothes",
-      OrganType: "Clothes",
-      OrganAddress: "Cairo",
+      DonorName: "Kamal Said",
+      DonorGender: "Male",
+      DonorProfession: "Doctor",
+      DonorEmail: "@kamal.said",
+      DonorNumber: "01147193000",
+      DonorAddress: "Cairo",
     },
     {
       key: "2",
-      RepName: "Wafaa Said",
-      RepGender: "Female",
-      RepEmail: "@wafaa.said",
-      RepNumber: "01140155400",
-      OrganName: "WafaaFire",
-      OrganType: "Fire heal",
-      OrganAddress: "Alexandria",
+      DonorName: "Wafaa Said",
+      DonorGender: "Female",
+      DonorProfession: "Doctor",
+      DonorEmail: "@wafaa.said",
+      DonorNumber: "01140155400",
+      DonorAddress: "Alex",
     },
     {
       key: "3",
-      RepName: "Said Faramawy",
-      RepGender: "Male",
-      RepEmail: "@said.faramawy",
-      RepNumber: "01028288077",
-      OrganName: "SaidOrphanage",
-      OrganType: "Orphanage",
-      OrganAddress: "Fifth settlement",
+      DonorName: "Maha Farouk",
+      DonorGender: "Female",
+      DonorProfession: "None",
+      DonorEmail: "@maha farouk",
+      DonorNumber: "01024355931",
+      DonorAddress: "Cairo",
+    },
+    {
+      key: "4",
+      DonorName: "Dana",
+      DonorGender: "Female",
+      DonorProfession: "Teacher",
+      DonorEmail: "@Dana farouk",
+      DonorNumber: "01024355931",
+      DonorAddress: "Cairo",
     },
   ];
 
@@ -77,11 +83,7 @@ const OrganList = () => {
     setDataSource(newData);
     alert("You have successfuly rejected the organization request");
   };
-  const handleAccept = (key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
-    setDataSource(newData);
-    alert("You have successfuly accepted the organization request");
-  };
+
   const handleSelect = (record, selected) => {
     const newSelectedRowKeys = selected
       ? [...selectedRowKeys, record.key]
@@ -127,49 +129,42 @@ const OrganList = () => {
         color: rgb(0, 0, 0),
       });
       y -= 20;
-      page.drawText(`Organization Name: ${record.OrganName}`, {
+      page.drawText(`Name: ${record.DonorName}`, {
         x: 50,
         y,
         size: 12,
         color: rgb(0, 0, 0),
       });
       y -= 20;
-      page.drawText(`Oranization Type: ${record.OrganType}`, {
+      page.drawText(`Profession: ${record.DonorProfession}`, {
         x: 50,
         y,
         size: 12,
         color: rgb(0, 0, 0),
       });
       y -= 20;
-      page.drawText(`Organ Address: ${record.OrganAddress}`, {
+      page.drawText(`Gender: ${record.DonorGender}`, {
         x: 50,
         y,
         size: 12,
         color: rgb(0, 0, 0),
       });
       y -= 20;
-      page.drawText(`Representative Name: ${record.RepName}`, {
+      page.drawText(`Email: ${record.DonorEmail}`, {
         x: 50,
         y,
         size: 12,
         color: rgb(0, 0, 0),
       });
       y -= 20;
-      page.drawText(`Representative Gender: ${record.RepGender}`, {
+      page.drawText(`Number: ${record.DonorNumber}`, {
         x: 50,
         y,
         size: 12,
         color: rgb(0, 0, 0),
       });
       y -= 20;
-      page.drawText(`Representative Email: ${record.RepEmail}`, {
-        x: 50,
-        y,
-        size: 12,
-        color: rgb(0, 0, 0),
-      });
-      y -= 20;
-      page.drawText(`Representative Number: ${record.RepNumber}`, {
+      page.drawText(`Address: ${record.DonorAddress}`, {
         x: 50,
         y,
         size: 12,
@@ -222,94 +217,47 @@ const OrganList = () => {
         {title === "Name" && (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
-              type={
-                selectedKeys.includes("KamalClothes") ? "primary" : "default"
-              }
+              type={selectedKeys.includes("Kamal Said") ? "primary" : "default"}
               onClick={() =>
                 setSelectedKeys(
-                  selectedKeys.includes("KamalClothes") ? [] : ["KamalClothes"]
+                  selectedKeys.includes("Kamal Said") ? [] : ["Kamal Said"]
                 )
               }
               style={{ marginBottom: 8 }}
               size="small"
             >
-              KamalClothes
+              Kamal Said
             </Button>
 
             <Button
-              type={selectedKeys.includes("WafaaFire") ? "primary" : "default"}
+              type={selectedKeys.includes("Wafaa Said") ? "primary" : "default"}
               onClick={() =>
                 setSelectedKeys(
-                  selectedKeys.includes("WafaaFire") ? [] : ["WafaaFire"]
+                  selectedKeys.includes("Wafaa Said") ? [] : ["Wafaa Said"]
                 )
               }
               style={{ marginBottom: 8 }}
               size="small"
             >
-              WafaaFire
+              Wafaa Said
             </Button>
 
             <Button
               type={
-                selectedKeys.includes("SaidOrphanage") ? "primary" : "default"
+                selectedKeys.includes("Maha Farouk") ? "primary" : "default"
               }
               onClick={() =>
                 setSelectedKeys(
-                  selectedKeys.includes("SaidOrphanage")
-                    ? []
-                    : ["SaidOrphanage"]
+                  selectedKeys.includes("Maha Farouk") ? [] : ["Maha Farouk"]
                 )
               }
               style={{ marginBottom: 8 }}
               size="small"
             >
-              SaidOrphanage
+              Maha Farouk
             </Button>
           </div>
         )}
-        {title === "Type" && (
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <Button
-              type={selectedKeys.includes("Clothes") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Clothes") ? [] : ["Clothes"]
-                )
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Clothes
-            </Button>
-
-            <Button
-              type={selectedKeys.includes("Fire heal") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Fire heal") ? [] : ["Fire heal"]
-                )
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Fire heal
-            </Button>
-
-            <Button
-              type={selectedKeys.includes("Orphanage") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Orphanage") ? [] : ["Orphanage"]
-                )
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Orphanage
-            </Button>
-          </div>
-        )}
-
         {title === "Address" && (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
@@ -324,38 +272,18 @@ const OrganList = () => {
             </Button>
 
             <Button
-              type={selectedKeys.includes("Alexandria") ? "primary" : "default"}
+              type={selectedKeys.includes("Alex") ? "primary" : "default"}
               onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Alexandria") ? [] : ["Alexandria"]
-                )
+                setSelectedKeys(selectedKeys.includes("Alex") ? [] : ["Alex"])
               }
               style={{ marginBottom: 8 }}
               size="small"
             >
-              Alexandria
-            </Button>
-
-            <Button
-              type={
-                selectedKeys.includes("Fifth settlement")
-                  ? "primary"
-                  : "default"
-              }
-              onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Fifth settlement")
-                    ? []
-                    : ["Fifth settlement"]
-                )
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Fifth settlement
+              Alex
             </Button>
           </div>
         )}
+
         <Space>
           <Button
             type="primary"
@@ -429,21 +357,22 @@ const OrganList = () => {
     },
     {
       title: "Name",
-      dataIndex: "OrganName",
-      key: "OrganName",
-      ...getColumnSearchProps("OrganName", "Name"),
+      dataIndex: "DonorName",
+      key: "DonorName",
+      ...getColumnSearchProps("DonorName", "Name"),
     },
-    {
-      title: "Type",
-      dataIndex: "OrganType",
-      key: "OrganType",
-      ...getColumnSearchProps("OrganType", "Type"),
-    },
+
     {
       title: "Address",
-      dataIndex: "OrganAddress",
-      key: "OrganAddress",
-      ...getColumnSearchProps("OrganAddress", "Address"),
+      dataIndex: "DonorAddress",
+      key: "DonorAddress",
+      ...getColumnSearchProps("DonorAddress", "Address"),
+    },
+    {
+      title: "Profession",
+      dataIndex: "DonorProfession",
+      key: "DonorProfession",
+      ...getColumnSearchProps("DonorProfession", "Profession"),
     },
 
     {
@@ -456,36 +385,20 @@ const OrganList = () => {
       ),
     },
     {
-      title: "Accept/Reject",
+      title: "",
       dataIndex: "Accept/Reject",
       key: "Accept/Reject",
       render: (_, record) => (
         <div>
-          <Popconfirm
-            title="Are you sure you want to accept this record?"
-            onConfirm={() => handleAccept(record.key)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              type="primary"
-              shape="circle"
-              icon={<CheckOutlined />}
-              style={{ marginRight: 8, background: "green" }}
-            />
-          </Popconfirm>
           <Popconfirm
             title="Are you sure you want to reject this record?"
             onConfirm={() => handleDelete(record.key)}
             okText="Yes"
             cancelText="No"
           >
-            <Button
-              type="primary"
-              danger
-              shape="circle"
-              icon={<CloseOutlined />}
-            />
+            <Button type="primary" danger shape="rectangle">
+              Delete
+            </Button>{" "}
           </Popconfirm>
         </div>
       ),
@@ -494,7 +407,7 @@ const OrganList = () => {
 
   return (
     <div className="container">
-      <h2>Organizations Requests</h2>
+      <h2>Donor Requests</h2>
       <Table columns={columns} dataSource={dataSource} />
       <Modal
         title="Details"
@@ -508,13 +421,12 @@ const OrganList = () => {
       >
         {selectedRecord && (
           <div>
-            <p>Name: {selectedRecord.OrganName}</p>
-            <p>Type: {selectedRecord.OrganType}</p>
-            <p>Address: {selectedRecord.OrganAddress}</p>
-            <p>Representative Name: {selectedRecord.RepName}</p>
-            <p>Representative Gender: {selectedRecord.RepGender}</p>
-            <p>Representative Email: {selectedRecord.RepEmail}</p>
-            <p>Representative Number: {selectedRecord.RepNumber}</p>
+            <p>Name: {selectedRecord.DonorName}</p>
+            <p>Profession: {selectedRecord.DonorProfession}</p>
+            <p>Gender: {selectedRecord.DonorGender}</p>
+            <p>Email: {selectedRecord.DonorEmail}</p>
+            <p>Number: {selectedRecord.DonorNumber}</p>
+            <p>Address: {selectedRecord.DonorAddress}</p>
           </div>
         )}
       </Modal>
@@ -529,4 +441,4 @@ const OrganList = () => {
   );
 };
 
-export default OrganList;
+export default DonorList;

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Donor.module.css'; // Assuming you have a CSS module for styling
 import VerticalBarDemo from '../Components/VerticalBarDemo';  // Importing the VerticalBarDemo component
 import PieChartDemo from '../Components/PieChartDemo'; // Importing the PieChartDemo component
-import SampleImage from './Image1.jpg';
+import SampleImage from './image1.jpg';
 import SampleImage1 from './images 2.jpeg';
 import SampleImage2 from './images 3.jpeg';
 import SampleImage3 from './images 4.jpeg';

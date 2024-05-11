@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Button, Table, Modal, InputNumber, Input } from 'antd'; // Import Input component
-import { SearchOutlined } from '@ant-design/icons';
-import Highlighter from 'react-highlight-words';
+import React, { useState, useRef } from "react";
+import { Button, Table, Modal, InputNumber, Input } from "antd"; // Import Input component
+import { SearchOutlined } from "@ant-design/icons";
+import Highlighter from "react-highlight-words";
 import { useNavigate } from "react-router-dom";
 
-
 const ViewListOfClothReq = () => {
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const [showTable, setShowTable] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [donationQuantities, setDonationQuantities] = useState({});
@@ -17,28 +16,28 @@ const ViewListOfClothReq = () => {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const navigate = useNavigate();
   const searchInput = useRef(null);
-  
+
   const originalDataSource = [
     {
-      key: '1',
-      name: 'T-Shirt',
+      key: "1",
+      name: "T-Shirt",
       age: 12,
       quantity: 5,
-      type: 'Casual', // New detail
-      gender: 'Male', // New detail
-      season: 'Summer', // New detail
-      material: 'Cotton', // New detail
+      type: "Casual", // New detail
+      gender: "Male", // New detail
+      season: "Summer", // New detail
+      material: "Cotton", // New detail
       requestedQuantity: 20, // New detail
     },
     {
-      key: '2',
-      name: 'Short',
+      key: "2",
+      name: "Short",
       age: 14,
       quantity: 20,
-      type: 'Casual', // New detail
-      gender: 'Female', // New detail
-      season: 'Winter', // New detail
-      material: 'Silk', // New detail
+      type: "Casual", // New detail
+      gender: "Female", // New detail
+      season: "Winter", // New detail
+      material: "Silk", // New detail
       requestedQuantity: 20, // New detail
     },
     // Add more items with additional details
@@ -54,11 +53,17 @@ const ViewListOfClothReq = () => {
 
   const handleReset = (clearFilters) => {
     clearFilters();
-    setSearchText('');
+    setSearchText("");
   };
 
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -69,44 +74,91 @@ const ViewListOfClothReq = () => {
           ref={searchInput}
           placeholder={`Search ${title}`}
           value={selectedKeys[0]}
-          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
-        {title === 'Gender' && (
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+
+        {title === "Item Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
-              type={selectedKeys.includes('Male') ? 'primary' : 'default'}
-              onClick={() => setSelectedKeys(selectedKeys.includes('Male') ? [] : ['Male'])}
+              type={selectedKeys.includes("T-Shirt") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("T-Shirt") ? [] : ["T-Shirt"]
+                )
+              }
               style={{ marginBottom: 8 }}
+              size="small"
+            >
+              T-Shirt
+            </Button>
+            <Button
+              type={selectedKeys.includes("Short") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Short") ? [] : ["Short"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Short
+            </Button>
+          </div>
+        )}
+        {title === "Gender" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Male") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(selectedKeys.includes("Male") ? [] : ["Male"])
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
             >
               Male
             </Button>
             <Button
-              type={selectedKeys.includes('Female') ? 'primary' : 'default'}
-              onClick={() => setSelectedKeys(selectedKeys.includes('Female') ? [] : ['Female'])}
+              type={selectedKeys.includes("Female") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Female") ? [] : ["Female"]
+                )
+              }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Female
             </Button>
           </div>
         )}
-        {title === 'Season' && (
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {title === "Season" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
-              type={selectedKeys.includes('Summer') ? 'primary' : 'default'}
-              onClick={() => setSelectedKeys(selectedKeys.includes('Summer') ? [] : ['Summer'])}
+              type={selectedKeys.includes("Summer") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Summer") ? [] : ["Summer"]
+                )
+              }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Summer
             </Button>
             <Button
-              type={selectedKeys.includes('Winter') ? 'primary' : 'default'}
-              onClick={() => setSelectedKeys(selectedKeys.includes('Winter') ? [] : ['Winter'])}
+              type={selectedKeys.includes("Winter") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Winter") ? [] : ["Winter"]
+                )
+              }
               style={{ marginBottom: 8 }}
+              size="small"
             >
               Winter
             </Button>
@@ -136,13 +188,16 @@ const ViewListOfClothReq = () => {
       </div>
     ),
     filterIcon: (filtered) => (
-      <SearchOutlined style={filtered ? { color: '#1890ff' } : {}} />
+      <SearchOutlined style={filtered ? { color: "#1890ff" } : {}} />
     ),
     onFilter: (value, record) => {
-      if (title === 'Gender' || title === 'Season') {
+      if (title === "Gender" || title === "Season") {
         return record[dataIndex] === value;
       }
-      return record[dataIndex].toString().toLowerCase().includes(value.toLowerCase());
+      return record[dataIndex]
+        .toString()
+        .toLowerCase()
+        .includes(value.toLowerCase());
     },
     onFilterDropdownOpenChange: (visible) => {
       if (visible && searchInput.current) {
@@ -153,24 +208,21 @@ const ViewListOfClothReq = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text
       ),
   });
-  
-  
-  
-
+  //////////////END OF METHOD
 
   const handleChange = (pagination, filters, sorter) => {
-    console.log('Various parameters', pagination, filters, sorter);
+    console.log("Various parameters", pagination, filters, sorter);
     setFilteredInfo(filters);
     setSortedInfo(sorter);
   };
@@ -208,73 +260,45 @@ const ViewListOfClothReq = () => {
 
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'key',
-      key: 'key',
+      title: "ID",
+      dataIndex: "key",
+      key: "key",
     },
     {
-      title: 'Item Type',
-      dataIndex: 'name',
-      key: 'name',
-      ...getColumnSearchProps('name', 'Item Type'),
+      title: "Item Type",
+      dataIndex: "name",
+      key: "name",
+      ...getColumnSearchProps("name", "Item Type"),
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: "Gender",
+      dataIndex: "gender",
+      key: "gender",
+      ...getColumnSearchProps("gender", "Gender"),
+    },
+
+    {
+      title: "Season",
+      dataIndex: "season",
+      key: "season",
+      ...getColumnSearchProps("season", "Season"),
+    },
+    {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
       sorter: (a, b) => a.age - b.age,
-      sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
-      ...getColumnSearchProps('age', 'Age'),
+      sortOrder: sortedInfo.columnKey === "age" ? sortedInfo.order : null,
     },
     {
-      title: 'Gender',
-      dataIndex: 'gender',
-      key: 'gender',
-      ...getColumnSearchProps('gender', 'Gender'),
+      title: "Quantity Needed",
+      dataIndex: "quantity",
+      key: "quantity",
     },
     {
-      title: 'Season',
-      dataIndex: 'season',
-      key: 'season',
-      ...getColumnSearchProps('season', 'Season'),
-    },
-    {
-      title: 'View',
-      key: 'details',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => handleActionClick(record)}>
-          Details
-        </Button>
-      ),
-    },
-    // Hidden columns for additional details
-    {
-      title: 'Type',
-      dataIndex: 'type',
-      key: 'type',
-      visible: false,
-    },
-    {
-      title: 'Material',
-      dataIndex: 'material',
-      key: 'material',
-      visible: false,
-    },
-    {
-      title: 'Requested Quantity',
-      dataIndex: 'requestedQuantity',
-      key: 'requestedQuantity',
-      visible: false,
-    },
-    {
-      title: 'Quantity Needed',
-      dataIndex: 'quantity',
-      key: 'quantity',
-    },
-    {
-      title: 'Quantity Donated',
-      key: 'editableQuantity',
-      render: (text, record) => (
+      title: "Quantity Donated",
+      key: "editableQuantity",
+      render: (_, record) => (
         <InputNumber
           min={0}
           max={record.quantity}
@@ -284,32 +308,60 @@ const ViewListOfClothReq = () => {
       ),
     },
     {
-      title: 'Donate',
-      key: 'donate',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => handleDonate(record)}>Donate</Button>
+      title: "Donate",
+      key: "donate",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleDonate(record)}>
+          Donate
+        </Button>
       ),
+    },
+    {
+      title: "View",
+      key: "details",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          Details
+        </Button>
+      ),
+    },
+    // Hidden columns for additional details
+    {
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
+      visible: false,
+    },
+    {
+      title: "Material",
+      dataIndex: "material",
+      key: "material",
+      visible: false,
+    },
+    {
+      title: "Requested Quantity",
+      dataIndex: "requestedQuantity",
+      key: "requestedQuantity",
+      visible: false,
     },
   ];
 
   return (
     <div className="container">
       <h2>View Clothes Items</h2>
-      <Table columns={columns.filter(col => col.visible !== false)} dataSource={dataSource} onChange={handleChange} />
-      <Button
-        type="button"
-        className="btn btn-lg mb-4 text-white w-1"
-        style={{ background: "#9F8C76" }}
-        onClick={handleBackButtonClick}
-      >
-        Back
-      </Button>
+      <Table
+        columns={columns.filter((col) => col.visible !== false)}
+        dataSource={dataSource}
+        onChange={handleChange}
+      />
       <Modal
         title="Details"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setIsModalVisible(false)}>Close</Button>
+          <Button key="close" onClick={() => setIsModalVisible(false)}>
+            Close
+          </Button>,
         ]}
       >
         {selectedRecord && (
