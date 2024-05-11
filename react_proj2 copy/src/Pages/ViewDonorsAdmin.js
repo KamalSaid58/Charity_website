@@ -422,6 +422,7 @@ const DonorList = () => {
         {selectedRecord && (
           <div>
             <p>Name: {selectedRecord.DonorName}</p>
+            <p>Profession: {selectedRecord.DonorProfession}</p>
             <p>Gender: {selectedRecord.DonorGender}</p>
             <p>Email: {selectedRecord.DonorEmail}</p>
             <p>Number: {selectedRecord.DonorNumber}</p>
