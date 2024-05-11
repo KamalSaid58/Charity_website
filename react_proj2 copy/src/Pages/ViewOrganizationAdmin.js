@@ -102,11 +102,12 @@ const ViewOrganizationAdmin = () => {
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
 
   const searchInput = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -196,35 +197,8 @@ const ViewOrganizationAdmin = () => {
             </Button>
           </div>
         )}
-        {title === "Governate" && (
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <Button
-              type={selectedKeys.includes("Bani Suef") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Bani Suef") ? [] : ["Bani Suef"]
-                )
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Bani Suef
-            </Button>
 
-            <Button
-              type={selectedKeys.includes("Cairo") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Cairo
-            </Button>
-          </div>
-        )}
-
-        {title === "Area" && (
+        {title === "Address" && (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
               type={selectedKeys.includes("Tagamo3") ? "primary" : "default"}
@@ -333,7 +307,6 @@ const ViewOrganizationAdmin = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      width: "30%",
       // filteredValue is needed only if there are other columns with filters
       ...getColumnSearchProps("name", "Name"),
     },
@@ -341,20 +314,22 @@ const ViewOrganizationAdmin = () => {
       title: "Type",
       dataIndex: "type",
       key: "type",
-      width: "20%",
       ...getColumnSearchProps("type", "Type"),
     },
     {
-      title: "Governate",
-      dataIndex: "governate",
-      key: "governate",
-      ...getColumnSearchProps("governate", "Governate"),
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+      ...getColumnSearchProps("address", "Address"),
     },
     {
-      title: "Area",
-      dataIndex: "area",
-      key: "area",
-      ...getColumnSearchProps("area", "Area"),
+      title: "View",
+      key: "details",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          Details
+        </Button>
+      ),
     },
     {
       title: "View",
@@ -381,7 +356,7 @@ const ViewOrganizationAdmin = () => {
       render: (_, record) => (
         <div>
           <Popconfirm
-            title="Are you sure you want to delete this record?"
+            title="Are you sure you want to delete this account?"
             onConfirm={() => handleDeletionClick(record)}
             okText="Yes"
             cancelText="No"

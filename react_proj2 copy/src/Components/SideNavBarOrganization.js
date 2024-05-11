@@ -4,15 +4,19 @@ import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
 import Organ from "../Pages/Organ";
+import AccountSettings from "../Pages/AccountSettings";
 import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ShoppingOutlined,
   DollarCircleOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
+import { TbLocationBolt } from "react-icons/tb";
+import { IoLocationOutline } from "react-icons/io5";
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
@@ -70,6 +74,20 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
             >
               Donor Submissions
             </Menu.Item>
+            <Menu.Item
+              key="4"
+              // onClick={() => handleButtonClick("AccountSettings")}
+              icon={<IoLocationOutline />}
+            >
+              Location
+            </Menu.Item>
+            <Menu.Item
+              key="5"
+              onClick={() => handleButtonClick("AccountSettings")}
+              icon={<SettingOutlined />}
+            >
+              Settings
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout
@@ -124,6 +142,7 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
               )}
               {currentPage === "OrganList" && <OrganList />}
               {currentPage === "DonorList" && <DonorList />}
+              {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>
         </Layout>

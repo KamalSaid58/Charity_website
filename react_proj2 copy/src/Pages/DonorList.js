@@ -356,6 +356,15 @@ const DonorList = () => {
     },
 
     {
+      title: "View",
+      key: "details",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          Details
+        </Button>
+      ),
+    },
+    {
       title: "Accept/Reject",
       dataIndex: "Accept/Reject",
       key: "Accept/Reject",
@@ -390,20 +399,11 @@ const DonorList = () => {
         </div>
       ),
     },
-    {
-      title: "View",
-      key: "details",
-      render: (_, record) => (
-        <Button type="primary" onClick={() => handleActionClick(record)}>
-          Details
-        </Button>
-      ),
-    },
   ];
 
   return (
     <div className="container">
-      <h2>Donor Requests</h2>
+      <h2>Donors Requests</h2>
       <Table columns={columns} dataSource={dataSource} />
       <Modal
         title="Details"

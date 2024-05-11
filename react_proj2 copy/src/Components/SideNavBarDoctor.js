@@ -8,13 +8,14 @@ import ViewOrganizationDonor from "../Pages/ViewOrganizationDonor";
 import SchoolSupp from "../Pages/SchoolSupp";
 import Donor from "../Pages/Donor";
 import ViewListOfClothReq from "../Pages/ViewListOfClothReq";
-import { DollarCircleOutlined } from "@ant-design/icons";
+import { DollarCircleOutlined, SettingOutlined } from "@ant-design/icons";
 import ViewReqDon from "../Pages/ViewReqDonor";
 import ListOfFood from "../Pages/ListOfFood";
 import ListofBloodDonation from "../Pages/ListofBloodDonation";
 import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import MedicalCases from "../Pages/MedicalCases";
+import AccountSettings from "../Pages/AccountSettings";
 
 import {
   ShoppingCartOutlined,
@@ -131,6 +132,13 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
             >
               Medical Cases
             </Menu.Item>
+            <Menu.Item
+              key="10"
+              onClick={() => handleButtonClick("AccountSettings")}
+              icon={<SettingOutlined />}
+            >
+              Settings
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout
@@ -189,6 +197,7 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfToys" && <ListOfToys />}
               {currentPage === "SchoolSupp" && <SchoolSupp />}
               {currentPage === "ListofBloodDonation" && <ListofBloodDonation />}
+              {currentPage === "AccountSettings" && <AccountSettings />}
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />
               )}
