@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { PDFDocument, rgb } from "pdf-lib";
 
-const DonorList = () => {
+const CurrentDonors = () => {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -69,12 +69,7 @@ const DonorList = () => {
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
-    alert("You have successfuly rejected the organization request");
-  };
-  const handleAccept = (key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
-    setDataSource(newData);
-    alert("You have successfuly accepted the organization request");
+    alert("You have successfuly deleted this account");
   };
 
   const handleSelect = (record, selected) => {
@@ -356,41 +351,6 @@ const DonorList = () => {
     },
 
     {
-      title: "Accept/Reject",
-      dataIndex: "Accept/Reject",
-      key: "Accept/Reject",
-      render: (_, record) => (
-        <div>
-          <Popconfirm
-            title="Are you sure you want to accept this record?"
-            onConfirm={() => handleAccept(record.key)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              type="primary"
-              shape="circle"
-              icon={<CheckOutlined />}
-              style={{ marginRight: 8, background: "green" }}
-            />
-          </Popconfirm>
-          <Popconfirm
-            title="Are you sure you want to reject this record?"
-            onConfirm={() => handleDelete(record.key)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              type="primary"
-              danger
-              shape="circle"
-              icon={<CloseOutlined />}
-            />
-          </Popconfirm>
-        </div>
-      ),
-    },
-    {
       title: "View",
       key: "details",
       render: (_, record) => (
@@ -399,11 +359,30 @@ const DonorList = () => {
         </Button>
       ),
     },
+    {
+      title: "",
+      dataIndex: "",
+      key: "Accept/Reject",
+      render: (_, record) => (
+        <div>
+          <Popconfirm
+            title="Are you sure you want to delete this account?"
+            onConfirm={() => handleDelete(record.key)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger>
+              Delete
+            </Button>
+          </Popconfirm>
+        </div>
+      ),
+    },
   ];
 
   return (
     <div className="container">
-      <h2>Donors Requests</h2>
+      <h2>Current Donors</h2>
       <Table columns={columns} dataSource={dataSource} />
       <Modal
         title="Details"
@@ -436,4 +415,4 @@ const DonorList = () => {
   );
 };
 
-export default DonorList;
+export default CurrentDonors;

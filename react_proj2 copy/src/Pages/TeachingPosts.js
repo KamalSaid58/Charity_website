@@ -211,31 +211,10 @@ const TeachingPosts = () => {
     setSortedInfo(sorter);
   };
 
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
-  const clearAll = () => {
-    setFilteredInfo({});
-    setSortedInfo({});
-  };
-
-  const handleBackButtonClick = () => {
-    navigate("/Donor");
-  };
-
   const handleActionClick = (record) => {
     setSelectedRecord(record);
     setIsModalVisible(true);
   };
-  const handleIconAction = (record) => {
-    setSelectedRecord(record);
-    setIsModalOpen(true);
-  };
-
-  /*const handleQuantityChange = (record, quantity) => {
-    setDonationQuantities({ ...donationQuantities, [record.key]: quantity });
-  };*/
 
   const dataSource = [
     {

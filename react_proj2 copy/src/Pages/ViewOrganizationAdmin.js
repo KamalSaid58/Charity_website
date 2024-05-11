@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table, Popconfirm } from "antd";
+import { Button, Input, Space, Table, Popconfirm, Modal } from "antd";
 import Highlighter from "react-highlight-words";
 const columns = [
   {
@@ -14,14 +14,9 @@ const columns = [
     key: "type",
   },
   {
-    title: "Governorate",
-    dataIndex: "governorate",
-    key: "governorate",
-  },
-  {
-    title: "Area",
-    dataIndex: "area",
-    key: "area",
+    title: "Address",
+    dataIndex: "address",
+    key: "address",
   },
 ];
 
@@ -31,36 +26,46 @@ const ViewOrganizationAdmin = () => {
       key: 1,
       name: "Kolo 5eer",
       type: "Charity",
-      governate: "Cairo",
-      area: "Maadi",
+      address: "Maadi",
+      number: "0114719300",
+      email: "kamal@yahoo",
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d221158.1049348152!2d31.155591425000008!3d29.991055999999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d360e7b79f9%3A0xe2334863278572c1!2sEgyptian%20Language%20School!5e0!3m2!1sen!2seg!4v1715000890317!5m2!1sen!2seg",
     },
     {
       key: 2,
       name: "Feeha 5eer",
       type: "Charity",
-      governate: "Cairo",
-      area: "Tagamo3",
+      address: "Tagamo3",
+      number: "0114715300",
+      email: "george@yahoo",
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5802.170093329363!2d31.441129290176615!3d30.151673933162055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145810a60524a231%3A0xe8d7ffe3daf3f959!2sNefertari%20International%20Schools!5e0!3m2!1sen!2seg!4v1715000703317!5m2!1sen!2seg",
     },
     {
       key: 3,
       name: "Fein Aboya",
       type: "Orphanage",
-      governate: "Cairo",
-      area: "Maadi",
+      address: "Maadi",
+      number: "0115719300",
+      email: "omar@yahoo",
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5802.170093329363!2d31.441129290176615!3d30.151673933162055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145810a60524a231%3A0xe8d7ffe3daf3f959!2sNefertari%20International%20Schools!5e0!3m2!1sen!2seg!4v1715000703317!5m2!1sen!2seg",
     },
     {
       key: 4,
       name: "A7san 5eer",
       type: "Charity",
-      governate: "Bani Suef",
-      area: "Kobry",
+      address: "Kobry",
+      number: "0114719310",
+      email: "ahmed@yahoo",
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5802.170093329363!2d31.441129290176615!3d30.151673933162055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145810a60524a231%3A0xe8d7ffe3daf3f959!2sNefertari%20International%20Schools!5e0!3m2!1sen!2seg!4v1715000703317!5m2!1sen!2seg",
     },
     {
       key: 5,
       name: "El Doctor",
       type: "Hospital",
-      governate: "Bani Suef",
-      area: "Kobry",
+      address: "Kobry",
+      number: "0114715300",
+      email: "boollaa@yahoo",
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5802.170093329363!2d31.441129290176615!3d30.151673933162055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145810a60524a231%3A0xe8d7ffe3daf3f959!2sNefertari%20International%20Schools!5e0!3m2!1sen!2seg!4v1715000703317!5m2!1sen!2seg",
     },
   ]);
 
@@ -79,9 +84,16 @@ const ViewOrganizationAdmin = () => {
   const filterGov = [...new Set(data.map((item) => item.governorate))];
   const filterType = [...new Set(data.map((item) => item.type))];
 
+  const [selectedRecord, setSelectedRecord] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleActionClick = (record) => {
+    setSelectedRecord(record);
+    setIsModalVisible(true);
+  };
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -162,35 +174,8 @@ const ViewOrganizationAdmin = () => {
             </Button>
           </div>
         )}
-        {title === "Governate" && (
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <Button
-              type={selectedKeys.includes("Bani Suef") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("Bani Suef") ? [] : ["Bani Suef"]
-                )
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Bani Suef
-            </Button>
 
-            <Button
-              type={selectedKeys.includes("Cairo") ? "primary" : "default"}
-              onClick={() =>
-                setSelectedKeys(selectedKeys.includes("Cairo") ? [] : ["Cairo"])
-              }
-              style={{ marginBottom: 8 }}
-              size="small"
-            >
-              Cairo
-            </Button>
-          </div>
-        )}
-
-        {title === "Area" && (
+        {title === "Address" && (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
               type={selectedKeys.includes("Tagamo3") ? "primary" : "default"}
@@ -293,7 +278,6 @@ const ViewOrganizationAdmin = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      width: "30%",
       // filteredValue is needed only if there are other columns with filters
       ...getColumnSearchProps("name", "Name"),
     },
@@ -301,20 +285,22 @@ const ViewOrganizationAdmin = () => {
       title: "Type",
       dataIndex: "type",
       key: "type",
-      width: "20%",
       ...getColumnSearchProps("type", "Type"),
     },
     {
-      title: "Governate",
-      dataIndex: "governate",
-      key: "governate",
-      ...getColumnSearchProps("governate", "Governate"),
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+      ...getColumnSearchProps("address", "Address"),
     },
     {
-      title: "Area",
-      dataIndex: "area",
-      key: "area",
-      ...getColumnSearchProps("area", "Area"),
+      title: "View",
+      key: "details",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleActionClick(record)}>
+          Details
+        </Button>
+      ),
     },
     {
       title: "",
@@ -322,7 +308,7 @@ const ViewOrganizationAdmin = () => {
       render: (_, record) => (
         <div>
           <Popconfirm
-            title="Are you sure you want to delete this record?"
+            title="Are you sure you want to delete this account?"
             onConfirm={() => handleDeletionClick(record)}
             okText="Yes"
             cancelText="No"
@@ -339,8 +325,63 @@ const ViewOrganizationAdmin = () => {
   return (
     <>
       <div className="container">
-        <h2>View Current Organizations</h2>
+        <h2>Current Organizations</h2>
         <Table columns={columns} dataSource={data} onChange={handleChange} />
+
+        <Modal
+          title="Details"
+          visible={isModalVisible}
+          onCancel={() => setIsModalVisible(false)}
+          footer={[
+            <Button key="close" onClick={() => setIsModalVisible(false)}>
+              Close
+            </Button>,
+          ]}
+        >
+          {selectedRecord && (
+            <div>
+              <p>Name: {selectedRecord.name}</p>
+              <p>Number: {selectedRecord.number}</p>
+              <p>Email: {selectedRecord.email}</p>
+              <p>Address: {selectedRecord.address}</p>
+              <Button
+                type="link"
+                onClick={() => setIsModalOpen(true)}
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                }}
+              >
+                View Location
+              </Button>
+            </div>
+          )}
+        </Modal>
+        <Modal
+          open={isModalOpen}
+          title="Location"
+          visible={isModalOpen}
+          onCancel={() => setIsModalOpen(false)}
+          footer={[
+            <Button key="close" onClick={() => setIsModalOpen(false)}>
+              Close
+            </Button>,
+          ]}
+        >
+          {selectedRecord && (
+            <div>
+              <iframe
+                src={selectedRecord.src}
+                width="475"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          )}
+        </Modal>
       </div>
     </>
   );
