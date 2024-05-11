@@ -12,10 +12,15 @@ import {
   ShoppingOutlined,
   DollarCircleOutlined,
   SettingOutlined,
+  PaperClipOutlined,
+  PlusSquareOutlined,
+  EditOutlined,
+  HeartOutlined,
+  UserAddOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
-import { TbLocationBolt } from "react-icons/tb";
 import { IoLocationOutline } from "react-icons/io5";
 const { Header, Sider, Content } = Layout;
 
@@ -55,34 +60,41 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
-              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
-              icon={<DollarCircleOutlined />}
+              // onClick={() => handleButtonClick("AccountSettings")}
+              icon={<PlusSquareOutlined />}
             >
-              Registered Organizations
+              Create Post
             </Menu.Item>
             <Menu.Item
               key="2"
-              onClick={() => handleButtonClick("OrganList")}
-              icon={<ShoppingCartOutlined />}
+              // onClick={() => handleButtonClick("AccountSettings")}
+              icon={<EditOutlined />}
             >
-              Organization Submissions
+              Edit/Delete Posts
             </Menu.Item>
             <Menu.Item
               key="3"
-              onClick={() => handleButtonClick("DonorList")}
-              icon={<ShoppingOutlined />}
+              // onClick={() => handleButtonClick("AccountSettings")}
+              icon={<HeartOutlined />}
             >
-              Donor Submissions
+              View Donations
             </Menu.Item>
             <Menu.Item
               key="4"
               // onClick={() => handleButtonClick("AccountSettings")}
-              icon={<IoLocationOutline />}
+              icon={<UserOutlined />}
             >
-              Location
+              View Volunteers
             </Menu.Item>
             <Menu.Item
               key="5"
+              // onClick={() => handleButtonClick("AccountSettings")}
+              icon={<IoLocationOutline />}
+            >
+              Set Location
+            </Menu.Item>
+            <Menu.Item
+              key="6"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >

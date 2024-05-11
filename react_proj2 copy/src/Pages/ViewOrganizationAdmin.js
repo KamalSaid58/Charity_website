@@ -332,15 +332,6 @@ const ViewOrganizationAdmin = () => {
       ),
     },
     {
-      title: "View",
-      key: "details",
-      render: (_, record) => (
-        <Button type="primary" onClick={() => handleActionClick(record)}>
-          Details
-        </Button>
-      ),
-    },
-    {
       title: "Location",
       key: "Loc",
       render: (_, record) => (

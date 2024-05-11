@@ -5,7 +5,11 @@ import ViewOrganizationDonor from "../Pages/ViewOrganizationDonor";
 import SchoolSupp from "../Pages/SchoolSupp";
 import Donor from "../Pages/Donor";
 import ViewListOfClothReq from "../Pages/ViewListOfClothReq";
-import { DollarCircleOutlined, SettingOutlined } from "@ant-design/icons";
+import {
+  DollarCircleOutlined,
+  EditOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 import ViewReqDon from "../Pages/ViewReqDonor";
 import ListOfFood from "../Pages/ListOfFood";
 import ListofBloodDonation from "../Pages/ListofBloodDonation";
@@ -130,6 +134,13 @@ const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="10"
+              // onClick={() => handleButtonClick("AccountSettings")}
+              icon={<EditOutlined />}
+            >
+              Specify Details
+            </Menu.Item>
+            <Menu.Item
+              key="11"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >

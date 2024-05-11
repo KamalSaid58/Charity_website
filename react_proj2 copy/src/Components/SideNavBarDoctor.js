@@ -16,6 +16,7 @@ import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import MedicalCases from "../Pages/MedicalCases";
 import AccountSettings from "../Pages/AccountSettings";
+import SetDoctorLoc from "../Pages/SetDoctorLoc";
 
 import {
   ShoppingCartOutlined,
@@ -28,10 +29,9 @@ import {
   BookOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
-import CategorySelection from "./CategorySelection";
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
-import PieChartDemo from "./PieChartDemo";
+import { IoLocationOutline } from "react-icons/io5";
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
@@ -134,6 +134,13 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="10"
+              onClick={() => handleButtonClick("SetDoctorLoc")}
+              icon={<IoLocationOutline />}
+            >
+              Set Location
+            </Menu.Item>
+            <Menu.Item
+              key="11"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >
@@ -197,6 +204,7 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfToys" && <ListOfToys />}
               {currentPage === "SchoolSupp" && <SchoolSupp />}
               {currentPage === "ListofBloodDonation" && <ListofBloodDonation />}
+              {currentPage === "SetDoctorLoc" && <SetDoctorLoc />}
               {currentPage === "AccountSettings" && <AccountSettings />}
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />
