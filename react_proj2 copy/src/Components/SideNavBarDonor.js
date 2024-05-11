@@ -132,70 +132,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
 
           <Content>
 
-            {/* <Container>
-            
-              <Row className="justify-content-center mt-5">
-              <Col md={4} className="mb-4 d-flex justify-content-center">
-                  <Card
-                    className="rounded-4"
-                    style={{
-                      width: "20rem",
-                      border: "2px solid #000",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Card.Body >
-                      <Card.Title>Donation Pie Chart</Card.Title>
-                      <PieChartDemo></PieChartDemo>
-                      <CardText height={"240rem"}>This pie chart illustrates the distribution of donations across different continents</CardText>
-                      <div className="text-center">
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col md={4} className="mb-4 d-flex justify-content-center">
-                  
-                  <Card
-                    style={{
-                      width: "20rem",
-                      border: "2px solid #000",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src={Donation}
-                      className="d-flex justify-content-center"
-                      height={"240rem"}
-                    />
-                    <Card.Body>
-                      <Card.Text>
-                        Donations are voluntary contributions made by individuals, organizations, or governments to support various causes, charities, nonprofits, or initiatives. They are typically given without the expectation of receiving something tangible in return. Donations can take many forms, including monetary gifts, goods, services, time, or expertise.
-                      </Card.Text>
-                      <div className="text-center">
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col md={4} className="mb-4 d-flex justify-content-center">
-                  <Card
-                    className="rounded-4"
-                    style={{
-                      width: "20rem",
-                      border: "2px solid #000",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Card.Body >
-                      <Card.Title>Donation Center Visits</Card.Title>
-                      <VerticalBarDemo></VerticalBarDemo>
-                      <div className="text-center">
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Container> */}
+            <Donor />
             <div>
             {currentPage === 'ViewReqDon' && <ViewReqDon />} 
             {currentPage === 'ViewOrganizationDonor' && <ViewOrganizationDonor />}
