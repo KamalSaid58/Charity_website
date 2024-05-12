@@ -56,32 +56,34 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
-              onClick={() => handleButtonClick("OrganList")}
-              icon={<BankOutlined />}
-            >
-              Pending Organizations
-            </Menu.Item>
-            <Menu.Item
-              key="2"
               onClick={() => handleButtonClick("ViewOrganizationAdmin")}
               icon={<BankOutlined />}
             >
-              Current Organizations
+              Organizations
             </Menu.Item>
             <Menu.Item
-              key="3"
-              onClick={() => handleButtonClick("DonorList")}
-              icon={<UserOutlined />}
-            >
-              Pending Donors
-            </Menu.Item>
-            <Menu.Item
-              key="4"
+              key="2"
               onClick={() => handleButtonClick("CurrentDonors")}
               icon={<UserOutlined />}
             >
-              Current Donors
+              Donors
             </Menu.Item>
+            <Menu.Item
+              key="3"
+              onClick={() => handleButtonClick("OrganList")}
+              icon={<BankOutlined />}
+            >
+              New Organizations
+            </Menu.Item>
+
+            <Menu.Item
+              key="4"
+              onClick={() => handleButtonClick("DonorList")}
+              icon={<UserOutlined />}
+            >
+              New Donors
+            </Menu.Item>
+
             <Menu.Item
               key="5"
               onClick={() => handleButtonClick("AccountSettings")}

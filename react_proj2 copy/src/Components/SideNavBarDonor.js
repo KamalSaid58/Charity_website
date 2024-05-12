@@ -65,39 +65,40 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
+              onClick={() => handleButtonClick("ViewOrganizationDonor")}
+              icon={<UserOutlined />}
+            >
+              Organizations
+            </Menu.Item>
+            <Menu.Item
+              key="2"
               onClick={() => handleButtonClick("ViewReqDon")}
               icon={<DollarCircleOutlined />}
             >
               Donations Lists {/* Changed the icon here */}
             </Menu.Item>
             <Menu.Item
-              key="2"
+              key="3"
               onClick={() => handleButtonClick("ViewListOfClothReq")}
               icon={<ShoppingCartOutlined />}
             >
               Clothes {/* Changed the icon here */}
             </Menu.Item>
             <Menu.Item
-              key="3"
+              key="4"
               onClick={() => handleButtonClick("ListOfToys")}
               icon={<ShoppingOutlined />}
             >
               Toys
             </Menu.Item>
             <Menu.Item
-              key="4"
+              key="5"
               onClick={() => handleButtonClick("ListOfFood")}
               icon={<CoffeeOutlined />}
             >
               Food
             </Menu.Item>
-            <Menu.Item
-              key="5"
-              onClick={() => handleButtonClick("ViewOrganizationDonor")}
-              icon={<UserOutlined />}
-            >
-              Organizations
-            </Menu.Item>
+
             <Menu.Item
               key="6"
               onClick={() => handleButtonClick("SchoolSupp")}
