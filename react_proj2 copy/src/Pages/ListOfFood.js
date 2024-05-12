@@ -300,12 +300,12 @@ const ListOfFood = () => {
     },
 
     {
-      title: "Fixed Quantity",
+      title: "Quantity Needed",
       dataIndex: "quantity",
       key: "quantity",
     },
     {
-      title: "Editable Quantity",
+      title: "Quantity Donated",
       key: "editableQuantity",
       render: (text, record) => (
         <InputNumber

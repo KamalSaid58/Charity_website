@@ -1,5 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Button, Form, Input, Popconfirm, Table, Modal } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  Popconfirm,
+  Table,
+  Modal,
+  notification,
+} from "antd";
 
 const EditableContext = React.createContext(null);
 
@@ -90,9 +98,9 @@ const EditableCell = ({
 const UpdateDeleteDonation = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
+  const [api, contextHolder] = notification.useNotification();
 
   const handleEditSave = () => {
-    // Check if any of the fields are empty
     setIsModalVisible(false);
   };
 
@@ -136,14 +144,38 @@ const UpdateDeleteDonation = () => {
   };
 
   const handleSave = (row) => {
-    const newData = [...dataSource];
-    const index = newData.findIndex((item) => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, {
-      ...item,
-      ...row,
-    });
-    setDataSource(newData);
+    const unfilledDataNotification = () => {
+      api.error(
+        {
+          message: "Please fill out all the boxes",
+          placement: "top",
+          duration: 3,
+        },
+        500
+      );
+    };
+    let isEmpty = false;
+    if (row.category === "Food") {
+      if (row.categoryoffood === "" || row.itemname === "") isEmpty = true;
+    } else if (row.category === "Toys") {
+      if (row.categoryoffood === "" || row.age === "" || row.gender === "")
+        isEmpty = true;
+    } else if (row.category === "Medical supply") {
+      if (row.categoryoffood === "" || row.itemname === "" || row.use === "")
+        isEmpty = true;
+    }
+    if (isEmpty) {
+      unfilledDataNotification();
+    } else {
+      const newData = [...dataSource];
+      const index = newData.findIndex((item) => row.key === item.key);
+      const item = newData[index];
+      newData.splice(index, 1, {
+        ...item,
+        ...row,
+      });
+      setDataSource(newData);
+    }
   };
 
   const components = {
@@ -210,7 +242,8 @@ const UpdateDeleteDonation = () => {
   }));
 
   return (
-    <div>
+    <>
+      {contextHolder}
       <h2>Donation Posts</h2>
       <Table
         components={components}
@@ -276,7 +309,7 @@ const UpdateDeleteDonation = () => {
           </div>
         )}
       </Modal>
-    </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
+import ViewDonorsAdmin from "../Pages/ViewDonorsAdmin";
 import Admin from "../Pages/Admin";
 import CurrentDonors from "../Pages/CurrentDonors";
 import AccountSettings from "../Pages/AccountSettings";
@@ -144,6 +145,7 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
               {currentPage === "OrganList" && <OrganList />}
               {currentPage === "DonorList" && <DonorList />}
               {currentPage === "CurrentDonors" && <CurrentDonors />}
+              {currentPage === "ViewDonorsAdmin" && <ViewDonorsAdmin />}
               {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>

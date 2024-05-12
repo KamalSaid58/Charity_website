@@ -76,7 +76,11 @@ function Register() {
         </Col>
       </Row>
       <div className="text-center mt-4">
-        <Button type="primary" onClick={() => navigate("/Options")}>
+        <Button
+          type="primary"
+          onClick={() => navigate("/Options")}
+          style={{ marginRight: 50, marginTop: 50 }}
+        >
           Back
         </Button>
       </div>

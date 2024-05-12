@@ -92,6 +92,21 @@ const InfoTab = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const firstName = document
+      .querySelector('input[name="first_name"]')
+      .value.trim();
+    const lastName = document
+      .querySelector('input[name="last_name"]')
+      .value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const phoneNumber = document
+      .querySelector('input[name="phone"]')
+      .value.trim();
+
+    if (!firstName || !lastName || !email || !phoneNumber) {
+      alert("Please fill in all the fields");
+      return;
+    }
     alert("Changes saved successfully");
   };
 
@@ -175,8 +190,26 @@ const InfoTab = () => {
 const ChangePasswordTab = ({ setActiveTab }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Password changed successfully");
-    setActiveTab("account-info");
+    const currentPassword = document
+      .querySelector('input[name="currentPassword"]')
+      .value.trim();
+    const newPassword = document
+      .querySelector('input[name="newPassword"]')
+      .value.trim();
+    const repeatNewPassword = document
+      .querySelector('input[name="repeatNewPassword"]')
+      .value.trim();
+
+    if (!currentPassword || !newPassword || !repeatNewPassword) {
+      alert("Please fill in all the fields");
+      return;
+    } else if (newPassword !== repeatNewPassword) {
+      alert("Passwords do not match");
+      return;
+    } else {
+      alert("Password changed successfully");
+      setActiveTab("account-info");
+    }
   };
   const handleCancel = (event) => {
     event.preventDefault();
@@ -226,6 +259,17 @@ const ChangePasswordTab = ({ setActiveTab }) => {
 const ChangeAddressTab = ({ setActiveTab }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    const city = document.querySelector('input[name="city"]').value.trim();
+    const street = document.querySelector('input[name="street"]').value.trim();
+    const building = document
+      .querySelector('input[name="building"]')
+      .value.trim();
+    const floor = document.querySelector('input[name="floor"]').value.trim();
+
+    if (!city || !street || !building || !floor) {
+      alert("Please fill in all the fields");
+      return;
+    }
     alert("Changes saved successfully");
     setActiveTab("account-info");
   };

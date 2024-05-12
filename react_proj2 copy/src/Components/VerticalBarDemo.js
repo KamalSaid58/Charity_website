@@ -13,24 +13,29 @@ export default function VerticalBarDemo() {
     );
     const surfaceBorder = documentStyle.getPropertyValue("--surface-border");
     const data = {
-      labels: ["2017", "2018", "2019", "2020", "2021", "2022", "2023"],
+      labels: ["2021", "2022", "2023"],
       datasets: [
         {
           label: "Unsuccessful Donation",
+          //backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+          //borderColor: documentStyle.getPropertyValue('--blue-500'),
+          backgroundColor: "rgba(54, 162, 235, 0.6)",
           borderColor: "rgba(54, 162, 235, 1)",
-          data: [0, 2, 4, 6, 8, 10, 12],
+          data: [203, 405, 802],
         },
         {
           label: "Successful Donation",
+          //backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+          //borderColor: documentStyle.getPropertyValue('--pink-500'),
           backgroundColor: "rgba(255, 99, 132, 0.6)",
           borderColor: "rgba(255, 99, 132, 1)",
-          data: [1, 3, 5, 7, 9, 13, 15],
+          data: [802, 2059, 5092],
         },
       ],
     };
     const options = {
       maintainAspectRatio: false,
-      aspectRatio: 0.8,
+      aspectRatio: 0.9,
       plugins: {
         legend: {
           labels: {
@@ -85,7 +90,12 @@ export default function VerticalBarDemo() {
 
   return (
     <div className="card">
-      <Chart type="bar" data={chartData} options={chartOptions} />
+      <Chart
+        type="bar"
+        data={chartData}
+        options={chartOptions}
+        style={{ scale: 50 }}
+      />
     </div>
   );
 }

@@ -117,10 +117,13 @@ const CardContent = () => {
   ];
 
   function checkNavigateTo() {
-    // const fileInput = document.getElementById("file-upload");
-    // if (!fileInput.files.length) {
-    //   isEmpty = true;
-    // }
+    let isUploaded = true;
+    if (
+      fileList.length === 0 &&
+      (selectedDonorType === "Teacher" || selectedDonorType === "Doctor")
+    ) {
+      isUploaded = false;
+    }
 
     const unfilledDataNotification = () => {
       api.error(
@@ -133,12 +136,18 @@ const CardContent = () => {
       );
     };
 
-    const inputs = document.querySelectorAll(
-      'input[type="text"], input[type="password"]'
-    );
+    const notUploadedNotification = () => {
+      api.error(
+        {
+          message: "Please upload a document as proof of your existence",
+          placement: "top",
+          duration: 3,
+        },
+        500
+      );
+    };
 
     let isEmpty = false;
-
     if (
       gender === "" ||
       firstName === "" ||
@@ -154,21 +163,10 @@ const CardContent = () => {
       isEmpty = true;
     }
 
-    DonorData.push({
-      firstName: "",
-      lastName: "",
-      gender: "",
-      email: "",
-      password: "",
-      number: "",
-      address: "",
-      area: "",
-      goveernate: "",
-      // pdf: fileList,
-    });
-
     if (isEmpty) {
       unfilledDataNotification();
+    } else if (!isUploaded) {
+      notUploadedNotification();
     } else {
       navigate("/LoginTrial", { state: { Register: true } });
     }
@@ -352,20 +350,28 @@ const CardContent = () => {
                 </Select>
               </Tooltip>
             </Form.Item>
-
-            {showUploadButton && (
-              <>
-                <input type="file" id="file-upload" hidden />
-                <label for="file-upload" className="upload-link">
-                  <UploadFile
-                    fileList={fileList}
-                    setFileList={setFileList}
-                  ></UploadFile>
-                </label>
-              </>
-            )}
           </TextBoxRow>
-
+          <Flex justify="center" vertical align="center">
+            {showUploadButton && (
+              <p>
+                Upload proof of your profession, such as your bachelor or
+                doctorate:
+              </p>
+            )}
+            <TextBoxRow>
+              {showUploadButton && (
+                <div className="mb-3">
+                  <input type="file" id="file-upload" hidden />
+                  <label for="file-upload" className="upload-link">
+                    <UploadFile
+                      // fileList={fileList}
+                      setFileList={setFileList}
+                    ></UploadFile>
+                  </label>
+                </div>
+              )}
+            </TextBoxRow>
+          </Flex>
           <TextBoxRow>
             <Space size={200}>
               <Button onClick={() => navigate("/Register")}>Back</Button>
