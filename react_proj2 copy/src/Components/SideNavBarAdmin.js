@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
+import ViewDonorsAdmin from "../Pages/ViewDonorsAdmin";
 import Admin from "../Pages/Admin";
 import AccountSettings from "../Pages/AccountSettings";
 import {
@@ -60,13 +61,20 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="2"
+              onClick={() => handleButtonClick("ViewDonorsAdmin")}
+              icon={<UserOutlined />}
+            >
+              Donors
+            </Menu.Item>
+            <Menu.Item
+              key="3"
               onClick={() => handleButtonClick("OrganList")}
               icon={<ProfileOutlined />}
             >
               Pending Organizations
             </Menu.Item>
             <Menu.Item
-              key="3"
+              key="4"
               onClick={() => handleButtonClick("DonorList")}
               icon={<UserOutlined />}
             >
@@ -127,6 +135,7 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
               )}
               {currentPage === "OrganList" && <OrganList />}
               {currentPage === "DonorList" && <DonorList />}
+              {currentPage === "ViewDonorsAdmin" && <ViewDonorsAdmin />}
               {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>

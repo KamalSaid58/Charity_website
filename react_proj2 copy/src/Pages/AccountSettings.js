@@ -175,8 +175,26 @@ const InfoTab = () => {
 const ChangePasswordTab = ({ setActiveTab }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Password changed successfully");
-    setActiveTab("account-info");
+    const currentPassword = document
+      .querySelector('input[name="currentPassword"]')
+      .value.trim();
+    const newPassword = document
+      .querySelector('input[name="newPassword"]')
+      .value.trim();
+    const repeatNewPassword = document
+      .querySelector('input[name="repeatNewPassword"]')
+      .value.trim();
+
+    if (!currentPassword || !newPassword || !repeatNewPassword) {
+      alert("Please fill in all the fields");
+      return;
+    } else if (newPassword !== repeatNewPassword) {
+      alert("Passwords do not match");
+      return;
+    } else {
+      alert("Password changed successfully");
+      setActiveTab("account-info");
+    }
   };
   const handleCancel = (event) => {
     event.preventDefault();
