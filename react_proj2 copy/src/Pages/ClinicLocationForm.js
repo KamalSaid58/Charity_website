@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Select, Form, Input, message, Modal, Popover } from "antd";
 import { CompassOutlined } from "@ant-design/icons";
-import FormRange from "react-bootstrap/esm/FormRange";
 
 const { Option } = Select;
 
 function ClinicLocationForm() {
   const [form] = Form.useForm();
   const [category, setCategory] = useState("");
-  const [categorytoys, setCategorytoys] = useState("");
-  const [categoryfood, setCategoryfood] = useState("");
-  const [categoryschool, setCategoryschool] = useState("");
-  const [categorymedical, setCategorymedical] = useState("");
-  const [Gender, setGender] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const handleIconAction = () => {

@@ -3,7 +3,6 @@ import { Button, Input, Space, Table, Modal, Popconfirm, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { PDFDocument, rgb } from "pdf-lib";
 
 const DonorList = () => {

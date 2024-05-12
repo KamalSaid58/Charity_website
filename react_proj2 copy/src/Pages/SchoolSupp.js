@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 const SchoolSupp = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [showTable, setShowTable] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
   const [donationQuantities, setDonationQuantities] = useState({});
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});

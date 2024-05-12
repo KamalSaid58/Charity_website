@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
-import OrganList from "../Pages/OrganList";
-import DonorList from "../Pages/DonorList";
 import Organ from "../Pages/Organ";
 import AccountSettings from "../Pages/AccountSettings";
 import OrganizationLocationGoogle from "../Pages/OrganizationLocationGoogle";
@@ -10,23 +8,18 @@ import DonationPost from "../Pages/DonationPost";
 import UpdateDeleteDonation from "../Pages/UpdateDeleteDonation";
 import VolunteerPosts from "../Pages/VolunteerPosts";
 import FulfilledDonationPosts from "../Pages/FulfilledDonationPosts";
-import {
-  ShoppingCartOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  ShoppingOutlined,
-  DollarCircleOutlined,
-  SettingOutlined,
-  PaperClipOutlined,
-  PlusSquareOutlined,
-  EditOutlined,
-  HeartOutlined,
-  UserAddOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
 import NavigationBar from "./NavigationBarOrganization";
 import { Button, Layout, Menu, theme } from "antd";
 import { IoLocationOutline } from "react-icons/io5";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  SettingOutlined,
+  PlusSquareOutlined,
+  EditOutlined,
+  HeartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
 

@@ -6,9 +6,6 @@ import Donor from "./Pages/Donor";
 import Organ from "./Pages/Organ";
 import RegisterDonor from "./Pages/RegisterDonor";
 import RegisterOrgan from "./Pages/RegisterOrgan";
-import ChangePassword from "./Pages/ChangePassword";
-import Doctor from "./Pages/Doctor";
-import Teacher from "./Pages/Teacher";
 import OrganList from "./Pages/OrganList";
 import DonorList from "./Pages/DonorList";
 import ViewOrganizationDonor from "./Pages/ViewOrganizationDonor.js";
@@ -23,7 +20,7 @@ import StartPage from "./Components/StartPage";
 import Options from "./Components/Options";
 import AboutUs from "./Components/AboutUs";
 import ContactUs from "./Components/ContactUs"; // Make sure to import StartPage
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SideNavBarDonor from "./Components/SideNavBarDonor";
 import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 import ListOfToys from "./Pages/ListOfToys";
@@ -96,7 +93,6 @@ function App() {
               {/* <Route path="/ListofBloodDonation" element={<ListofBloodDonation/>}/> */}
               <Route path="/RegisterDonor" element={<RegisterDonor />} />
               <Route path="/RegisterOrgan" element={<RegisterOrgan />} />
-              <Route path="/ChangePassword" element={<ChangePassword />} />
               <Route path="/OrganList" element={<OrganList />} />
               <Route path="/DonorList" element={<DonorList />} />
               <Route path="/SchoolSupp" element={<SchoolSupp />} />

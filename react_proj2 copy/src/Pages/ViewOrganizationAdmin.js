@@ -2,29 +2,6 @@ import React, { useRef, useState } from "react";
 import { SearchOutlined, CompassOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table, Popconfirm, Modal } from "antd";
 import Highlighter from "react-highlight-words";
-const columns = [
-  {
-    title: "Organization Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Organization Type",
-    dataIndex: "type",
-    key: "type",
-  },
-  {
-    title: "Governate",
-    dataIndex: "governate",
-    key: "governate",
-  },
-  {
-    title: "Area",
-    dataIndex: "area",
-    key: "area",
-  },
-];
-
 const ViewOrganizationAdmin = () => {
   const [data, setData] = useState([
     {
@@ -96,10 +73,6 @@ const ViewOrganizationAdmin = () => {
     }
     setData(newData);
   };
-  const filterArea = [...new Set(data.map((item) => item.area))];
-  const filterGov = [...new Set(data.map((item) => item.governorate))];
-  const filterType = [...new Set(data.map((item) => item.type))];
-
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -113,10 +86,6 @@ const ViewOrganizationAdmin = () => {
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
-  const clearFilters = () => {
-    setFilteredInfo({});
-    setSearchText("");
-  };
 
   const handleActionClick = (record) => {
     setSelectedRecord(record);
@@ -129,13 +98,7 @@ const ViewOrganizationAdmin = () => {
 
   // search
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({
-      setSelectedKeys,
-      selectedKeys,
-      confirm,
-      clearFilters,
-      close,
-    }) => (
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, close }) => (
       <div
         style={{
           padding: 8,
@@ -364,7 +327,7 @@ const ViewOrganizationAdmin = () => {
   return (
     <>
       <div className="container">
-        <h2>View Current Organizations</h2>
+        <h2>Current Organizations</h2>
         <Space style={{ marginBottom: 16 }}></Space>
         <Table columns={columns} dataSource={data} onChange={handleChange} />
         <Modal

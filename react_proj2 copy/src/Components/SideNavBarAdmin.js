@@ -4,16 +4,18 @@ import ViewOrganizationAdmin from "../Pages/ViewOrganizationAdmin";
 import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
 import Admin from "../Pages/Admin";
+import CurrentDonors from "../Pages/CurrentDonors";
 import AccountSettings from "../Pages/AccountSettings";
+import NavigationBar from "./AdminNavBar";
+import { Button, Layout, Menu, theme } from "antd";
 import {
-  ProfileOutlined,
   UserOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   BankOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
-import NavigationBar from "./AdminNavBar";
-import { Button, Layout, Menu, theme } from "antd";
+
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
@@ -53,17 +55,17 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
-              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
+              onClick={() => handleButtonClick("OrganList")}
               icon={<BankOutlined />}
             >
-              Organizations
+              Pending Organizations
             </Menu.Item>
             <Menu.Item
               key="2"
-              onClick={() => handleButtonClick("OrganList")}
-              icon={<ProfileOutlined />}
+              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
+              icon={<BankOutlined />}
             >
-              Pending Organizations
+              Current Organizations
             </Menu.Item>
             <Menu.Item
               key="3"
@@ -71,6 +73,20 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
               icon={<UserOutlined />}
             >
               Pending Donors
+            </Menu.Item>
+            <Menu.Item
+              key="4"
+              onClick={() => handleButtonClick("CurrentDonors")}
+              icon={<UserOutlined />}
+            >
+              Current Donors
+            </Menu.Item>
+            <Menu.Item
+              key="5"
+              onClick={() => handleButtonClick("AccountSettings")}
+              icon={<SettingOutlined />}
+            >
+              Settings
             </Menu.Item>
           </Menu>
         </Sider>
@@ -127,6 +143,7 @@ const SideNavBarAdmin = ({ defaultCollapsed = true }) => {
               )}
               {currentPage === "OrganList" && <OrganList />}
               {currentPage === "DonorList" && <DonorList />}
+              {currentPage === "CurrentDonors" && <CurrentDonors />}
               {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>

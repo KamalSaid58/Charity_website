@@ -3,22 +3,8 @@ import { FaUser } from "react-icons/fa"; // Import the user icon from Font Aweso
 import "./NavigationBar.css"; // Import CSS file for styling
 import { CloseOutlined, BellOutlined, CarOutlined } from "@ant-design/icons";
 import "./NavigationBar.css"; // Import CSS file for styling
-import {
-  Card,
-  Popover,
-  Dropdown,
-  Menu,
-  Flex,
-  Button,
-  Drawer,
-  TimePicker,
-  Collapse,
-  Select,
-  Badge,
-  notification,
-} from "antd";
-import DatePicker from "react-multi-date-picker";
-import Toolbar from "react-multi-date-picker/plugins/toolbar";
+import { Card, Popover, Dropdown, Menu, Flex, Button, Badge } from "antd";
+
 const NotificationCard = ({ text, onClose }) => {
   return (
     <Card style={{ marginBottom: 10 }}>

@@ -1,19 +1,11 @@
-import React from 'react';
-import { Calendar, theme } from 'antd';
-import { TimePicker } from 'antd';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Dropdown, message, Space, Tooltip } from 'antd';
-
-
-  
-
-
+import React from "react";
+import { Calendar, theme } from "antd";
+import { TimePicker } from "antd";
 
 const onPanelChange = (value, mode) => {
-  console.log(value.format('YYYY-MM-DD'), mode);
+  console.log(value.format("YYYY-MM-DD"), mode);
 };
 const UpdateDeliveryTime = () => {
-    
   const { token } = theme.useToken();
   const wrapperStyle = {
     width: 300,
@@ -25,9 +17,7 @@ const UpdateDeliveryTime = () => {
     <div style={wrapperStyle}>
       <Calendar fullscreen={false} onPanelChange={onPanelChange} />
 
-  <TimePicker.RangePicker use12Hours format="h:mm a"/>
-
-
+      <TimePicker.RangePicker use12Hours format="h:mm a" />
     </div>
   );
 };

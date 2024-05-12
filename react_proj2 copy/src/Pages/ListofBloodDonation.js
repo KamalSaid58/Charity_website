@@ -4,21 +4,14 @@ import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { useNavigate } from "react-router-dom";
 import { CompassOutlined } from "@ant-design/icons";
-import { Divider, Image } from "antd";
 
 const ListofBloodDonation = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [showTable, setShowTable] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [donationQuantities, setDonationQuantities] = useState({});
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
-  const [show1, setShow1] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
   const navigate = useNavigate();
   const searchInput = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,7 +33,6 @@ const ListofBloodDonation = () => {
       selectedKeys,
       confirm,
       clearFilters,
-      close,
     }) => (
       <div
         style={{

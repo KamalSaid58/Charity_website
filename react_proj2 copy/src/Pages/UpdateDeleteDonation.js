@@ -92,9 +92,10 @@ const UpdateDeleteDonation = () => {
   const [selectedRecord, setSelectedRecord] = useState(null);
 
   const handleEditSave = () => {
-    // Implement your logic to save the edited record
+    // Check if any of the fields are empty
     setIsModalVisible(false);
   };
+
   const [dataSource, setDataSource] = useState([
     {
       key: "1", //moda,

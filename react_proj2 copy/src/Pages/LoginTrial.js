@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { notification } from "antd";
 import "./LoginTrial.css";
-import RegisterDonor from "./RegisterDonor";
 function LoginTrial() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -14,9 +13,6 @@ function LoginTrial() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  };
-  const handleForgetPassword = (event) => {
-    alert("The password for all accounts is 123");
   };
 
   const handleLogin = () => {

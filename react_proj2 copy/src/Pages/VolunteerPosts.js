@@ -2,14 +2,11 @@ import React, { useState, useRef } from "react";
 import { Button, Space, Table, Modal, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import { useAsyncError, useNavigate } from "react-router-dom";
-import Teacher from "./Teacher";
+import { useNavigate } from "react-router-dom";
 
 const VolunteerPosts = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [showTable, setShowTable] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);

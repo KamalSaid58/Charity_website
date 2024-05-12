@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import VerticalBarDemo from "./VerticalBarDemo";
-import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import Container, Row, Col, Card from react-bootstrap
-import Donation from "../Donation.jpeg";
 import "./SideNavBarDonor.css"; // Import the CSS file
 import ViewOrganizationDonor from "../Pages/ViewOrganizationDonor";
 import SchoolSupp from "../Pages/SchoolSupp";
@@ -16,7 +13,9 @@ import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import MedicalCases from "../Pages/MedicalCases";
 import AccountSettings from "../Pages/AccountSettings";
-
+import NavigationBar from "./NavigationBarDonor";
+import { Button, Layout, Menu, theme } from "antd";
+import { IoLocationOutline } from "react-icons/io5";
 import ClinicLocationForm from "../Pages/ClinicLocationForm";
 
 import {
@@ -30,9 +29,7 @@ import {
   BookOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
-import NavigationBar from "./NavigationBarDonor";
-import { Button, Layout, Menu, theme } from "antd";
-import { IoLocationOutline } from "react-icons/io5";
+
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarDoctor = ({ defaultCollapsed = true }) => {

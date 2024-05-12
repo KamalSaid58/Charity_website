@@ -8,16 +8,10 @@ const TeachingPosts = () => {
   const [searchText, setSearchText] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [showTable, setShowTable] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [donationQuantities, setDonationQuantities] = useState({});
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
-  const [show1, setShow1] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
   const navigate = useNavigate();
   const searchInput = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

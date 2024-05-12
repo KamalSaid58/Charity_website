@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Select, Form, Input, message, Modal, Popover } from "antd";
-import { CompassOutlined } from "@ant-design/icons";
-
-const { Option } = Select;
+import { Button, Form, Input, message, Modal } from "antd";
 
 function ClassandSubjectSelectionTeacher() {
   const [form] = Form.useForm();
   const [category, setCategory] = useState("");
-  const [categorytoys, setCategorytoys] = useState("");
-  const [categoryfood, setCategoryfood] = useState("");
-  const [categoryschool, setCategoryschool] = useState("");
-  const [categorymedical, setCategorymedical] = useState("");
-  const [Gender, setGender] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const handleIconAction = () => {
-    setIsModalOpen(true);
-  };
   const formItemLayout = {
     labelCol: {
       xs: {
@@ -36,7 +25,6 @@ function ClassandSubjectSelectionTeacher() {
       },
     },
   };
-  const content = <div></div>;
   const onFinish = (values) => {
     const requiredFields = ["Subjects", "Maximum pro-bono Classes"];
     const emptyFields = requiredFields.filter((field) => !values[field]);
@@ -89,13 +77,6 @@ function ClassandSubjectSelectionTeacher() {
         </Form.Item>
 
         <div className="divider d-flex align-items-center my-4">
-          <Button
-            type="primary"
-            style={{ marginRight: "10px" }}
-            onClick={() => navigate(-1)}
-          >
-            Back
-          </Button>
           <Button type="primary" htmlType="submit">
             Create
           </Button>

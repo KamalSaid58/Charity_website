@@ -3,7 +3,6 @@ import { Button, Input, Space, Table, Modal, Popconfirm, Checkbox } from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { PDFDocument, rgb } from "pdf-lib";
 
 const CurrentDonors = () => {
@@ -50,10 +49,6 @@ const CurrentDonors = () => {
     setIsModalVisible(true);
   };
 
-  const handleBackButtonClick = () => {
-    navigate("/Admin");
-  };
-
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -97,7 +92,7 @@ const CurrentDonors = () => {
 
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage([600, 1000]);
-    const { width, height } = page.getSize();
+    const { height } = page.getSize();
 
     let y = height - 40;
 
@@ -173,7 +168,6 @@ const CurrentDonors = () => {
       selectedKeys,
       confirm,
       clearFilters,
-      close,
     }) => (
       <div
         style={{

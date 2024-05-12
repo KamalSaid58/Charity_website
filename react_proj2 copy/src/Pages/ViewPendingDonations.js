@@ -2,28 +2,6 @@ import React, { useRef, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table } from "antd";
 import Highlighter from "react-highlight-words";
-const columns = [
-  {
-    title: "Organization Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Organization Type",
-    dataIndex: "type",
-    key: "type",
-  },
-  {
-    title: "Governate",
-    dataIndex: "governate",
-    key: "governate",
-  },
-  {
-    title: "Area",
-    dataIndex: "area",
-    key: "area",
-  },
-];
 const data = [
   {
     key: 1,
@@ -67,10 +45,6 @@ const data = [
   },
 ];
 
-const filterArea = [...new Set(data.map((item) => item.area))];
-const filterGov = [...new Set(data.map((item) => item.governorate))];
-const filterType = [...new Set(data.map((item) => item.type))];
-
 const ViewOrganizationDonor = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -80,23 +54,10 @@ const ViewOrganizationDonor = () => {
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
-  const clearFilters = () => {
-    setFilteredInfo({});
-    setSearchText("");
-  };
-  const handleReset = (clearFilters) => {
-    setSearchText("");
-  };
 
   // search
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({
-      setSelectedKeys,
-      selectedKeys,
-      confirm,
-      clearFilters,
-      close,
-    }) => (
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, close }) => (
       <div
         style={{
           padding: 8,
