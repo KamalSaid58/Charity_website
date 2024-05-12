@@ -3,30 +3,18 @@ import { FaUser } from "react-icons/fa"; // Import the user icon from Font Aweso
 import "./NavigationBar.css"; // Import CSS file for styling
 import { CloseOutlined, BellOutlined, CarOutlined } from "@ant-design/icons";
 import "./NavigationBar.css"; // Import CSS file for styling
-import { useNavigate } from "react-router-dom";
 import {
   Card,
   Popover,
   Dropdown,
   Menu,
-  Tag,
-  Space,
-  Divider,
-  Typography,
-  Carousel,
   Flex,
   Button,
-  Row,
-  Col,
-  Image,
-  Table,
-  Timeline,
-  ConfigProvider,
   Drawer,
-  Calendar,
   TimePicker,
   Collapse,
   Select,
+  Badge,
   notification,
 } from "antd";
 import DatePicker from "react-multi-date-picker";
@@ -66,17 +54,23 @@ const NotificationsBell = () => {
       onClose={() => removeNotification(index)}
     />
   ));
-
+  const badgeCount = notifications.length;
   return (
-    <Popover
-      content={<div>{notificationCards}</div>}
-      title="Notifications"
-      trigger="click"
-      overlayStyle={{ width: "400px", minWidth: "400px" }}
-      placement="bottomLeft"
-    >
-      <Button icon={<BellOutlined />} className="notification-button" />
-    </Popover>
+    <Badge count={badgeCount}>
+      <Popover
+        content={<div>{notificationCards}</div>}
+        title="Notifications"
+        trigger="click"
+        overlayStyle={{ width: "400px", minWidth: "400px" }}
+        placement="bottomLeft"
+      >
+        <Button
+          icon={<BellOutlined />}
+          className="notification-button"
+          style={{ height: 40, width: 50 }}
+        />
+      </Popover>
+    </Badge>
   );
 };
 
@@ -250,13 +244,6 @@ const DeliveryButton = () => {
 };
 
 const NavigationBarDonor = () => {
-  const [dropdownVisible, setDropdownVisible] = useState(false);
-
-  // Function to toggle the visibility of the dropdown menu
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
-
   const menu = (
     <Menu style={{ textAlign: "center" }}>
       <Menu.Item onClick={() => (window.location.href = "/")}>Home</Menu.Item>
