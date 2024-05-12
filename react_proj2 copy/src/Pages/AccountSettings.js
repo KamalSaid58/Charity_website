@@ -244,6 +244,17 @@ const ChangePasswordTab = ({ setActiveTab }) => {
 const ChangeAddressTab = ({ setActiveTab }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    const city = document.querySelector('input[name="city"]').value.trim();
+    const street = document.querySelector('input[name="street"]').value.trim();
+    const building = document
+      .querySelector('input[name="building"]')
+      .value.trim();
+    const floor = document.querySelector('input[name="floor"]').value.trim();
+
+    if (!city || !street || !building || !floor) {
+      alert("Please fill in all the fields");
+      return;
+    }
     alert("Changes saved successfully");
     setActiveTab("account-info");
   };
