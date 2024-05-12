@@ -117,12 +117,13 @@ const CardContent = () => {
   ];
 
   function checkNavigateTo() {
-    let isEmpty = false;
-
-    // const fileInput = document.getElementById("file-upload");
-    // if (fileInput !== null && !fileInput.files.length) {
-    //   isEmpty = true;
-    // }
+    let isUploaded = true;
+    if (
+      fileList.length === 0 &&
+      (selectedDonorType === "Teacher" || selectedDonorType === "Doctor")
+    ) {
+      isUploaded = false;
+    }
 
     const unfilledDataNotification = () => {
       api.error(
@@ -135,10 +136,18 @@ const CardContent = () => {
       );
     };
 
-    const inputs = document.querySelectorAll(
-      'input[type="text"], input[type="password"]'
-    );
+    const notUploadedNotification = () => {
+      api.error(
+        {
+          message: "Please upload a document as proof of your existence",
+          placement: "top",
+          duration: 3,
+        },
+        500
+      );
+    };
 
+    let isEmpty = false;
     if (
       gender === "" ||
       firstName === "" ||
@@ -156,6 +165,8 @@ const CardContent = () => {
 
     if (isEmpty) {
       unfilledDataNotification();
+    } else if (!isUploaded) {
+      notUploadedNotification();
     } else {
       navigate("/LoginTrial", { state: { Register: true } });
     }
@@ -349,16 +360,15 @@ const CardContent = () => {
             )}
             <TextBoxRow>
               {showUploadButton && (
-                <>
+                <div className="mb-3">
                   <input type="file" id="file-upload" hidden />
                   <label for="file-upload" className="upload-link">
                     <UploadFile
-                      fileList={fileList}
+                      // fileList={fileList}
                       setFileList={setFileList}
-                      label="proof pls"
                     ></UploadFile>
                   </label>
-                </>
+                </div>
               )}
             </TextBoxRow>
           </Flex>
