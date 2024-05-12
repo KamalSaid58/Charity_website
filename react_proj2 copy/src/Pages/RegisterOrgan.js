@@ -117,10 +117,11 @@ const CardContent = () => {
   ];
 
   function checkNavigateTo() {
-    // const fileInput = document.getElementById("file-upload");
-    // if (!fileInput.files.length) {
-    //   isEmpty = true;
-    // }
+    let isUploaded = true;
+    const fileInput = document.getElementById("file-upload");
+    if (fileList.length === 0) {
+      isUploaded = false;
+    }
 
     const unfilledDataNotification = () => {
       api.error(
@@ -132,27 +133,19 @@ const CardContent = () => {
         500
       );
     };
-
-    const inputs = document.querySelectorAll(
-      'input[type="text"], input[type="password"]'
-    );
+    const notUploadedNotification = () => {
+      api.error(
+        {
+          message: "Please upload a document as proof of your existence",
+          placement: "top",
+          duration: 3,
+        },
+        500
+      );
+    };
 
     let isEmpty = false;
 
-    OrgData.push({
-      firstName: "",
-      lastName: "",
-      gender: "",
-      email: "",
-      password: "",
-      number: "",
-      OrgName: "",
-      OrgType: "",
-      OrgAddress: "",
-      Area: "",
-      Goveernate: "",
-      pdf: fileList,
-    });
     if (
       gender === "" ||
       firstName === "" ||
@@ -171,6 +164,8 @@ const CardContent = () => {
 
     if (isEmpty) {
       unfilledDataNotification();
+    } else if (!isUploaded) {
+      notUploadedNotification();
     } else {
       navigate("/LoginTrial", { state: { Register: true } });
     }
@@ -182,8 +177,6 @@ const CardContent = () => {
   const handleTypeChange = (value) => {
     setselectedOrganizationType(value);
   };
-
-  const [showUploadButton, setShowUploadButton] = useState(false);
 
   const useCheckContentAndRedirect = (values) => {
     setIsFormSubmitted(true);
@@ -367,19 +360,7 @@ const CardContent = () => {
               setIsInputFocused={setIsInputFocused}
             />
           </TextBoxRow>
-          <TextBoxRow>
-            {showUploadButton && (
-              <>
-                <input type="file" id="file-upload" hidden />
-                <label for="file-upload" className="upload-link">
-                  <UploadFile
-                    fileList={fileList}
-                    setFileList={setFileList}
-                  ></UploadFile>
-                </label>
-              </>
-            )}
-          </TextBoxRow>
+
           <Flex justify="center" vertical align="center">
             <p>Upload proof of your organization:</p>
 
@@ -388,7 +369,7 @@ const CardContent = () => {
                 <input type="file" id="file-upload" hidden />
                 <label for="file-upload" className="upload-link">
                   <UploadFile
-                    fileList={fileList}
+                    // fileList={fileList}
                     setFileList={setFileList}
                   ></UploadFile>
                 </label>
