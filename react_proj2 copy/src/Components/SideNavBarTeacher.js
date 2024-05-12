@@ -11,6 +11,7 @@ import ListofBloodDonation from "../Pages/ListofBloodDonation";
 import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import TeachingPosts from "../Pages/TeachingPosts";
+import DonorDeliveries from "../Pages/DonorDeliveries";
 import AccountSettings from "../Pages/AccountSettings";
 import ClassandSubjectSelectionTeacher from "../Pages/ClassandSubjectSelectionTeacher";
 import NavigationBar from "./NavigationBarDonor";
@@ -23,6 +24,7 @@ import {
   ShoppingOutlined,
   CoffeeOutlined,
   MedicineBoxOutlined,
+  CarOutlined,
   BookOutlined,
   HeartOutlined,
   TeamOutlined,
@@ -82,59 +84,9 @@ const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
             >
               Donations Lists {/* Changed the icon here */}
             </Menu.Item>
+
             <Menu.Item
               key="3"
-              onClick={() => handleButtonClick("TeachingPosts")}
-              icon={<TeamOutlined />}
-            >
-              Teaching Posts
-            </Menu.Item>
-            <Menu.Item
-              key="4"
-              onClick={() => handleButtonClick("ViewListOfClothReq")}
-              icon={<ShoppingCartOutlined />}
-            >
-              Clothes {/* Changed the icon here */}
-            </Menu.Item>
-            <Menu.Item
-              key="5"
-              onClick={() => handleButtonClick("ListOfToys")}
-              icon={<ShoppingOutlined />}
-            >
-              Toys
-            </Menu.Item>
-            <Menu.Item
-              key="6"
-              onClick={() => handleButtonClick("ListOfFood")}
-              icon={<CoffeeOutlined />}
-            >
-              Food
-            </Menu.Item>
-
-            <Menu.Item
-              key="7"
-              onClick={() => handleButtonClick("SchoolSupp")}
-              icon={<BookOutlined />}
-            >
-              School Supplies
-            </Menu.Item>
-            <Menu.Item
-              key="8"
-              onClick={() => handleButtonClick("ListofBloodDonation")}
-              icon={<HeartOutlined />}
-            >
-              Blood Donations
-            </Menu.Item>
-            <Menu.Item
-              key="9"
-              onClick={() => handleButtonClick("ListOfMedicalSupplies")}
-              icon={<MedicineBoxOutlined />}
-            >
-              Medical Supplies
-            </Menu.Item>
-
-            <Menu.Item
-              key="10"
               onClick={() =>
                 handleButtonClick("ClassandSubjectSelectionTeacher")
               }
@@ -143,7 +95,65 @@ const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
               Specify Details
             </Menu.Item>
             <Menu.Item
+              key="4"
+              onClick={() => handleButtonClick("TeachingPosts")}
+              icon={<TeamOutlined />}
+            >
+              Teaching Posts
+            </Menu.Item>
+            <Menu.Item
+              key="5"
+              onClick={() => handleButtonClick("ViewListOfClothReq")}
+              icon={<ShoppingCartOutlined />}
+            >
+              Clothes {/* Changed the icon here */}
+            </Menu.Item>
+            <Menu.Item
+              key="6"
+              onClick={() => handleButtonClick("ListOfToys")}
+              icon={<ShoppingOutlined />}
+            >
+              Toys
+            </Menu.Item>
+            <Menu.Item
+              key="7"
+              onClick={() => handleButtonClick("ListOfFood")}
+              icon={<CoffeeOutlined />}
+            >
+              Food
+            </Menu.Item>
+
+            <Menu.Item
+              key="8"
+              onClick={() => handleButtonClick("SchoolSupp")}
+              icon={<BookOutlined />}
+            >
+              School Supplies
+            </Menu.Item>
+            <Menu.Item
+              key="9"
+              onClick={() => handleButtonClick("ListofBloodDonation")}
+              icon={<HeartOutlined />}
+            >
+              Blood Donations
+            </Menu.Item>
+            <Menu.Item
+              key="10"
+              onClick={() => handleButtonClick("ListOfMedicalSupplies")}
+              icon={<MedicineBoxOutlined />}
+            >
+              Medical Supplies
+            </Menu.Item>
+
+            <Menu.Item
               key="11"
+              onClick={() => handleButtonClick("DonorDeliveries")}
+              icon={<CarOutlined />}
+            >
+              Deliveries
+            </Menu.Item>
+            <Menu.Item
+              key="12"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >
@@ -215,6 +225,7 @@ const SideNavBarTeacher = ({ defaultCollapsed = true }) => {
                 <ListOfMedicalSupplies />
               )}
               {currentPage === "TeachingPosts" && <TeachingPosts />}
+              {currentPage === "DonorDeliveries" && <DonorDeliveries />}
             </div>
           </Content>
         </Layout>

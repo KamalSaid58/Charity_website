@@ -12,6 +12,7 @@ import ListofBloodDonation from "../Pages/ListofBloodDonation";
 import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import MedicalCases from "../Pages/MedicalCases";
+import DonorDeliveries from "../Pages/DonorDeliveries";
 import AccountSettings from "../Pages/AccountSettings";
 import NavigationBar from "./NavigationBarDonor";
 import { Button, Layout, Menu, theme } from "antd";
@@ -22,6 +23,7 @@ import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  CarOutlined,
   UserOutlined,
   ShoppingOutlined,
   CoffeeOutlined,
@@ -83,10 +85,10 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="3"
-              onClick={() => handleButtonClick("ListOfMedicalSupplies")}
+              onClick={() => handleButtonClick("MedicalCases")}
               icon={<MedicineBoxOutlined />}
             >
-              Medical Supplies
+              Medical Cases
             </Menu.Item>
             <Menu.Item
               key="4"
@@ -124,14 +126,14 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
             >
               Blood Donations
             </Menu.Item>
-
             <Menu.Item
               key="9"
-              onClick={() => handleButtonClick("MedicalCases")}
+              onClick={() => handleButtonClick("ListOfMedicalSupplies")}
               icon={<MedicineBoxOutlined />}
             >
-              Medical Cases
+              Medical Supplies
             </Menu.Item>
+
             <Menu.Item
               key="10"
               onClick={() => handleButtonClick("ClinicLocationForm")}
@@ -141,6 +143,13 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="11"
+              onClick={() => handleButtonClick("DonorDeliveries")}
+              icon={<CarOutlined />}
+            >
+              Deliveries
+            </Menu.Item>
+            <Menu.Item
+              key="12"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >
@@ -211,6 +220,7 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
                 <ListOfMedicalSupplies />
               )}
               {currentPage === "MedicalCases" && <MedicalCases />}
+              {currentPage === "DonorDeliveries" && <DonorDeliveries />}
             </div>
           </Content>
         </Layout>

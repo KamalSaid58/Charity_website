@@ -11,8 +11,10 @@ import ListOfFood from "../Pages/ListOfFood";
 import ListofBloodDonation from "../Pages/ListofBloodDonation";
 import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
+import DonorDeliveries from "../Pages/DonorDeliveries";
 import AccountSettings from "../Pages/AccountSettings";
 import NavigationBar from "./NavigationBarDonor";
+
 import { Button, Layout, Menu, theme } from "antd";
 import {
   ShoppingCartOutlined,
@@ -20,6 +22,7 @@ import {
   MenuUnfoldOutlined,
   UserOutlined,
   ShoppingOutlined,
+  CarOutlined,
   CoffeeOutlined,
   MedicineBoxOutlined,
   BookOutlined,
@@ -120,8 +123,16 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             >
               Medical Supplies
             </Menu.Item>
+
             <Menu.Item
               key="9"
+              onClick={() => handleButtonClick("DonorDeliveries")}
+              icon={<CarOutlined />}
+            >
+              Deliveries
+            </Menu.Item>
+            <Menu.Item
+              key="10"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >
@@ -189,6 +200,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />
               )}
+              {currentPage === "DonorDeliveries" && <DonorDeliveries />}
             </div>
           </Content>
         </Layout>

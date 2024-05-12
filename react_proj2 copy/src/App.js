@@ -36,7 +36,7 @@ import SideNavBarDoctor from "./Components/SideNavBarDoctor.js";
 import SideNavBarTeacher from "./Components/SideNavBarTeacher.js";
 import AccountSettings from "./Pages/AccountSettings.js";
 import ViewDonorsAdmin from "./Pages/ViewDonorsAdmin.js";
-
+import DonorDeliveries from "./Pages/DonorDeliveries.js";
 import ClinicLocationForm from "./Pages/ClinicLocationForm.js";
 import ClassandSubjectSelectionTeacher from "./Pages/ClassandSubjectSelectionTeacher.js";
 import DonationPost from "./Pages/DonationPost.js";
@@ -146,6 +146,7 @@ function App() {
               />
               <Route path="/AccountSettings" element={<AccountSettings />} />
               <Route path="/ViewDonorsAdmin" element={<ViewDonorsAdmin />} />
+              <Route path="/DonorDeliveries" element={<DonorDeliveries />} />
             </Routes>
           </div>
         </div>
