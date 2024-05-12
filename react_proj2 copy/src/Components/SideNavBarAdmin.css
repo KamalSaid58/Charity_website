@@ -1,0 +1,30 @@
+/* SideNavBarDonor.css */
+.ant-menu-item:hover {
+    background-color: lightblue; /* Change background color on hover */
+  }
+  
+  .ant-menu-item a {
+    color: inherit; /* Ensure link text color matches the default color */
+  }
+
+  .menu-item:hover {
+    background-color: #1890ff;
+  }
+  /* SideNavBarDonor.css */
+.ant-menu-item:hover {
+  background-color: lightblue; /* Change background color on hover */
+}
+
+/* Change link text color on hover */
+.ant-menu-item:hover a {
+  color: white;
+}
+
+/* Styles for the title */
+.title {
+  font-size: 40px !important; /* Adjust font size as needed */
+  margin-left: 30px; /* Adjust margin as needed */
+  margin-top: 20px; /* Add margin to the top */
+  display: flex; /* Display as a flex container */
+  align-items: center; /* Center align items vertically */
+}

@@ -14,6 +14,7 @@ import ListOfFood from "../Pages/ListOfFood";
 import ListofBloodDonation from "../Pages/ListofBloodDonation";
 import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
+import MedicalCases from "../Pages/MedicalCases";
 import AccountSettings from "../Pages/AccountSettings";
 
 import {
@@ -33,7 +34,7 @@ import { Button, Layout, Menu, theme } from "antd";
 import PieChartDemo from "./PieChartDemo";
 const { Header, Sider, Content } = Layout;
 
-const SideNavBarDonor = ({ defaultCollapsed = true }) => {
+const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
   // Set the initial state of collapsed based on the defaultCollapsed prop
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const {
@@ -126,6 +127,13 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="9"
+              onClick={() => handleButtonClick("MedicalCases")}
+              icon={<MedicineBoxOutlined />}
+            >
+              Medical Cases
+            </Menu.Item>
+            <Menu.Item
+              key="10"
               onClick={() => handleButtonClick("AccountSettings")}
               icon={<SettingOutlined />}
             >
@@ -193,6 +201,7 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />
               )}
+              {currentPage === "MedicalCases" && <MedicalCases />}
             </div>
           </Content>
         </Layout>
@@ -201,4 +210,4 @@ const SideNavBarDonor = ({ defaultCollapsed = true }) => {
   );
 };
 
-export default SideNavBarDonor;
+export default SideNavBarDoctor;

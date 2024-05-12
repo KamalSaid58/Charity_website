@@ -8,3 +8,11 @@
   .upload-link:hover {
     text-decoration: underline;
   }
+
+
+  .registerBox {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+

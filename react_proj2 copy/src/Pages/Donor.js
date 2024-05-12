@@ -62,7 +62,7 @@ const Donor = () => {
         <ul>
           {donationHistory.map(donation => (
             <li key={donation.id}>
-              <span>Amount: ${donation.amount}</span>
+              <span> Total Quantity Donated: {donation.amount}</span>
               <span>Date: {donation.date}</span>
               <span>Purpose: {donation.purpose}</span>
             </li>
