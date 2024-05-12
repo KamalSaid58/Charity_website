@@ -16,7 +16,8 @@ import ListOfToys from "../Pages/ListOfToys";
 import ListOfMedicalSupplies from "../Pages/ListOfMedicalSupplies";
 import MedicalCases from "../Pages/MedicalCases";
 import AccountSettings from "../Pages/AccountSettings";
-import SetDoctorLoc from "../Pages/SetDoctorLoc";
+
+import ClinicLocationForm from "../Pages/ClinicLocationForm";
 
 import {
   ShoppingCartOutlined,
@@ -134,7 +135,7 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
             </Menu.Item>
             <Menu.Item
               key="10"
-              onClick={() => handleButtonClick("SetDoctorLoc")}
+              onClick={() => handleButtonClick("ClinicLocationForm")}
               icon={<IoLocationOutline />}
             >
               Set Location
@@ -204,7 +205,8 @@ const SideNavBarDoctor = ({ defaultCollapsed = true }) => {
               {currentPage === "ListOfToys" && <ListOfToys />}
               {currentPage === "SchoolSupp" && <SchoolSupp />}
               {currentPage === "ListofBloodDonation" && <ListofBloodDonation />}
-              {currentPage === "SetDoctorLoc" && <SetDoctorLoc />}
+              {currentPage === "ClinicLocationForm" && <ClinicLocationForm />}
+
               {currentPage === "AccountSettings" && <AccountSettings />}
               {currentPage === "ListOfMedicalSupplies" && (
                 <ListOfMedicalSupplies />

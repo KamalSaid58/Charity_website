@@ -5,6 +5,11 @@ import OrganList from "../Pages/OrganList";
 import DonorList from "../Pages/DonorList";
 import Organ from "../Pages/Organ";
 import AccountSettings from "../Pages/AccountSettings";
+import OrganizationLocationGoogle from "../Pages/OrganizationLocationGoogle";
+import DonationPost from "../Pages/DonationPost";
+import UpdateDeleteDonation from "../Pages/UpdateDeleteDonation";
+import VolunteerPosts from "../Pages/VolunteerPosts";
+import FulfilledDonationPosts from "../Pages/FulfilledDonationPosts";
 import {
   ShoppingCartOutlined,
   MenuFoldOutlined,
@@ -22,6 +27,7 @@ import {
 import NavigationBar from "./NavigationBar";
 import { Button, Layout, Menu, theme } from "antd";
 import { IoLocationOutline } from "react-icons/io5";
+
 const { Header, Sider, Content } = Layout;
 
 const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
@@ -60,35 +66,35 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
           >
             <Menu.Item
               key="1"
-              // onClick={() => handleButtonClick("AccountSettings")}
+              onClick={() => handleButtonClick("DonationPost")}
               icon={<PlusSquareOutlined />}
             >
               Create Post
             </Menu.Item>
             <Menu.Item
               key="2"
-              // onClick={() => handleButtonClick("AccountSettings")}
+              onClick={() => handleButtonClick("UpdateDeleteDonation")}
               icon={<EditOutlined />}
             >
               Edit/Delete Posts
             </Menu.Item>
             <Menu.Item
               key="3"
-              // onClick={() => handleButtonClick("AccountSettings")}
+              onClick={() => handleButtonClick("FulfilledDonationPosts")}
               icon={<HeartOutlined />}
             >
               View Donations
             </Menu.Item>
             <Menu.Item
               key="4"
-              // onClick={() => handleButtonClick("AccountSettings")}
+              onClick={() => handleButtonClick("VolunteerPosts")}
               icon={<UserOutlined />}
             >
               View Volunteers
             </Menu.Item>
             <Menu.Item
               key="5"
-              // onClick={() => handleButtonClick("AccountSettings")}
+              onClick={() => handleButtonClick("OrganizationLocationGoogle")}
               icon={<IoLocationOutline />}
             >
               Set Location
@@ -148,12 +154,21 @@ const SideNavBarOrganization = ({ defaultCollapsed = true }) => {
 
           <Content>
             <div>
-              {currentPage === "Organ" && <Organ />}{" "}
+              {currentPage === "Organ" && <Organ />}
+              {currentPage === "VolunteerPosts" && <VolunteerPosts />}
               {currentPage === "ViewOrganizationAdmin" && (
                 <ViewOrganizationAdmin />
               )}
-              {currentPage === "OrganList" && <OrganList />}
-              {currentPage === "DonorList" && <DonorList />}
+              {currentPage === "DonationPost" && <DonationPost />}
+              {currentPage === "UpdateDeleteDonation" && (
+                <UpdateDeleteDonation />
+              )}
+              {currentPage === "OrganizationLocationGoogle" && (
+                <OrganizationLocationGoogle />
+              )}
+              {currentPage === "FulfilledDonationPosts" && (
+                <FulfilledDonationPosts />
+              )}
               {currentPage === "AccountSettings" && <AccountSettings />}
             </div>
           </Content>
