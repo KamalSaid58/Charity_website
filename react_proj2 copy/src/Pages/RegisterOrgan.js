@@ -380,19 +380,21 @@ const CardContent = () => {
               </>
             )}
           </TextBoxRow>
+          <Flex justify="center" vertical align="center">
+            <p>Upload proof of your organization:</p>
 
-          <TextBoxRow>
-            <p>Organization proof: </p>
-            <div className="mb-3">
-              <input type="file" id="file-upload" hidden />
-              <label for="file-upload" className="upload-link">
-                <UploadFile
-                  fileList={fileList}
-                  setFileList={setFileList}
-                ></UploadFile>
-              </label>
-            </div>
-          </TextBoxRow>
+            <TextBoxRow>
+              <div className="mb-3">
+                <input type="file" id="file-upload" hidden />
+                <label for="file-upload" className="upload-link">
+                  <UploadFile
+                    fileList={fileList}
+                    setFileList={setFileList}
+                  ></UploadFile>
+                </label>
+              </div>
+            </TextBoxRow>
+          </Flex>
 
           <TextBoxRow>
             <Space size={200}>
