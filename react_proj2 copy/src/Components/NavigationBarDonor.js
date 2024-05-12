@@ -67,7 +67,7 @@ const NotificationsBell = () => {
         <Button
           icon={<BellOutlined />}
           className="notification-button"
-          style={{ height: 40, width: 50 }}
+          style={{ height: 40, width: 50, border: "none" }}
         />
       </Popover>
     </Badge>
@@ -271,7 +271,7 @@ const NavigationBarDonor = () => {
             trigger={["click"]}
             style={{ marginTop: 50 }}
           >
-            <Button style={{ height: 40 }}>
+            <Button style={{ height: 40, border: "none" }}>
               <FaUser className="profile-icon" />{" "}
             </Button>
           </Dropdown>
