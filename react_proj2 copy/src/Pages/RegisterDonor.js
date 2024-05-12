@@ -117,10 +117,10 @@ const CardContent = () => {
   ];
 
   function checkNavigateTo() {
-    // const fileInput = document.getElementById("file-upload");
-    // if (!fileInput.files.length) {
-    //   isEmpty = true;
-    // }
+    const fileInput = document.getElementById("file-upload");
+    if (!fileInput.files.length) {
+      isEmpty = true;
+    }
 
     const unfilledDataNotification = () => {
       api.error(

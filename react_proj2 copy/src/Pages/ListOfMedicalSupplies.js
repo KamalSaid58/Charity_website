@@ -363,12 +363,12 @@ const ListOfMedicalSupplies = () => {
       ...getColumnSearchProps("use", "Use"),
     },
     {
-      title: "Fixed Quantity",
+      title: "Quantity Needed",
       dataIndex: "quantity",
       key: "quantity",
     },
     {
-      title: "Editable Quantity",
+      title: "Quantity Donated",
       key: "editableQuantity",
       render: (_, record) => (
         <InputNumber
