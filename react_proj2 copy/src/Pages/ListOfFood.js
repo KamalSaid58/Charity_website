@@ -236,26 +236,6 @@ const ListOfFood = () => {
     setSortedInfo(sorter);
   };
 
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
-  const clearAll = () => {
-    setFilteredInfo({});
-    setSortedInfo({});
-  };
-
-  const setAgeSort = () => {
-    setSortedInfo({
-      order: "descend",
-      columnKey: "age",
-    });
-  };
-
-  const handleBackButtonClick = () => {
-    navigate("/Donor");
-  };
-
   const handleActionClick = (record) => {
     setSelectedRecord(record);
     setIsModalVisible(true);
@@ -338,7 +318,7 @@ const ListOfFood = () => {
 
   return (
     <div className="container">
-      <h2>List of Food Donation Requests</h2>
+      <h2>Food Donations</h2>
       <Space style={{ marginBottom: 16 }}></Space>
       <Table
         columns={columns}

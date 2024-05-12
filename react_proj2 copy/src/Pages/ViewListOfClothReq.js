@@ -346,7 +346,7 @@ const ViewListOfClothReq = () => {
 
   return (
     <div className="container">
-      <h2>View Clothes Items</h2>
+      <h2>Clothes</h2>
       <Table
         columns={columns.filter((col) => col.visible !== false)}
         dataSource={dataSource}

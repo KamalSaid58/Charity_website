@@ -266,7 +266,7 @@ const ViewReqDonor = () => {
 
   return (
     <div className="container">
-      <h2>View Requested Donation Items</h2>
+      <h2>Donated Items</h2>
       <Table columns={columns} dataSource={dataSource} />
     </div>
   );

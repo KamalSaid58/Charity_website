@@ -50,10 +50,6 @@ const DonorList = () => {
     setIsModalVisible(true);
   };
 
-  const handleBackButtonClick = () => {
-    navigate("/Admin");
-  };
-
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -69,12 +65,12 @@ const DonorList = () => {
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
-    alert("You have successfuly rejected the organization request");
+    alert("You have successfuly rejected the donor request");
   };
   const handleAccept = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
-    alert("You have successfuly accepted the organization request");
+    alert("You have successfuly accepted the donor request");
   };
 
   const handleSelect = (record, selected) => {

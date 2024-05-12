@@ -12,7 +12,7 @@ const ViewOrganizationAdmin = () => {
       area: "New Bani Suef",
       email: "DoctorNafso@gmail.com",
       phone: "12394815215102",
-      address: "Qism Bani Sweif",
+      address: "Tagamo3",
       src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17079.073701355126!2d31.11523975587669!3d29.040063689442217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145a25c821f9913b%3A0x4ebfd906dbc1efed!2sPearl%20Hospital!5e0!3m2!1sen!2seg!4v1715360490666!5m2!1sen!2seg",
     },
     {
@@ -23,7 +23,7 @@ const ViewOrganizationAdmin = () => {
       area: "Maadi",
       email: "aboya@gmail.com",
       phone: "123948102",
-      address: "34 Street 206, Maadi as Sarayat Al Gharbeyah",
+      address: "Maadi",
       src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55298.98766625956!2d31.20863914489745!3d29.974063179280158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583812e50d4eeb%3A0xa50e699a378a9789!2sAwlady!5e0!3m2!1sen!2seg!4v1715359640873!5m2!1sen!2seg",
     },
     {
@@ -34,7 +34,7 @@ const ViewOrganizationAdmin = () => {
       area: "Maadi",
       email: "5eer@gmail.com",
       phone: "123948102",
-      address: "gamb kolo 5eer",
+      address: "Maadi",
       src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.67389984829!2d31.43156967629111!3d30.01751867493716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd75153e123%3A0xd6d98616e2c385f7!2sAir%20Force%20Specialized%20Hospital!5e0!3m2!1sen!2seg!4v1714943268574!5m2!1sen!2seg",
     },
     {
@@ -45,7 +45,7 @@ const ViewOrganizationAdmin = () => {
       area: "Tagamo3",
       email: "5eer@gmail.com",
       phone: "123948102",
-      address: "gamb feeha 5eer",
+      address: "Kobry",
       src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13819.759245356123!2d31.418910159506442!3d30.009884593689325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d3d0f24bb19%3A0x9c2e29206cad7ea2!2sTown%20Hospital!5e0!3m2!1sen!2seg!4v1715359492945!5m2!1sen!2seg",
     },
 
@@ -57,7 +57,7 @@ const ViewOrganizationAdmin = () => {
       area: "Maadi",
       email: "MohandasKamal@gmail.com",
       phone: "29320932",
-      address: "Ring Road",
+      address: "Tagamo3",
       src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.428952793114!2d31.2068117!3d30.0481239!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458412f0611f0e1%3A0xdf5bc6992523b85!2sBadran%20Hospital!5e0!3m2!1sen!2seg!4v1715358937982!5m2!1sen!2seg",
     },
   ]);
@@ -71,6 +71,7 @@ const ViewOrganizationAdmin = () => {
         break; // Exit loop since we found and removed the item
       }
     }
+    alert("You have successfuly deleted this account");
     setData(newData);
   };
   const [searchText, setSearchText] = useState("");
@@ -95,10 +96,21 @@ const ViewOrganizationAdmin = () => {
     setSelectedRecord(record);
     setIsModalOpen(true);
   };
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+    setSearchedColumn("");
+  };
 
   // search
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -187,15 +199,9 @@ const ViewOrganizationAdmin = () => {
             </Button>
 
             <Button
-              type={
-                selectedKeys.includes("New Bani Suef") ? "primary" : "default"
-              }
+              type={selectedKeys.includes("Kobry") ? "primary" : "default"}
               onClick={() =>
-                setSelectedKeys(
-                  selectedKeys.includes("New Bani Suef")
-                    ? []
-                    : ["New Bani Suef"]
-                )
+                setSelectedKeys(selectedKeys.includes("Kobry") ? [] : ["Kobry"])
               }
               style={{ marginBottom: 8 }}
               size="small"
@@ -218,13 +224,13 @@ const ViewOrganizationAdmin = () => {
           </Button>
 
           <Button
-            type="link"
+            onClick={() => clearFilters && handleReset(clearFilters)}
             size="small"
-            onClick={() => {
-              close();
+            style={{
+              width: 90,
             }}
           >
-            Close
+            Reset
           </Button>
         </Space>
       </div>

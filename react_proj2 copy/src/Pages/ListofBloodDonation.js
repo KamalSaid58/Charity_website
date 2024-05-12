@@ -441,7 +441,7 @@ const ListofBloodDonation = () => {
 
   return (
     <div className="container">
-      <h2>Blood Donation Requests</h2>
+      <h2>Blood Donations</h2>
       <Space style={{ marginBottom: 16 }}></Space>
       <Table
         columns={columns}

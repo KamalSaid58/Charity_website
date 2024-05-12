@@ -65,8 +65,20 @@ const VolunteerPosts = () => {
     setSearchedColumn(dataIndex);
   };
 
-  const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, close }) => (
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+    setSearchedColumn("");
+  };
+
+  const getColumnSearchProps = (dataIndex, title) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -86,6 +98,34 @@ const VolunteerPosts = () => {
             display: "block",
           }}
         />
+        {title === "Donor Type" && (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Button
+              type={selectedKeys.includes("Teacher") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Teacher") ? [] : ["Teacher"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Teacher
+            </Button>
+            <Button
+              type={selectedKeys.includes("Doctor") ? "primary" : "default"}
+              onClick={() =>
+                setSelectedKeys(
+                  selectedKeys.includes("Doctor") ? [] : ["Doctor"]
+                )
+              }
+              style={{ marginBottom: 8 }}
+              size="small"
+            >
+              Doctor
+            </Button>
+          </div>
+        )}
         <Space>
           <Button
             type="primary"
@@ -99,13 +139,13 @@ const VolunteerPosts = () => {
             Search
           </Button>
           <Button
-            type="link"
+            onClick={() => clearFilters && handleReset(clearFilters)}
             size="small"
-            onClick={() => {
-              close();
+            style={{
+              width: 90,
             }}
           >
-            close
+            Reset
           </Button>
         </Space>
       </div>
@@ -164,7 +204,7 @@ const VolunteerPosts = () => {
       title: "Donor Type",
       dataIndex: "DonorType",
       key: "DonorType",
-      ...getColumnSearchProps("DonorType"),
+      ...getColumnSearchProps("DonorType", "Donor Type"),
     },
 
     {

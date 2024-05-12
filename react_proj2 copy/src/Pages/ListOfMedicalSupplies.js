@@ -399,7 +399,7 @@ const ListOfMedicalSupplies = () => {
 
   return (
     <div className="container">
-      <h2>List of Medical Supplies Donation Requests</h2>
+      <h2>Medical Supplies Donations</h2>
       <Space style={{ marginBottom: 16 }}></Space>
       <Table
         columns={columns}

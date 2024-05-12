@@ -141,6 +141,7 @@ const UpdateDeleteDonation = () => {
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
+    alert("You have successfully deleted this post");
   };
 
   const handleSave = (row) => {

@@ -29,7 +29,7 @@ const data = [
   {
     key: 3,
     name: "Kolo 5eer",
-    type: "Cairo",
+    type: "Charity",
     governate: "Cairo",
     area: "Maadi",
     email: "5eer@gmail.com",
@@ -84,10 +84,20 @@ const ViewOrganizationDonor = () => {
     setSelectedRecord(record);
     setIsModalOpen(true);
   };
-
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+    setSearchedColumn("");
+  };
   // search
   const getColumnSearchProps = (dataIndex, title) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, close }) => (
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
       <div
         style={{
           padding: 8,
@@ -234,13 +244,13 @@ const ViewOrganizationDonor = () => {
           </Button>
 
           <Button
-            type="link"
+            onClick={() => clearFilters && handleReset(clearFilters)}
             size="small"
-            onClick={() => {
-              close();
+            style={{
+              width: 90,
             }}
           >
-            close
+            Reset
           </Button>
         </Space>
       </div>
@@ -331,7 +341,7 @@ const ViewOrganizationDonor = () => {
   return (
     <>
       <div className="container">
-        <h2>View Current Organizations</h2>
+        <h2>Current Organizations</h2>
         <Space style={{ marginBottom: 16 }}></Space>
         <Table columns={columns} dataSource={data} onChange={handleChange} />
         <Modal

@@ -285,11 +285,11 @@ const SchoolSupp = () => {
       ),
     },
     {
-      title: "View Details",
+      title: "View",
       key: "details",
       render: (_, record) => (
         <Button type="primary" onClick={() => handleActionClick(record)}>
-          View Details
+          Details
         </Button>
       ),
     },
@@ -297,7 +297,7 @@ const SchoolSupp = () => {
 
   return (
     <div className="container">
-      <h2>School Supplies Donation Requests</h2>
+      <h2>School Supplies Donations</h2>
       <Table
         columns={columns}
         dataSource={dataSource}
