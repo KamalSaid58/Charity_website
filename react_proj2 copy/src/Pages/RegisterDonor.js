@@ -117,10 +117,12 @@ const CardContent = () => {
   ];
 
   function checkNavigateTo() {
-    const fileInput = document.getElementById("file-upload");
-    if (!fileInput.files.length) {
-      isEmpty = true;
-    }
+    let isEmpty = false;
+
+    // const fileInput = document.getElementById("file-upload");
+    // if (fileInput !== null && !fileInput.files.length) {
+    //   isEmpty = true;
+    // }
 
     const unfilledDataNotification = () => {
       api.error(
@@ -137,8 +139,6 @@ const CardContent = () => {
       'input[type="text"], input[type="password"]'
     );
 
-    let isEmpty = false;
-
     if (
       gender === "" ||
       firstName === "" ||
@@ -153,19 +153,6 @@ const CardContent = () => {
     ) {
       isEmpty = true;
     }
-
-    DonorData.push({
-      firstName: "",
-      lastName: "",
-      gender: "",
-      email: "",
-      password: "",
-      number: "",
-      address: "",
-      area: "",
-      goveernate: "",
-      // pdf: fileList,
-    });
 
     if (isEmpty) {
       unfilledDataNotification();
@@ -352,20 +339,29 @@ const CardContent = () => {
                 </Select>
               </Tooltip>
             </Form.Item>
-
-            {showUploadButton && (
-              <>
-                <input type="file" id="file-upload" hidden />
-                <label for="file-upload" className="upload-link">
-                  <UploadFile
-                    fileList={fileList}
-                    setFileList={setFileList}
-                  ></UploadFile>
-                </label>
-              </>
-            )}
           </TextBoxRow>
-
+          <Flex justify="center" vertical align="center">
+            {showUploadButton && (
+              <p>
+                Upload proof of your profession, such as your bachelor or
+                doctorate:
+              </p>
+            )}
+            <TextBoxRow>
+              {showUploadButton && (
+                <>
+                  <input type="file" id="file-upload" hidden />
+                  <label for="file-upload" className="upload-link">
+                    <UploadFile
+                      fileList={fileList}
+                      setFileList={setFileList}
+                      label="proof pls"
+                    ></UploadFile>
+                  </label>
+                </>
+              )}
+            </TextBoxRow>
+          </Flex>
           <TextBoxRow>
             <Space size={200}>
               <Button onClick={() => navigate("/Register")}>Back</Button>
