@@ -24,7 +24,7 @@ import {
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import NavigationBar from "./NavigationBarDonor";
+import NavigationBar from "./NavigationBarOrganization";
 import { Button, Layout, Menu, theme } from "antd";
 import { IoLocationOutline } from "react-icons/io5";
 

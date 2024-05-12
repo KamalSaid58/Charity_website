@@ -13,12 +13,12 @@ import {
   Drawer,
   TimePicker,
   Collapse,
-  Select,
+  Checkbox,
+  Row,
+  Col,
   Badge,
   notification,
 } from "antd";
-import DatePicker from "react-multi-date-picker";
-import Toolbar from "react-multi-date-picker/plugins/toolbar";
 const NotificationCard = ({ text, onClose }) => {
   return (
     <Card style={{ marginBottom: 10 }}>
@@ -37,8 +37,7 @@ const NotificationCard = ({ text, onClose }) => {
 
 const NotificationsBell = () => {
   const [notifications, setNotifications] = useState([
-    "Mostafa has arrived to pickup your donation of medication!",
-    "Ahmed is coming by in 30 minutes to pickup your donation of clothes!",
+    "Mohamed has fufilled your donation post of clothes!",
   ]);
 
   const removeNotification = (index) => {
@@ -75,46 +74,29 @@ const NotificationsBell = () => {
 };
 
 const ChooseDate = ({ onChange }) => {
-  const today = new Date();
-  const [values, setValues] = useState([]);
-  const handleDateChange = (dates) => {
-    onChange(dates);
+  const handleCheckboxChange = (checkedValues) => {
+    onChange(checkedValues);
   };
+  const daysOfWeek = [
+    { label: "Saturday", value: "Saturday" },
+    { label: "Sunday", value: "Sunday" },
+    { label: "Monday", value: "Monday" },
+    { label: "Tuesday", value: "Tuesday" },
+    { label: "Wednesday", value: "Wednesday" },
+    { label: "Thursday", value: "Thursday" },
+    { label: "Friday", value: "Friday" },
+  ];
+
   return (
-    <DatePicker
-      minDate={today}
-      multiple
-      value={values}
-      onChange={handleDateChange}
-      plugins={[<Toolbar position="bottom" />]}
-    />
-  );
-};
-
-const SelectPickup = ({ onChange }) => {
-  const handleChange = (value) => {
-    onChange(value);
-  };
-  return (
-    <Select
-      type="text"
-      className="defaultValue"
-      style={{ width: 135 }}
-      onChange={handleChange}
-    >
-      <Select.Option key="" value=""></Select.Option>
-      <Select.Option key="motorcycle" value="motorcycle">
-        Motorcycle
-      </Select.Option>
-
-      <Select.Option key="car" value="car">
-        Car
-      </Select.Option>
-
-      <Select.Option key="truck" value="truck">
-        Truck
-      </Select.Option>
-    </Select>
+    <Checkbox.Group onChange={handleCheckboxChange}>
+      <Row>
+        {daysOfWeek.map((day) => (
+          <Col key={day.value} span={24}>
+            <Checkbox value={day.value}>{day.label}</Checkbox>
+          </Col>
+        ))}
+      </Row>
+    </Checkbox.Group>
   );
 };
 
@@ -136,15 +118,12 @@ const DeliveryButton = () => {
   const [deliveryDrawer, setDeliveryDrawer] = useState(false);
 
   const [api, contextHolder] = notification.useNotification();
-  const [pickupType, setPickupType] = useState("");
   const [selectedTime, setSelectedTime] = useState([]);
   const [selectedDates, setSelectedDates] = useState([]);
 
   const updatedDelivery = () => {
     let isEmpty = false;
-    console.log(pickupType);
-    console.log(selectedTime);
-    console.log(selectedDates);
+
     let selectedTimeLength = 1;
     let selectedDateLength = 1;
     if (selectedTime === null || selectedTime.length === 0) {
@@ -154,12 +133,8 @@ const DeliveryButton = () => {
       selectedDateLength = 0;
     }
     if (
-      (pickupType !== "" &&
-        (selectedTimeLength === 0 || selectedDateLength === 0)) ||
-      (selectedTimeLength !== 0 &&
-        (pickupType === "" || selectedDateLength === 0)) ||
-      (selectedDateLength !== 0 &&
-        (pickupType === "" || selectedTimeLength === 0))
+      (selectedTimeLength !== 0 && selectedDateLength === 0) ||
+      (selectedDateLength !== 0 && selectedTimeLength === 0)
     ) {
       isEmpty = true;
     }
@@ -167,7 +142,7 @@ const DeliveryButton = () => {
       api["success"]({
         message: "Successfully updated delivery date!",
         description:
-          "All pending donation requests will now be planned around these dates.",
+          "All upcoming received donations will be delivered during these times.",
         placement: "top",
       });
       onClose();
@@ -188,9 +163,6 @@ const DeliveryButton = () => {
     setDeliveryDrawer(false);
   };
 
-  const handlePickupChange = (value) => {
-    setPickupType(value);
-  };
   const handleTimeChange = (value) => {
     setSelectedTime(value);
   };
@@ -200,22 +172,15 @@ const DeliveryButton = () => {
   const items = [
     {
       key: "1",
-      label: "What day(s) are you free at?",
+      label: "What days is your organization open at?",
       children: (
         <ChooseDate value={selectedDates} onChange={handleDateChange} />
       ),
     },
     {
       key: "2",
-      label: "What time are you avaliable for these days?",
+      label: "What time are you open for these days?",
       children: <ChooseTime value={selectedTime} onChange={handleTimeChange} />,
-    },
-    {
-      key: "3",
-      label: "What type of pickup would you prefer?",
-      children: (
-        <SelectPickup value={pickupType} onChange={handlePickupChange} />
-      ),
     },
   ];
 
@@ -243,7 +208,7 @@ const DeliveryButton = () => {
   );
 };
 
-const NavigationBarDonor = () => {
+const NavigationBarOrganization = () => {
   const menu = (
     <Menu style={{ textAlign: "center" }}>
       <Menu.Item onClick={() => (window.location.href = "/")}>Home</Menu.Item>
@@ -281,4 +246,4 @@ const NavigationBarDonor = () => {
   );
 };
 
-export default NavigationBarDonor;
+export default NavigationBarOrganization;
