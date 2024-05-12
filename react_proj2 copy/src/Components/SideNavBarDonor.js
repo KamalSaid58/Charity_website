@@ -28,7 +28,7 @@ import {
   HeartOutlined,
 } from "@ant-design/icons";
 import CategorySelection from "./CategorySelection";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./NavigationBarDonor";
 import { Button, Layout, Menu, theme } from "antd";
 import PieChartDemo from "./PieChartDemo";
 const { Header, Sider, Content } = Layout;

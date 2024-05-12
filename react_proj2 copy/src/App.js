@@ -24,7 +24,6 @@ import Options from "./Components/Options";
 import AboutUs from "./Components/AboutUs";
 import ContactUs from "./Components/ContactUs"; // Make sure to import StartPage
 import { Routes, Route, useNavigate } from "react-router-dom";
-import NavigationBar from "./Components/NavigationBar";
 import SideNavBarDonor from "./Components/SideNavBarDonor";
 import UpdateDeliveryTime from "./Pages/UpdateDeliveryTime";
 import ListOfToys from "./Pages/ListOfToys";
@@ -56,7 +55,6 @@ function App() {
         <div className="row flex-nowrap">
           <div className="col py-3">
             <Routes>
-              
               <Route path="/ViewReqDonor" element={<ViewReqDonor />} />
               <Route path="/VolunteerPosts" element={<VolunteerPosts />} />
               <Route path="/ListOfFood" element={<ListOfFood />} />

@@ -30,7 +30,7 @@ import {
   BookOutlined,
   HeartOutlined,
 } from "@ant-design/icons";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./NavigationBarDonor";
 import { Button, Layout, Menu, theme } from "antd";
 import { IoLocationOutline } from "react-icons/io5";
 const { Header, Sider, Content } = Layout;

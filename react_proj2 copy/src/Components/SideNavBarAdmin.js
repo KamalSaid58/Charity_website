@@ -12,7 +12,7 @@ import {
   MenuUnfoldOutlined,
   BankOutlined,
 } from "@ant-design/icons";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./NavigationBarDonor";
 import { Button, Layout, Menu, theme } from "antd";
 const { Header, Sider, Content } = Layout;
 
