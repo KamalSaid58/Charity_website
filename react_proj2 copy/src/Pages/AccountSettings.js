@@ -92,6 +92,21 @@ const InfoTab = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const firstName = document
+      .querySelector('input[name="first_name"]')
+      .value.trim();
+    const lastName = document
+      .querySelector('input[name="last_name"]')
+      .value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const phoneNumber = document
+      .querySelector('input[name="phone"]')
+      .value.trim();
+
+    if (!firstName || !lastName || !email || !phoneNumber) {
+      alert("Please fill in all the fields");
+      return;
+    }
     alert("Changes saved successfully");
   };
 
