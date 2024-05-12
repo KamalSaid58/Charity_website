@@ -1,235 +1,116 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Card,
-  Tag,
-  Space,
-  Divider,
-  Typography,
-  Carousel,
-  Flex,
-  Button,
-  Row,
-  Col,
-  Image,
-  Table,
-  Timeline,
-  ConfigProvider,
-} from "antd";
-import { HeartTwoTone } from "@ant-design/icons";
-import styles from "./Donor.css";
-import charityImage from "./donorCarousel/charityimage.jpg";
-import maadiImage from "./donorCarousel/maadi.jpg";
-import omeldonia from "./donorCarousel/omeldonia.jpg";
+import React from 'react';
+import styles from './Donor.module.css'; // Assuming you have a CSS module for styling
+import VerticalBarDemo from '../Components/VerticalBarDemo';  // Importing the VerticalBarDemo component
+import PieChartDemo from '../Components/PieChartDemo'; // Importing the PieChartDemo component
+import SampleImage from './Image1.jpg';
+import SampleImage1 from './images 2.jpeg';
+import SampleImage2 from './images 3.jpeg';
+import SampleImage3 from './images 4.jpeg';
+const Donor = () => {
+  // Sample data for demonstration
+  const donationHistory = [
+    { id: 1, amount: 100, date: '2024-05-01', purpose: 'Education' },
+    { id: 2, amount: 150, date: '2024-04-20', purpose: 'Healthcare' },
+    { id: 3, amount: 200, date: '2024-04-10', purpose: 'Environmental Conservation' }
+  ];
 
-const { Text, Link } = Typography;
+  const upcomingEvents = [
+    { id: 1, name: 'Charity Gala', date: '2024-06-15', location: 'City Hall' },
+    { id: 2, name: 'Fundraising Walkathon', date: '2024-07-20', location: 'Central Park' }
+  ];
 
-const OrganizationsCarousel = () => {
-  const contentStyle = {
-    margin: 0,
-    height: "400px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-  };
+  const recommendedCauses = [
+    { id: 1, name: 'Clean Water Initiative', description: 'Provide clean drinking water to communities in need' },
+    { id: 2, name: 'Food Security Program', description: 'Combat hunger by supporting sustainable agriculture' }
+  ];
 
-  const SlideCarousel = ({ CarouselImage, textContent }) => {
-    return (
-      <h3 style={contentStyle}>
-        <div className="head-text">
-          <Image
-            src={CarouselImage}
-            alt="Freedom Blog"
-            style={{ width: 1800 }}
-          />
-          <div className="text-background">
-            <div className="text-on-image">
-              <Text style={{ color: "white", textAlign: "left" }}>
-                {textContent}
-              </Text>
-            </div>
-          </div>
+  return (
+    
+    <div className={styles.donorDashboard}>
+      <h2>Donor Dashboard</h2>
+      <div className={styles.cardsContainer}>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Events</h3>
+    </div>
+          <img src={SampleImage} alt="Sample Image 1" />
         </div>
-      </h3>
-    );
-  };
-  return (
-    <Carousel arrows style={{ height: 400 }}>
-      <div>
-        <h3 style={contentStyle}>
-          <SlideCarousel
-            CarouselImage={maadiImage}
-            textContent="A7san 5eer Charity is excited to announce that they are hosting
-          a special fundraiser event in the heart of Cairo's vibrant Maadi
-          district on May 29th, 2024 to provide food for the poor. Click
-          here for more info."
-          />
-        </h3>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Blood Donation</h3>
+    </div>
+          <img src={SampleImage1} alt="Sample Image 2" />
+        </div>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Change a Life!</h3>
+    </div>
+          <img src={SampleImage2} alt="Sample Image 3" />
+        </div>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Food Distribution!</h3>
+    </div>
+          <img src={SampleImage3} alt="Sample Image 4" />
+        </div>
       </div>
-      <div>
-        <h3 style={contentStyle}>
-          <SlideCarousel
-            CarouselImage={charityImage}
-            textContent="A7san 5eer Charity is excited to announce that they are hosting
-          a special fundraiser event in the heart of Cairo's vibrant Maadi
-          district on May 29th, 2024 to provide food for the poor. Click
-          here for more info."
-          />
-        </h3>
+      
+
+      {/* Donation History Section */}
+      <div className={styles.section}>
+        <h3>Donation History</h3>
+        <ul>
+          {donationHistory.map(donation => (
+            <li key={donation.id}>
+              <span> Total Quantity Donated: {donation.amount}</span>
+              <span>Date: {donation.date}</span>
+              <span>Purpose: {donation.purpose}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div>
-        <h3 style={contentStyle}>
-          <SlideCarousel
-            CarouselImage={omeldonia}
-            textContent="A7san 5eer Charity is excited to announce that they are hosting
-          a special fundraiser event in the heart of Cairo's vibrant Maadi
-          district on May 29th, 2024 to provide food for the poor. Click
-          here for more info."
-          />
-        </h3>
+
+      {/* Upcoming Events Section */}
+      <div className={styles.section}>
+        <h3>Upcoming Events</h3>
+        <ul>
+          {upcomingEvents.map(event => (
+            <li key={event.id}>
+              <span>Name: {event.name}</span>
+              <span>Date: {event.date}</span>
+              <span>Location: {event.location}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </Carousel>
-  );
-};
 
-const NewDonationPosts = () => {
-  return (
-    <ConfigProvider
-      theme={{
-        token: {
-          fontSize: 20,
-        },
-      }}
-    >
-      <Flex vertical align="flex-start" gap="small">
-        <h1>Donation Posts</h1>
-        <Timeline
-          items={[
-            {
-              children: "Fein Aboya Orphanage created a post asking for food",
-            },
-            {
-              children: "I am looking for medication",
-            },
-            {
-              children: "teeeeeeeeeeeeeeeeeeeeeeeeexttt",
-            },
-            {
-              children: "ttttttttttttttttttttttttttttttttttttttttttttttttttttt",
-            },
-          ]}
-        />
-      </Flex>
-    </ConfigProvider>
-  );
-};
+      {/* Recommended Causes Section */}
+      <div className={styles.section}>
+        <h3>Recommended Causes</h3>
+        <ul>
+          {recommendedCauses.map(cause => (
+            <li key={cause.id}>
+              <span>Name: {cause.name}</span>
+              <span>Description: {cause.description}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-const UpcomingDeliveries = () => {
-  const columns = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
-    },
-    {
-      title: "Time",
-      dataIndex: "time",
-      key: "time",
-    },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-    },
+      {/* Chart Section */}
+      <div className={styles.chartSection}>
+        <div className={styles.chart}>
+          <h3>Donation Trends - Vertical Bar Chart</h3>
+          <VerticalBarDemo />
+        </div>
 
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Contact {record.name}</a>
-          <a>Cancel</a>
-        </Space>
-      ),
-    },
-  ];
-  const data = [
-    {
-      key: "1",
-      time: "30 minutes",
-      name: "Mo3tasm",
-      address: "Ta7t beitak",
-    },
-    {
-      key: "2",
-      time: "20/20/2024",
-      name: "Ana",
-      address: "Ta7t beitak",
-    },
-    {
-      key: "3",
-      time: "20/20/2024",
-      name: "aaaaaaaaaaa",
-      address: "Ta7t beitak",
-    },
-  ];
-  return (
-    <div>
-      <h1 align="left">Upcoming Deliveries</h1>
-      <Table columns={columns} dataSource={data} />
+        <div className={styles.chart}>
+          <h3>Donation Distribution - Pie Chart</h3>
+          <PieChartDemo />
+        </div>
+      </div>
     </div>
   );
 };
-
-const DashboardButtons = () => {
-  return (
-    <Flex justify="space-between" align="center">
-      <Button>Donate Now!</Button>
-      <Button>Update Delivery Location</Button>
-    </Flex>
-  );
-};
-
-function Donor() {
-  const navigate = useNavigate();
-
-  return (
-    <div
-      style={{
-        maxWidth: "100%",
-        overflowX: "auto",
-        // backgroundColor: "lightblue",
-      }}
-    >
-      <Card
-        style={{
-          width: "96.5%",
-          height: "auto",
-          minHeight: 800,
-          marginTop: 30,
-          marginLeft: 30,
-          // backgroundColor: "lightblue",
-        }}
-      >
-        {OrganizationsCarousel()}
-        <Divider style={{ borderWidth: 1, borderColor: "black" }} />
-        <Row>
-          <Col span={11}>{NewDonationPosts()}</Col>
-          <Col span={2}>
-            <Divider
-              type="vertical"
-              style={{ borderWidth: 1, borderColor: "black", height: "100%" }}
-            />
-          </Col>
-          <Col span={11}>{UpcomingDeliveries()}</Col>
-        </Row>
-        <Divider style={{ borderWidth: 1, borderColor: "black" }} />
-        {DashboardButtons()}
-      </Card>
-    </div>
-  );
-}
 
 export default Donor;

@@ -1,170 +1,109 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import React from 'react';
+import styles from './Donor.module.css'; // Assuming you have a CSS module for styling
+import VerticalBarDemo from '../Components/VerticalBarDemo';  // Importing the VerticalBarDemo component
+import PieChartDemo from '../Components/PieChartDemo'; // Importing the PieChartDemo component
+import SampleImage from './Admin.jpg';
+import SampleImage1 from './Admin2.png';
+import SampleImage2 from './Admin3.jpg';
 
-import { Container, Row, Col, Card, CardText } from "react-bootstrap"; // Import Container, Row, Col, Card from react-bootstrap
-import Donation from "../Donation.jpeg";
-import "./Admin.css"; // Import the CSS file
+const Admin = () => {
+  // Sample data for demonstration
+  const donationHistory = [
+    { id: 1, amount: 100, date: '2024-05-01', purpose: 'Education' },
+    { id: 2, amount: 150, date: '2024-04-20', purpose: 'Healthcare' },
+    { id: 3, amount: 200, date: '2024-04-10', purpose: 'Environmental Conservation' }
+  ];
 
-import { DollarCircleOutlined, SettingOutlined } from "@ant-design/icons";
-import OrganList from "../Pages/OrganList";
-import DonorList from "../Pages/DonorList";
-import AccountSettings from "../Pages/AccountSettings";
-import ViewOrganizationAdmin from "./ViewOrganizationAdmin";
-import CurrentDonors from "./CurrentDonors";
+  const upcomingEvents = [
+    { id: 1, name: 'Charity Gala', date: '2024-06-15', location: 'City Hall' },
+    { id: 2, name: 'Fundraising Walkathon', date: '2024-07-20', location: 'Central Park' }
+  ];
 
-import {
-  ShoppingCartOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-  ShoppingOutlined,
-  CoffeeOutlined,
-  MedicineBoxOutlined,
-  BookOutlined,
-  HeartOutlined,
-} from "@ant-design/icons";
-
-import AdminNavBar from "../Components/AdminNavBar";
-import { Button, Layout, Menu, theme } from "antd";
-
-const { Header, Sider, Content } = Layout;
-const Admin = ({ defaultCollapsed = true }) => {
-  // Set the initial state of collapsed based on the defaultCollapsed prop
-  const [collapsed, setCollapsed] = useState(defaultCollapsed);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-  const handleButtonClick = (page) => {
-    setCurrentPage(page);
-  };
-  const [currentPage, setCurrentPage] = useState("Admin");
-
-  // Define the handleCategorySelect function
-  const handleCategorySelect = (categoryName) => {
-    console.log(`Selected category: ${categoryName}`);
-    // Add your logic for handling the selected category here
-  };
+  const recommendedCauses = [
+    { id: 1, name: 'Pending Organizations', description: 'Look for the pending organizations and choose whether to accept or reject' },
+    { id: 2, name: 'Pending Donors', description: 'Look for the pending donors and choose whether to accept or reject' }
+  ];
 
   return (
-    <div style={{ height: "100vh" }}>
-      <Layout style={{ height: "100%" }}>
-        <Sider
-          trigger={null}
-          collapsible
-          collapsed={collapsed}
-          style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
-            left: 0,
-            top: 0,
-            zIndex: 1,
-            marginTop: 0,
-          }}
-        >
-          <div className="demo-logo-vertical" />
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            style={{ borderRight: 0, fontSize: "15px" }}
-          >
-            <Menu.Item
-              key="1"
-              onClick={() => handleButtonClick("DonorList")}
-              icon={<UserOutlined />}
-            >
-              Donors {/* Changed the icon here */}
-            </Menu.Item>
-            <Menu.Item
-              key="2"
-              onClick={() => handleButtonClick("OrganList")}
-              icon={<ShoppingCartOutlined />}
-            >
-              Organizations {/* Changed the icon here */}
-            </Menu.Item>
+    
+    <div className={styles.donorDashboard}>
+      <h2> Welcome Admin!</h2>
+      <div className={styles.cardsContainer}>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Secure Data</h3>
+    </div>
+          <img src={SampleImage} alt="Sample Image 1" />
+        </div>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Manage</h3>
+    </div>
+          <img src={SampleImage1} alt="Sample Image 2" />
+        </div>
+        <div className={styles.card}>
+        <div className={styles.cardContent}>
+      <h3>Analyze Data!</h3>
+    </div>
+          <img src={SampleImage2} alt="Sample Image 3" />
+        </div>
+        
+      </div>
+      
 
-            <Menu.Item
-              key="3"
-              onClick={() => handleButtonClick("CurrentDonors")}
-              icon={<UserOutlined />}
-            >
-              Current Donors {/* Changed the icon here */}
-            </Menu.Item>
-            <Menu.Item
-              key="4"
-              onClick={() => handleButtonClick("ViewOrganizationAdmin")}
-              icon={<ShoppingCartOutlined />}
-            >
-              Current Organizations {/* Changed the icon here */}
-            </Menu.Item>
-            <Menu.Item
-              key="5"
-              onClick={() => handleButtonClick("AccountSettings")}
-              icon={<SettingOutlined />}
-            >
-              Settings {/* Changed the icon here */}
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout
-          style={{
-            marginLeft: collapsed ? 80 : 200,
-            transition: "margin-left 0.2s",
-          }}
-        >
-          <Header
-            style={{
-              padding: 0,
-              background: colorBgContainer,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                  fontSize: "50px",
-                  width: 64,
-                  height: 64,
-                  color: "black", // initial color
-                }}
-                className="custom-button" // Add a class for styling
-                // CSS for hover
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "lightblue")
-                }
-                onMouseLeave={(e) => (e.currentTarget.style.color = "black")}
-              />
-              <Link
-                to="/donor" // Link to 'Donor' page
-                className="title"
-                style={{ cursor: "pointer", textDecoration: "none" }} // Change cursor to pointer on hover
-              >
-                GOAT
-              </Link>
-            </div>
-            <AdminNavBar />
-          </Header>
+      {/* Donation History Section */}
+      <div className={styles.section}>
+        <h3>Donation History</h3>
+        <ul>
+          {donationHistory.map(donation => (
+            <li key={donation.id}>
+              <span>Total Quantity Donated: {donation.amount}</span>
+              <span>Date: {donation.date}</span>
+              <span>Purpose: {donation.purpose}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <Content>
-            <div>
-              {currentPage === "DonorList" && <DonorList />}
-              {currentPage === "OrganList" && <OrganList />}
+      {/* Upcoming Events Section */}
+      <div className={styles.section}>
+        <h3>Upcoming Events To Manage</h3>
+        <ul>
+          {upcomingEvents.map(event => (
+            <li key={event.id}>
+              <span>Name: {event.name}</span>
+              <span>Date: {event.date}</span>
+              <span>Location: {event.location}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-              {currentPage === "ViewOrganizationAdmin" && (
-                <ViewOrganizationAdmin />
-              )}
-              {currentPage === "CurrentDonors" && <CurrentDonors />}
-              {currentPage === "AccountSettings" && <AccountSettings />}
-            </div>
-          </Content>
-        </Layout>
-      </Layout>
+      {/* Recommended Causes Section */}
+      <div className={styles.section}>
+        <h3>Recommended Actions</h3>
+        <ul>
+          {recommendedCauses.map(cause => (
+            <li key={cause.id}>
+              <span>Manage: {cause.name}</span>
+              <span>Description: {cause.description}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Chart Section */}
+      <div className={styles.chartSection}>
+        <div className={styles.chart}>
+          <h3>Number of people Visited the website - Vertical Bar Chart</h3>
+          <VerticalBarDemo />
+        </div>
+
+        <div className={styles.chart}>
+          <h3>Website Visitors Regions - Pie Chart</h3>
+          <PieChartDemo />
+        </div>
+      </div>
     </div>
   );
 };

@@ -11,7 +11,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 4px 0; /* Adjusted padding */
   border-radius: 4px;
-  min-width: 50px; /* Adjusted min-width */
+  min-width: 80px; /* Adjusted min-width */
   z-index: 1;
   right: 0; /* Position to the right */
   left: auto; /* Reset left to auto */
@@ -22,8 +22,8 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   width: 100%; /* Make button fill the width */
-  height: 30px; /* Adjusted height */
-  padding: 4px 8px; /* Adjusted padding */
+  height: 50px; /* Change to auto height */
+  padding: 8px 0; /* Adjusted padding */
   margin: 2px 0; /* Decreased vertical margin */
   background-color: #fff; /* White background color */
   border-radius: 4px; /* Rounded corners */
@@ -32,8 +32,10 @@
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Transition for background color */
-  border: 1px solid transparent; /* Transparent border */
+  border: 1px solid transparent;
+  white-space: nowrap; /* Transparent border */
 }
+
 
 .dropdown-content button:hover {
   background-color: #e0e0e0; /* Change background color on hover */

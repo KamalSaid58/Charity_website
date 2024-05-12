@@ -25,7 +25,7 @@ function LoginTrial() {
     } else {
       switch (username) {
         case "Admin":
-          navigate("/Admin");
+          navigate("/SideNavBarAdmin");
           break;
         case "Donor":
           navigate("/SideNavBarDonor");
