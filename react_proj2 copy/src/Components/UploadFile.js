@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { UploadOutlined } from "@ant-design/icons";
-import { Button, Upload, message } from "antd";
+import { Button, Upload } from "antd";
 const UploadFile = ({ fileList, setFileList }) => {
   const handleChange = (info) => {
     let newFileList = [...info.fileList];
