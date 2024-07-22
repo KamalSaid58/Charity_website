@@ -33,14 +33,15 @@
   border-radius: 4px;
 }
 
-.form-check {
-  display: flex;
-  align-items: center;
-}
-
 .form-check-input {
   margin-right: 10px;
+  /* Add more margin to the right if needed */
 }
+
+.form-check-label {
+  margin-right: 120px; /* Adjust the margin as needed */
+}
+
 
 .btn-primary {
   background-color: #007bff;

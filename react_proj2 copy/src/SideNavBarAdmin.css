@@ -1,0 +1,11 @@
+.ant-menu-item:hover {
+    background-color: lightblue; /* Change background color on hover */
+  }
+  
+  .ant-menu-item a {
+    color: inherit; /* Ensure link text color matches the default color */
+  }
+  
+  .ant-menu-item :hover a {
+    color: white; /* Change link text color on hover */
+  }

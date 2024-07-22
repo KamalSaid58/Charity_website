@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import './ContactUs.css';
+import React, { useState } from "react";
+import "./ContactUs.css";
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   const navigate = useNavigate(); // Initialize navigate
@@ -17,7 +18,7 @@ const ContactUs = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -27,11 +28,11 @@ const ContactUs = () => {
     console.log(formData);
     // Reset form fields
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
     });
   };
 
@@ -41,34 +42,82 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="ContactUs-container">
-      <div className="ContactUs-contact-details">
-        <h2>Contact Details</h2>
-        <p>Phone: +123456789</p>
-        <p>Email: example@example.com</p>
-        {/* Add additional contact details here */}
+    <Container className="text-center">
+      <div className="ContactUs-container">
+        <div className="ContactUs-contact-details">
+          <h2>Contact Details</h2>
+          <p>Phone: +123456789</p>
+          <p>Email: example@example.com</p>
+          {/* Add additional contact details here */}
+        </div>
+        <form className="ContactUs-form-container" onSubmit={handleSubmit}>
+          <h2>Report A Problem</h2>
+          <div className="ContactUs-form-group">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="ContactUs-form-input"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div className="ContactUs-form-group">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="ContactUs-form-input"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div className="ContactUs-form-group">
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="ContactUs-form-input"
+              placeholder="Your Phone Number"
+            />
+          </div>
+          <div className="ContactUs-form-group">
+            <input
+              type="text"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              className="ContactUs-form-input"
+              placeholder="Subject"
+              required
+            />
+          </div>
+          <div className="ContactUs-form-group">
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              className="ContactUs-form-textarea"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" className="ContactUs-form-submit">
+            Submit
+          </button>
+        </form>
+        <button
+          type="button"
+          onClick={handleBack}
+          className="ContactUs-back-button"
+        >
+          Back To Options
+        </button>
       </div>
-      <form className="ContactUs-form-container" onSubmit={handleSubmit}>
-        <h2>Report A Problem</h2>
-        <div className="ContactUs-form-group">
-          <input type="text" name="name" value={formData.name} onChange={handleChange} className="ContactUs-form-input" placeholder="Your Name" required />
-        </div>
-        <div className="ContactUs-form-group">
-          <input type="email" name="email" value={formData.email} onChange={handleChange} className="ContactUs-form-input" placeholder="Your Email" required />
-        </div>
-        <div className="ContactUs-form-group">
-          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="ContactUs-form-input" placeholder="Your Phone Number" />
-        </div>
-        <div className="ContactUs-form-group">
-          <input type="text" name="subject" value={formData.subject} onChange={handleChange} className="ContactUs-form-input" placeholder="Subject" required />
-        </div>
-        <div className="ContactUs-form-group">
-          <textarea name="message" value={formData.message} onChange={handleChange} className="ContactUs-form-textarea" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" className="ContactUs-form-submit">Submit</button>
-      </form>
-      <button type="button" onClick={handleBack} className="ContactUs-back-button">Back To Options</button>
-    </div>
+    </Container>
   );
 };
 
